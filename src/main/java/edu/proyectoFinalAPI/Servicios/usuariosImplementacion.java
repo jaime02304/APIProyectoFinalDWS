@@ -1,11 +1,14 @@
 package edu.proyectoFinalAPI.Servicios;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
+import edu.proyectoFinalAPI.utilidades.*;
 
 /**
  * Clase donde se encuentra todos los metodos en relacion con el usuario
@@ -13,7 +16,13 @@ import edu.proyectoFinalAPI.Dtos.UsuarioDto;
  * @author jpribio - 19/01/25
  */
 @Service
-public class usuariosImplementacion {
+public class UsuariosImplementacion {
+
+	/*
+	 * Inicializa la utilizacion de los metodos util
+	 *
+	 */
+	private Util metodosDeUtilidad = new Util();
 
 	/**
 	 * Método que llama a usuarioRepositorio que contiene por lo que se va a buscar
@@ -24,8 +33,9 @@ public class usuariosImplementacion {
 	@Autowired
 	private UsuarioRepositorio repositorioUsuario;
 
-	public usuariosImplementacion(UsuarioRepositorio repositorioUsuario) {
+	public UsuariosImplementacion(UsuarioRepositorio repositorioUsuario) {
 		this.repositorioUsuario = repositorioUsuario;
+
 	}
 
 	/**
@@ -33,19 +43,21 @@ public class usuariosImplementacion {
 	 * 
 	 * @author jpribio - 19/01/25
 	 * @param nuevoUsuarioDatos
+	 * @throws NoSuchAlgorithmException
 	 */
-	public void nuevoUsuario(UsuarioDto nuevoUsuarioDatos) throws NullPointerException, IllegalArgumentException {
+	public UsuarioEntidad nuevoUsuario(UsuarioDto nuevoUsuarioDatos) throws NullPointerException, IllegalArgumentException {
 
 		UsuarioEntidad usuario = new UsuarioEntidad();
 		usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
 		usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
 		usuario.setCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
-		usuario.setContraseniaUsuEntidad(nuevoUsuarioDatos.getContraseniaUsu());
+		usuario.setContraseniaUsuEntidad(metodosDeUtilidad.encriptarASHA256(nuevoUsuarioDatos.getContraseniaUsu()));
+		usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
+		usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
 
 		// Guarda el nuevo usuario
 		UsuarioEntidad nuevoUsuarioGuardado = repositorioUsuario.save(usuario);
-		// Establece un ID al Dto para utilizarlo en el front si fuese necesario
-		// nuevoUsuarioDatos.setIdUsu(nuevoUsuarioGuardado.getIdUsuEntidad());
+		return nuevoUsuarioGuardado;
 	}
 
 	/**
@@ -53,6 +65,7 @@ public class usuariosImplementacion {
 	 * 
 	 * @param verificarUsu
 	 * @return
+	 * @throws NoSuchAlgorithmException
 	 */
 	public UsuarioEntidad inicioSesionUsu(UsuarioDto verificarUsu)
 			throws NullPointerException, IllegalArgumentException {
@@ -62,7 +75,8 @@ public class usuariosImplementacion {
 
 		if (usuarioEnt != null) {
 			System.out.println("Usuario-->" + usuarioEnt.getCorreoElectronicoUsuEntidad() + " encontrado");
-			if (usuarioEnt.getContraseniaUsuEntidad().equals(verificarUsu.getContraseniaUsu())) {
+			if (usuarioEnt.getContraseniaUsuEntidad()
+					.equals(metodosDeUtilidad.encriptarASHA256(verificarUsu.getContraseniaUsu()))) {
 				return usuarioEnt;
 			} else {
 				System.err.println("Contraseña erronea");

@@ -1,6 +1,7 @@
 package edu.proyectoFinalAPI.controlador;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
-import edu.proyectoFinalAPI.Servicios.usuariosImplementacion;
+import edu.proyectoFinalAPI.Servicios.GrupoImplementacion;
+import edu.proyectoFinalAPI.Servicios.UsuariosImplementacion;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+
 
 /**
  * Controlador principal de la APi donde tiene las rutas de los metodos de la
@@ -26,11 +29,13 @@ import jakarta.ws.rs.core.Response;
  */
 
 @RestController
-@RequestMapping("/apiUsuario")
+@RequestMapping("/api")
 public class controladorApi {
 
 	@Autowired
-	private usuariosImplementacion servicioUsuario;
+	private UsuariosImplementacion servicioUsuario;
+	@Autowired
+	private GrupoImplementacion servicioGrupo;
 
 	/**
 	 * Metodo que se enuentra el registro
@@ -39,26 +44,34 @@ public class controladorApi {
 	 * @param usuario (informacion necesaria para el registro)
 	 * @return
 	 */
-	@PostMapping("/registro")
+	@PostMapping("/usuario/registro")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response registroAPi(@RequestBody UsuarioDto usuario) {
+	public Map<String, Object> registroAPi(@RequestBody UsuarioDto usuario) {
+		Map<String, Object> response = new HashMap<>();
 		try {
-			servicioUsuario.nuevoUsuario(usuario);
-			return Response.ok().entity("El usuario se ha registrado correctamente").build();
-		} catch (NullPointerException nE) {
-			// Manejo específico para errores de tipo NullPointerException
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity("Error: Algunos campos del usuario están vacíos o nulos.").build();
+			UsuarioEntidad usuarioEntidad = servicioUsuario.nuevoUsuario(usuario);
+			if (usuarioEntidad != null) {
+				response.put("usuario", usuarioEntidad);
+				response.put("success", true);
+			} else {
+				response.put("success", false);
+			}
 		} catch (IllegalArgumentException iaE) {
-			// Manejo específico para errores de argumentos inválidos
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity("Error: Los datos proporcionados no son válidos.").build();
+			// Manejo de la excepción IllegalArgumentException
+			response.put("success", false);
+			response.put("error", " Los datos proporcionados no son válidos." + iaE.getMessage());
+		} catch (NullPointerException nE) {
+			// Manejo de la excepción NullPointerException
+			response.put("success", false);
+			response.put("error", "Algunos campos del usuario están vacíos o nulos. " + nE.getMessage());
 		} catch (Exception e) {
-			// Manejo genérico para cualquier otra excepción
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error inesperado: " + e.getMessage())
-					.build();
+			// Manejo de cualquier otra excepción
+			response.put("success", false);
+			response.put("error", "Error inesperado: " + e.getMessage());
 		}
+
+		return response;
 	}
 
 	/**
@@ -68,7 +81,7 @@ public class controladorApi {
 	 * @param usuario (informacion para el inicio de sesion)
 	 * @return
 	 */
-	@GetMapping("/inicioSesion")
+	@GetMapping("/usuario/inicioSesion")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> inicioSesionUsuario(@RequestBody UsuarioDto usuario) {
@@ -79,8 +92,7 @@ public class controladorApi {
 			UsuarioEntidad usuarioEntidad = servicioUsuario.inicioSesionUsu(usuario);
 
 			if (usuarioEntidad != null) {
-				response.put("correoUsu", usuarioEntidad.getCorreoElectronicoUsuEntidad());
-				response.put("contraseniaUsu", usuarioEntidad.getContraseniaUsuEntidad());
+				response.put("usuario", usuarioEntidad);
 				response.put("success", true);
 			} else {
 				response.put("success", false);
@@ -101,5 +113,41 @@ public class controladorApi {
 
 		return response;
 	}
+
+
+	
+	@GetMapping("/index/grupos")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerGruposMasNumerosos() {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			// Llamada al servicio para verificar el inicio de sesión
+			 List<GrupoEntidad> listadoGrupo = servicioGrupo.recogerLosGrupos();
+
+			if (listadoGrupo != null) {
+				response.put("grupo", listadoGrupo);
+				response.put("success", true);
+			} else {
+				response.put("success", false);
+			}
+		} catch (IllegalArgumentException iaE) {
+			// Manejo de la excepción IllegalArgumentException
+			response.put("success", false);
+			response.put("error", "Argumento inválido: " + iaE.getMessage());
+		} catch (NullPointerException nE) {
+			// Manejo de la excepción NullPointerException
+			response.put("success", false);
+			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
+		} catch (Exception e) {
+			// Manejo de cualquier otra excepción
+			response.put("success", false);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+	
 
 }

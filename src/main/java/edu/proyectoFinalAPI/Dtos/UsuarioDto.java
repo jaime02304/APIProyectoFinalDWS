@@ -12,7 +12,7 @@ public class UsuarioDto {
 	private String aliasUsu = "aaaaa";
 	private String correoElectronicoUsu = "aaaaa";
 	private int movilUsu = 0;
-	private Boolean esAdmin = false;
+	private String rolUsu = "user";
 	private byte[] fotoUsu;
 	private String contraseniaUsu = "aaaaa";
 	private Boolean esPremium = false;
@@ -58,12 +58,12 @@ public class UsuarioDto {
 		this.movilUsu = movilUsu;
 	}
 
-	public Boolean getEsAdmin() {
-		return esAdmin;
+	public String getRolUsu() {
+		return rolUsu;
 	}
 
-	public void setEsAdmin(Boolean esAdmin) {
-		this.esAdmin = esAdmin;
+	public void setRolUsu(String rolUsu) {
+		this.rolUsu = rolUsu;
 	}
 
 	public byte[] getFotoUsu() {

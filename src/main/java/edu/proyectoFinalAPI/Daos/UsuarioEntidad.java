@@ -1,10 +1,13 @@
 package edu.proyectoFinalAPI.Daos;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -16,7 +19,6 @@ import jakarta.persistence.Table;
 @Table(name = "usuarios")
 public class UsuarioEntidad {
 
-	// Atributes de la entidad(Daos=
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usu")
@@ -29,13 +31,13 @@ public class UsuarioEntidad {
 	private String aliasUsuEntidad;
 
 	@Column(name = "correo_electronico_usu", unique = true)
-	private String correoElectronicoUsuEntidad;;
+	private String correoElectronicoUsuEntidad;
 
 	@Column(name = "movil_usu")
 	private int movilUsuEntidad;
 
-	@Column(name = "es_admin")
-	private Boolean esAdminEntidad;
+	@Column(name = "rol_usu")
+	private String rolUsuEntidad;
 
 	@Column(name = "foto_usu")
 	private byte[] fotoUsuEntidad;
@@ -45,6 +47,9 @@ public class UsuarioEntidad {
 
 	@Column(name = "es_premium")
 	private Boolean esPremiumEntidad;
+
+//	@OneToMany(mappedBy = "creadorUsuId")
+//	private List<GrupoEntidad> grupos;
 
 	// Getters y setters
 	public Long getIdUsuEntidad() {
@@ -87,12 +92,12 @@ public class UsuarioEntidad {
 		this.movilUsuEntidad = movilUsuEntidad;
 	}
 
-	public Boolean getEsAdminEntidad() {
-		return esAdminEntidad;
+	public String getRolUsuEntidad() {
+		return rolUsuEntidad;
 	}
 
-	public void setEsAdminEntidad(Boolean esAdminEntidad) {
-		this.esAdminEntidad = esAdminEntidad;
+	public void setRolUsuEntidad(String rolUsuEntidad) {
+		this.rolUsuEntidad = rolUsuEntidad;
 	}
 
 	public byte[] getFotoUsuEntidad() {
@@ -118,6 +123,14 @@ public class UsuarioEntidad {
 	public void setEsPremiumEntidad(Boolean esPremiumEntidad) {
 		this.esPremiumEntidad = esPremiumEntidad;
 	}
+//
+//	public List<GrupoEntidad> getGrupos() {
+//		return grupos;
+//	}
+//
+//	public void setGrupos(List<GrupoEntidad> grupos) {
+//		this.grupos = grupos;
+//	}
 
 	// Contructores
 	public UsuarioEntidad() {
