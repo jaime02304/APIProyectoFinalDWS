@@ -8,4 +8,25 @@ package edu.proyectoFinalAPI.Dtos;
  */
 public class TiposDto {
 
+	private Long idTipo;
+	private String nombreTipo = "aaaaa";
+	private String descripcionTipo = "aaaaa";
+	private int nivelTipo = 0;
+
+	public Long getIdTipo() {
+		return idTipo;
+	}
+
+	public String getNombreTipo() {
+		return nombreTipo;
+	}
+
+	public String getDescripcionTipo() {
+		return descripcionTipo;
+	}
+
+	public int getNivelTipo() {
+		return nivelTipo;
+	}
+
 }

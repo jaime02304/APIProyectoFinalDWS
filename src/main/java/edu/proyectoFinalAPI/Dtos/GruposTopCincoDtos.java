@@ -1,5 +1,7 @@
 package edu.proyectoFinalAPI.Dtos;
 
+import edu.proyectoFinalAPI.Daos.TiposEntidad;
+
 /**
  * Atributos de los grupos para tener lo necesario de los 5 con mas usuarios
  * 
@@ -9,8 +11,10 @@ public class GruposTopCincoDtos {
 
 	private Long idGrupo;
 	private String nombreGrupo = "aaaaa";
-	private Long categoriaIdLong;
-	private Long subCategoriaIdLong;
+	private TiposEntidad categoriaId;
+	private TiposEntidad subCategoriaId;
+	
+	//No se sabe si se debe de poner l entidad (el tipo) ahí
 
 	public Long getIdGrupo() {
 		return idGrupo;
@@ -28,20 +32,20 @@ public class GruposTopCincoDtos {
 		this.nombreGrupo = nombreGrupo;
 	}
 
-	public Long getCategoriaIdLong() {
-		return categoriaIdLong;
+	public TiposEntidad getCategoriaId() {
+		return categoriaId;
 	}
 
-	public void setCategoriaIdLong(Long categoriaIdLong) {
-		this.categoriaIdLong = categoriaIdLong;
+	public void setCategoriaId(TiposEntidad categoriaId) {
+		this.categoriaId = categoriaId;
 	}
 
-	public Long getSubCategoriaIdLong() {
-		return subCategoriaIdLong;
+	public TiposEntidad getSubCategoriaId() {
+		return subCategoriaId;
 	}
 
-	public void setSubCategoriaIdLong(Long subCategoriaIdLong) {
-		this.subCategoriaIdLong = subCategoriaIdLong;
+	public void setSubCategoriaId(TiposEntidad subCategoriaId) {
+		this.subCategoriaId = subCategoriaId;
 	}
 
 	public GruposTopCincoDtos() {

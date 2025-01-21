@@ -25,26 +25,26 @@ public class GrupoEntidad {
 	@Column(name = "id_grupo")
 	private Long idGrupo;
 
-	@Column(name = "", unique = true)
+	@Column(name = "nombre_grupo", unique = true)
 	private String nombreGrupo = "aaaaa";
 
 	@ManyToOne
 	@JoinColumn(name = "creador_usu_id", nullable = false)
 	private UsuarioEntidad creadorUsuId;
 
-	@Column(name = "")
+	@Column(name = "numero_usuarios")
 	private Long numeroUsuarios = (long) 0;
 
-	@Column(nullable = false, name = "")
+	@Column(nullable = false, name = "fecha_grupo")
 	private LocalDateTime fechaGrupo = LocalDateTime.now();
 
-//	@ManyToOne
-	@Column(name = "categoria_id")
-	private Long categoriaIdLong;
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
+	private TiposEntidad categoriaId;
 
-//	@ManyToOne
-    @Column(name = "subcategoria_id")
-	private Long subCategoriaIdLong;
+	@ManyToOne
+    @JoinColumn(name = "subcategoria_id")
+	private TiposEntidad subCategoriaId;
 
 	public Long getIdGrupo() {
 		return idGrupo;
@@ -86,20 +86,20 @@ public class GrupoEntidad {
 		this.fechaGrupo = fechaGrupo;
 	}
 
-	public Long getCategoriaIdLong() {
-		return categoriaIdLong;
+	public TiposEntidad getCategoriaId() {
+		return categoriaId;
 	}
 
-	public void setCategoriaIdLong(Long categoriaIdLong) {
-		this.categoriaIdLong = categoriaIdLong;
+	public void setCategoriaIdLong(TiposEntidad categoriaId) {
+		this.categoriaId = categoriaId;
 	}
 
-	public Long getSubCategoriaIdLong() {
-		return subCategoriaIdLong;
+	public TiposEntidad getSubCategoriaId() {
+		return subCategoriaId;
 	}
 
-	public void setSubCategoriaIdLong(Long subCategoriaIdLong) {
-		this.subCategoriaIdLong = subCategoriaIdLong;
+	public void setSubCategoriaId(TiposEntidad subCategoriaId) {
+		this.subCategoriaId = subCategoriaId;
 	}
 
 }

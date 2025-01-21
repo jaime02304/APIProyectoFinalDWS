@@ -14,8 +14,11 @@ public class GruposDtos {
 	private UsuarioDto creadorUsuId;
 	private Long numeroUsuarios = (long) 0;
 	private LocalDateTime fechaGrupo = LocalDateTime.now();
-	private Long categoriaIdLong;
-	private Long subCategoriaIdLong;
+	private TiposDto categoriaId;
+	private TiposDto subCategoriaId;
+
+	// No se si se deberia de cambiar por los tipos entidad paara tener la
+	// informacion
 
 	public Long getIdGrupo() {
 		return idGrupo;
@@ -57,20 +60,20 @@ public class GruposDtos {
 		this.fechaGrupo = fechaGrupo;
 	}
 
-	public Long getCategoriaIdLong() {
-		return categoriaIdLong;
+	public TiposDto getCategoriaId() {
+		return categoriaId;
 	}
 
-	public void setCategoriaIdLong(Long categoriaIdLong) {
-		this.categoriaIdLong = categoriaIdLong;
+	public void setCategoriaId(TiposDto categoriaId) {
+		this.categoriaId = categoriaId;
 	}
 
-	public Long getSubCategoriaIdLong() {
-		return subCategoriaIdLong;
+	public TiposDto getSubCategoriaId() {
+		return subCategoriaId;
 	}
 
-	public void setSubCategoriaIdLong(Long subCategoriaIdLong) {
-		this.subCategoriaIdLong = subCategoriaIdLong;
+	public void setSubCategoriaId(TiposDto subCategoriaId) {
+		this.subCategoriaId = subCategoriaId;
 	}
 
 	// Constructor

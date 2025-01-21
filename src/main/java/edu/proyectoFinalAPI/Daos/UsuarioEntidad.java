@@ -45,9 +45,6 @@ public class UsuarioEntidad {
 	@Column(name = "es_premium")
 	private Boolean esPremiumEntidad;
 
-//	@OneToMany(mappedBy = "creadorUsuId")
-//	private List<GrupoEntidad> grupos;
-
 	// Getters y setters
 	public Long getIdUsuEntidad() {
 		return idUsuEntidad;
@@ -120,14 +117,6 @@ public class UsuarioEntidad {
 	public void setEsPremiumEntidad(Boolean esPremiumEntidad) {
 		this.esPremiumEntidad = esPremiumEntidad;
 	}
-//
-//	public List<GrupoEntidad> getGrupos() {
-//		return grupos;
-//	}
-//
-//	public void setGrupos(List<GrupoEntidad> grupos) {
-//		this.grupos = grupos;
-//	}
 
 	// Contructores
 	public UsuarioEntidad() {

@@ -10,6 +10,7 @@ import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
 import edu.proyectoFinalAPI.Dtos.GruposDtos;
 import edu.proyectoFinalAPI.Dtos.GruposTopCincoDtos;
+import edu.proyectoFinalAPI.Dtos.TiposDto;
 
 /**
  * Clase donde se encuentra los metodos en relacion a los grupos
@@ -49,8 +50,8 @@ public class GrupoServicios {
 			GruposTopCincoDtos grupo = new GruposTopCincoDtos();
 			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-			grupo.setCategoriaIdLong(grupoEntidad.getCategoriaIdLong());
-			grupo.setSubCategoriaIdLong(grupoEntidad.getSubCategoriaIdLong());
+			grupo.setCategoriaId(grupoEntidad.getCategoriaId());
+			grupo.setSubCategoriaId(grupoEntidad.getSubCategoriaId());
 			grupos.add(grupo);
 		}
 		return grupos;
