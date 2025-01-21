@@ -1,19 +1,14 @@
 package edu.proyectoFinalAPI.Dtos;
 
-import java.time.LocalDateTime;
-
 /**
- * Clase donde se encuentra los atributos de los usuarios
+ * Atributos de los grupos para tener lo necesario de los 5 con mas usuarios
  * 
- * @author jpribio - 20/01/25
+ * @author jpribio - 21/01/25
  */
-public class GruposDtos {
+public class GruposTopCincoDtos {
 
 	private Long idGrupo;
 	private String nombreGrupo = "aaaaa";
-	private UsuarioDto creadorUsuId;
-	private Long numeroUsuarios = (long) 0;
-	private LocalDateTime fechaGrupo = LocalDateTime.now();
 	private Long categoriaIdLong;
 	private Long subCategoriaIdLong;
 
@@ -33,30 +28,6 @@ public class GruposDtos {
 		this.nombreGrupo = nombreGrupo;
 	}
 
-	public UsuarioDto getCreadorUsuId() {
-		return creadorUsuId;
-	}
-
-	public void setCreadorUsuId(UsuarioDto creadorUsuId) {
-		this.creadorUsuId = creadorUsuId;
-	}
-
-	public Long getNumeroUsuarios() {
-		return numeroUsuarios;
-	}
-
-	public void setNumeroUsuarios(Long numeroUsuarios) {
-		this.numeroUsuarios = numeroUsuarios;
-	}
-
-	public LocalDateTime getFechaGrupo() {
-		return fechaGrupo;
-	}
-
-	public void setFechaGrupo(LocalDateTime fechaGrupo) {
-		this.fechaGrupo = fechaGrupo;
-	}
-
 	public Long getCategoriaIdLong() {
 		return categoriaIdLong;
 	}
@@ -73,8 +44,7 @@ public class GruposDtos {
 		this.subCategoriaIdLong = subCategoriaIdLong;
 	}
 
-	// Constructor
-	public GruposDtos() {
+	public GruposTopCincoDtos() {
 		super();
 	}
 

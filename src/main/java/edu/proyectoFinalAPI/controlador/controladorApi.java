@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
+import edu.proyectoFinalAPI.Dtos.GruposTopCincoDtos;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
-import edu.proyectoFinalAPI.Servicios.GrupoImplementacion;
-import edu.proyectoFinalAPI.Servicios.UsuariosImplementacion;
+import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
+import edu.proyectoFinalAPI.Servicios.GrupoServicios;
+import edu.proyectoFinalAPI.Servicios.UsuariosServicios;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-
 
 /**
  * Controlador principal de la APi donde tiene las rutas de los metodos de la
@@ -33,9 +33,9 @@ import jakarta.ws.rs.core.MediaType;
 public class controladorApi {
 
 	@Autowired
-	private UsuariosImplementacion servicioUsuario;
+	private UsuariosServicios servicioUsuario;
 	@Autowired
-	private GrupoImplementacion servicioGrupo;
+	private GrupoServicios servicioGrupo;
 
 	/**
 	 * Metodo que se enuentra el registro
@@ -50,9 +50,9 @@ public class controladorApi {
 	public Map<String, Object> registroAPi(@RequestBody UsuarioDto usuario) {
 		Map<String, Object> response = new HashMap<>();
 		try {
-			UsuarioEntidad usuarioEntidad = servicioUsuario.nuevoUsuario(usuario);
-			if (usuarioEntidad != null) {
-				response.put("usuario", usuarioEntidad);
+			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
+			if (usuarioPerfilDto != null) {
+				response.put("usuario", usuarioPerfilDto);
 				response.put("success", true);
 			} else {
 				response.put("success", false);
@@ -89,10 +89,10 @@ public class controladorApi {
 
 		try {
 			// Llamada al servicio para verificar el inicio de sesión
-			UsuarioEntidad usuarioEntidad = servicioUsuario.inicioSesionUsu(usuario);
+			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.inicioSesionUsu(usuario);
 
-			if (usuarioEntidad != null) {
-				response.put("usuario", usuarioEntidad);
+			if (usuarioPerfilDto != null) {
+				response.put("usuario", usuarioPerfilDto);
 				response.put("success", true);
 			} else {
 				response.put("success", false);
@@ -114,8 +114,6 @@ public class controladorApi {
 		return response;
 	}
 
-
-	
 	@GetMapping("/index/grupos")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -124,10 +122,10 @@ public class controladorApi {
 
 		try {
 			// Llamada al servicio para verificar el inicio de sesión
-			 List<GrupoEntidad> listadoGrupo = servicioGrupo.recogerLosGrupos();
+			List<GruposTopCincoDtos> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
 
 			if (listadoGrupo != null) {
-				response.put("grupo", listadoGrupo);
+				response.put("grupos", listadoGrupo);
 				response.put("success", true);
 			} else {
 				response.put("success", false);
@@ -148,6 +146,5 @@ public class controladorApi {
 
 		return response;
 	}
-	
 
 }
