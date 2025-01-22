@@ -55,7 +55,7 @@ public class controladorApi {
 				if (usuarioPerfilDto != null) {
 					response.put("usuario", usuarioPerfilDto);
 					response.put("success", true);
-					response.put("encontrado",false);
+					response.put("encontrado", false);
 				} else {
 					response.put("success", true);
 					response.put("encontrado", true);
@@ -100,8 +100,10 @@ public class controladorApi {
 			if (usuarioPerfilDto != null) {
 				response.put("usuario", usuarioPerfilDto);
 				response.put("success", true);
+				response.put("encontrado", true);
 			} else {
 				response.put("success", false);
+				response.put("encontrado", false);
 			}
 		} catch (IllegalArgumentException iaE) {
 			// Manejo de la excepción IllegalArgumentException
@@ -133,8 +135,10 @@ public class controladorApi {
 			if (listadoGrupo != null) {
 				response.put("grupos", listadoGrupo);
 				response.put("success", true);
+				response.put("encontrado", true);
 			} else {
 				response.put("success", false);
+				response.put("encontrado", false);
 			}
 		} catch (IllegalArgumentException iaE) {
 			// Manejo de la excepción IllegalArgumentException

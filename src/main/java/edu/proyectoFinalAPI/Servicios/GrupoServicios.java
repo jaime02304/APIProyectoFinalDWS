@@ -44,21 +44,24 @@ public class GrupoServicios {
 
 		List<GrupoEntidad> gruposE = repositorioGrupos.findTop5GroupsByNumeroUsuariosDesc();
 		List<GruposTopCincoDto> grupos = new ArrayList<GruposTopCincoDto>();
-		for (GrupoEntidad grupoEntidad : gruposE) {
-			GruposTopCincoDto grupo = new GruposTopCincoDto();
-			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
-			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-			// Categoria
-			grupo.setCategoriaId(grupoEntidad.getCategoriaId().getIdTipo());
-			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-			grupo.setCategoriaNivel(grupoEntidad.getCategoriaId().getNivelTipo());
-			// Subcategoria
-			grupo.setSubCategoriaId(grupoEntidad.getSubCategoriaId().getIdTipo());
-			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
-			grupo.setSubCategoriaNivel(grupoEntidad.getSubCategoriaId().getNivelTipo());
-			grupos.add(grupo);
+		if (gruposE != null) {
+			for (GrupoEntidad grupoEntidad : gruposE) {
+				GruposTopCincoDto grupo = new GruposTopCincoDto();
+				grupo.setIdGrupo(grupoEntidad.getIdGrupo());
+				grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
+				// Categoria
+				grupo.setCategoriaId(grupoEntidad.getCategoriaId().getIdTipo());
+				grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
+				grupo.setCategoriaNivel(grupoEntidad.getCategoriaId().getNivelTipo());
+				// Subcategoria
+				grupo.setSubCategoriaId(grupoEntidad.getSubCategoriaId().getIdTipo());
+				grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+				grupo.setSubCategoriaNivel(grupoEntidad.getSubCategoriaId().getNivelTipo());
+				grupos.add(grupo);
+			}
+			return grupos;
 		}
-		return grupos;
+		return null;
 
 	}
 
