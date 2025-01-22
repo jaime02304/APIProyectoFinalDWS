@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repositorio donde estan los metodos de los grupos y ejecucion a la base de datos
+ * Repositorio donde estan los metodos de los grupos y ejecucion a la base de
+ * datos
+ * 
  * @author jpribio - 20/01/25
  */
 @Repository

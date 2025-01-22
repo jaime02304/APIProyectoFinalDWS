@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
-import edu.proyectoFinalAPI.Dtos.GruposTopCincoDtos;
+import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 import edu.proyectoFinalAPI.Servicios.GrupoServicios;
@@ -50,10 +50,16 @@ public class controladorApi {
 	public Map<String, Object> registroAPi(@RequestBody UsuarioDto usuario) {
 		Map<String, Object> response = new HashMap<>();
 		try {
-			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
-			if (usuarioPerfilDto != null) {
-				response.put("usuario", usuarioPerfilDto);
-				response.put("success", true);
+			if (usuario != null) {
+				UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
+				if (usuarioPerfilDto != null) {
+					response.put("usuario", usuarioPerfilDto);
+					response.put("success", true);
+					response.put("encontrado",false);
+				} else {
+					response.put("success", true);
+					response.put("encontrado", true);
+				}
 			} else {
 				response.put("success", false);
 			}
@@ -122,7 +128,7 @@ public class controladorApi {
 
 		try {
 			// Llamada al servicio para verificar el inicio de sesión
-			List<GruposTopCincoDtos> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
+			List<GruposTopCincoDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
 
 			if (listadoGrupo != null) {
 				response.put("grupos", listadoGrupo);

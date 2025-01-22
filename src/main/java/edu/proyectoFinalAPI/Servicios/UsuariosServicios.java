@@ -49,7 +49,10 @@ public class UsuariosServicios {
 	public UsuarioPerfilDto nuevoUsuario(UsuarioDto nuevoUsuarioDatos)
 			throws NullPointerException, IllegalArgumentException {
 
-		if (nuevoUsuarioDatos != null) {
+		UsuarioEntidad usuarioEnt = repositorioUsuario
+				.findByCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
+
+		if (usuarioEnt == null) {
 			UsuarioEntidad usuario = new UsuarioEntidad();
 			usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
 			usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
@@ -63,7 +66,7 @@ public class UsuariosServicios {
 			UsuarioPerfilDto usuarioPerfil = devolverInformacionUsuarioPerfil(nuevoUsuarioGuardado);
 			return usuarioPerfil;
 		} else {
-			System.err.println("Usuario no registrado");
+			System.err.println("Usuario encontrado");
 		}
 		return null;
 	}

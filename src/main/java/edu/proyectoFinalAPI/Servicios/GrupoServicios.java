@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
-import edu.proyectoFinalAPI.Dtos.GruposDtos;
-import edu.proyectoFinalAPI.Dtos.GruposTopCincoDtos;
-import edu.proyectoFinalAPI.Dtos.TiposDto;
+import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
 
 /**
  * Clase donde se encuentra los metodos en relacion a los grupos
@@ -42,16 +40,22 @@ public class GrupoServicios {
 	 * @throws NullPointerException
 	 * @throws IllegalArgumentException
 	 */
-	public List<GruposTopCincoDtos> recogerLosGruposMasTop() throws NullPointerException, IllegalArgumentException {
+	public List<GruposTopCincoDto> recogerLosGruposMasTop() throws NullPointerException, IllegalArgumentException {
 
 		List<GrupoEntidad> gruposE = repositorioGrupos.findTop5GroupsByNumeroUsuariosDesc();
-		List<GruposTopCincoDtos> grupos = new ArrayList<GruposTopCincoDtos>();
+		List<GruposTopCincoDto> grupos = new ArrayList<GruposTopCincoDto>();
 		for (GrupoEntidad grupoEntidad : gruposE) {
-			GruposTopCincoDtos grupo = new GruposTopCincoDtos();
+			GruposTopCincoDto grupo = new GruposTopCincoDto();
 			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-			grupo.setCategoriaId(grupoEntidad.getCategoriaId());
-			grupo.setSubCategoriaId(grupoEntidad.getSubCategoriaId());
+			// Categoria
+			grupo.setCategoriaId(grupoEntidad.getCategoriaId().getIdTipo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
+			grupo.setCategoriaNivel(grupoEntidad.getCategoriaId().getNivelTipo());
+			// Subcategoria
+			grupo.setSubCategoriaId(grupoEntidad.getSubCategoriaId().getIdTipo());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			grupo.setSubCategoriaNivel(grupoEntidad.getSubCategoriaId().getNivelTipo());
 			grupos.add(grupo);
 		}
 		return grupos;
