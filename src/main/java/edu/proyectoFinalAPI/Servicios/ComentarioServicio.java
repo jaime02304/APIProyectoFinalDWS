@@ -1,5 +1,6 @@
 package edu.proyectoFinalAPI.Servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,19 @@ public class ComentarioServicio {
 	 * 
 	 * @author jpribio - 22/01/25
 	 */
-	public List<ComentariosIndexDto> recogerComentariosParaElIndex() {
-		List<ComentariosEntidad> comentarioEnt = repositorioComentariorepositorio.findByCategoriaId();
-		for(ComentariosEntidad comentario: comentarioEnt) {
-			ComentariosIndexDto comentarioDto = new ComentariosIndexDto();
-			comentarioDto.setAliasUsuarioComentario(comentario.getUsuarioId().getAliasUsuEntidad());
-			comentarioDto.setComentarioTexto(comentario.getComentarioTexto());
-			comentarioDto.setMeGustaComentarios(comentario.getMeGusta());
-			comentarioDto.setImagenUsuario(comentario.getUsuarioId().getFotoUsuEntidad());
+	public List<ComentariosIndexDto> recogerComentariosParaElIndex() throws NullPointerException, IllegalArgumentException{
+		List<ComentariosEntidad> listaComentarioEnt = repositorioComentariorepositorio.findByCategoriaId();
+		List<ComentariosIndexDto> listaComentariosIndex = new ArrayList<ComentariosIndexDto>();
+		if (listaComentarioEnt != null) {
+			for (ComentariosEntidad comentario : listaComentarioEnt) {
+				ComentariosIndexDto comentarioDto = new ComentariosIndexDto();
+				comentarioDto.setAliasUsuarioComentario(comentario.getUsuarioId().getAliasUsuEntidad());
+				comentarioDto.setComentarioTexto(comentario.getComentarioTexto());
+				comentarioDto.setMeGustaComentarios(comentario.getMeGusta());
+				// comentarioDto.setImagenUsuario(comentario.getUsuarioId().getFotoUsuEntidad());
+				listaComentariosIndex.add(comentarioDto);
+			}
+			return listaComentariosIndex;
 		}
 		return null;
 	}

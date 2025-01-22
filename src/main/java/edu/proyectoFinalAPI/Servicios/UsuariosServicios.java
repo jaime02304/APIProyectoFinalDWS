@@ -60,7 +60,6 @@ public class UsuariosServicios {
 			usuario.setContraseniaUsuEntidad(metodosDeUtilidad.encriptarASHA256(nuevoUsuarioDatos.getContraseniaUsu()));
 			usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
 			usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
-
 			// Guarda el nuevo usuario
 			UsuarioEntidad nuevoUsuarioGuardado = repositorioUsuario.save(usuario);
 			UsuarioPerfilDto usuarioPerfil = devolverInformacionUsuarioPerfil(nuevoUsuarioGuardado);
@@ -114,6 +113,7 @@ public class UsuariosServicios {
 		usuarioPerfil.setCorreoElectronicoUsu(nuevoUsuarioGuardado.getCorreoElectronicoUsuEntidad());
 		usuarioPerfil.setMovilUsu(nuevoUsuarioGuardado.getMovilUsuEntidad());
 		usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
+		//usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
 		return usuarioPerfil;
 	}
 }
