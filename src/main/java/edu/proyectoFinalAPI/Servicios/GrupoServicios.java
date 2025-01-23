@@ -50,13 +50,9 @@ public class GrupoServicios {
 				grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 				grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
 				// Categoria
-				grupo.setCategoriaId(grupoEntidad.getCategoriaId().getIdTipo());
 				grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-				grupo.setCategoriaNivel(grupoEntidad.getCategoriaId().getNivelTipo());
 				// Subcategoria
-				grupo.setSubCategoriaId(grupoEntidad.getSubCategoriaId().getIdTipo());
 				grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
-				grupo.setSubCategoriaNivel(grupoEntidad.getSubCategoriaId().getNivelTipo());
 				grupos.add(grupo);
 			}
 			return grupos;
