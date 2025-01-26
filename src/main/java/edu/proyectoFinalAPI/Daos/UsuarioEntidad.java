@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 /**
@@ -36,6 +37,7 @@ public class UsuarioEntidad {
 	@Column(name = "rol_usu")
 	private String rolUsuEntidad;
 
+	@Lob
 	@Column(name = "foto_usu")
 	private byte[] fotoUsuEntidad;
 

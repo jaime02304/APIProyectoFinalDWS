@@ -43,7 +43,7 @@ public class GrupoEntidad {
 	private TiposEntidad categoriaId;
 
 	@ManyToOne
-    @JoinColumn(name = "subcategoria_id")
+	@JoinColumn(name = "subcategoria_id")
 	private TiposEntidad subCategoriaId;
 
 	public Long getIdGrupo() {

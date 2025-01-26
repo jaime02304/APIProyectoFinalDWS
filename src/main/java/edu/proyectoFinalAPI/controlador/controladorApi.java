@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
+import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
+import edu.proyectoFinalAPI.Servicios.ComentarioServicio;
 import edu.proyectoFinalAPI.Servicios.GrupoServicios;
 import edu.proyectoFinalAPI.Servicios.UsuariosServicios;
 import jakarta.ws.rs.Consumes;
@@ -36,6 +38,8 @@ public class controladorApi {
 	private UsuariosServicios servicioUsuario;
 	@Autowired
 	private GrupoServicios servicioGrupo;
+	@Autowired
+	private ComentarioServicio servicioComentarios;
 
 	/**
 	 * Metodo que se enuentra el registro
@@ -157,4 +161,50 @@ public class controladorApi {
 		return response;
 	}
 
+	/**
+	 * Metodo que devuelve el array de comentarios para el index
+	 * @author jpribio - 26/01/25
+	 * @return Devuelve el Map con lo necesario para los grupos del index
+	 */
+	@GetMapping("/index/comentarios")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerComentarios() {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			// Llamada al servicio para verificar el inicio de sesión
+			List<ComentariosIndexDto> listadoComentarios = servicioComentarios.recogerComentariosParaElIndex();
+
+			if (listadoComentarios != null) {
+				if (listadoComentarios.size() >= 1) {
+					response.put("comentarios", listadoComentarios);
+					response.put("success", true);
+					response.put("encontrado", true);
+				} else {
+					response.put("success", true);
+					response.put("encontrado", true);
+					response.put("mensaje", "NO se encuentra ningun comentario de bienvenida");
+				}
+
+			} else {
+				response.put("success", false);
+				response.put("encontrado", false);
+			}
+		} catch (IllegalArgumentException iaE) {
+			// Manejo de la excepción IllegalArgumentException
+			response.put("success", false);
+			response.put("error", "Argumento inválido: " + iaE.getMessage());
+		} catch (NullPointerException nE) {
+			// Manejo de la excepción NullPointerException
+			response.put("success", false);
+			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
+		} catch (Exception e) {
+			// Manejo de cualquier otra excepción
+			response.put("success", false);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
 }
