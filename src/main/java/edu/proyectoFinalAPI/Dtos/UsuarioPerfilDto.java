@@ -14,6 +14,17 @@ public class UsuarioPerfilDto {
 	private int movilUsu = 0;
 	private byte[] fotoUsu;
 	private Boolean esPremium = false;
+	private String rolUsu = "user";
+	
+	
+
+	public String getRolUsu() {
+		return rolUsu;
+	}
+
+	public void setRolUsu(String rolUsu) {
+		this.rolUsu = rolUsu;
+	}
 
 	public Long getIdUsu() {
 		return idUsu;
