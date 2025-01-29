@@ -60,6 +60,7 @@ public class UsuariosServicios {
 			usuario.setContraseniaUsuEntidad(metodosDeUtilidad.encriptarASHA256(nuevoUsuarioDatos.getContraseniaUsu()));
 			usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
 			usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
+			usuario.setEsVerificadoEntidad(nuevoUsuarioDatos.getEsVerificadoEntidad());
 			// Guarda el nuevo usuario
 			UsuarioEntidad nuevoUsuarioGuardado = repositorioUsuario.save(usuario);
 			UsuarioPerfilDto usuarioPerfil = devolverInformacionUsuarioPerfil(nuevoUsuarioGuardado);
@@ -108,11 +109,14 @@ public class UsuariosServicios {
 	 */
 	private UsuarioPerfilDto devolverInformacionUsuarioPerfil(UsuarioEntidad nuevoUsuarioGuardado) {
 		UsuarioPerfilDto usuarioPerfil = new UsuarioPerfilDto();
+		usuarioPerfil.setIdUsu(nuevoUsuarioGuardado.getIdUsuEntidad());
 		usuarioPerfil.setNombreCompletoUsu(nuevoUsuarioGuardado.getNombreCompletoUsuEntidad());
 		usuarioPerfil.setAliasUsu(nuevoUsuarioGuardado.getAliasUsuEntidad());
 		usuarioPerfil.setCorreoElectronicoUsu(nuevoUsuarioGuardado.getCorreoElectronicoUsuEntidad());
 		usuarioPerfil.setMovilUsu(nuevoUsuarioGuardado.getMovilUsuEntidad());
 		usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
+		usuarioPerfil.setEsPremium(nuevoUsuarioGuardado.getEsPremiumEntidad());
+		usuarioPerfil.setEsVerificadoEntidad(nuevoUsuarioGuardado.getEsVerificadoEntidad());
 		//usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
 		return usuarioPerfil;
 	}

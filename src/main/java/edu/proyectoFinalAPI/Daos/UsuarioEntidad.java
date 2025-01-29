@@ -47,9 +47,21 @@ public class UsuarioEntidad {
 	@Column(name = "es_premium")
 	private Boolean esPremiumEntidad;
 
+	@Column(name = "verificado_usu")
+	private Boolean esVerificadoEntidad;
+
 	// Getters y setters
+
 	public Long getIdUsuEntidad() {
 		return idUsuEntidad;
+	}
+
+	public Boolean getEsVerificadoEntidad() {
+		return esVerificadoEntidad;
+	}
+
+	public void setEsVerificadoEntidad(Boolean esVerificadoEntidad) {
+		this.esVerificadoEntidad = esVerificadoEntidad;
 	}
 
 	public void setIdUsuEntidad(Long idUsuEntidad) {

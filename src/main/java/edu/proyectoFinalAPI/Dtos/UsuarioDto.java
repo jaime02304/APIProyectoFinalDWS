@@ -2,11 +2,12 @@ package edu.proyectoFinalAPI.Dtos;
 
 /**
  * Clase donde se encuentra los atributos DTO del usuario
+ * 
  * @author jpribio - 18/01/25
  */
 public class UsuarioDto {
 
-	//Variabkles (Atributos)
+	// Variabkles (Atributos)
 	private Long idUsu;
 	private String nombreCompletoUsu = "aaaaa";
 	private String aliasUsu = "aaaaa";
@@ -16,10 +17,28 @@ public class UsuarioDto {
 	private byte[] fotoUsu;
 	private String contraseniaUsu = "aaaaa";
 	private Boolean esPremium = false;
+	private Boolean esVerificadoEntidad = false;
 
-	//Getters y setters
+	// Getters y setters
+
 	public Long getIdUsu() {
 		return idUsu;
+	}
+
+	public Boolean getEsPremium() {
+		return esPremium;
+	}
+
+	public void setEsPremium(Boolean esPremium) {
+		this.esPremium = esPremium;
+	}
+
+	public Boolean getEsVerificadoEntidad() {
+		return esVerificadoEntidad;
+	}
+
+	public void setEsVerificadoEntidad(Boolean esVerificadoEntidad) {
+		this.esVerificadoEntidad = esVerificadoEntidad;
 	}
 
 	public void setIdUsu(Long idUsu) {
@@ -89,9 +108,8 @@ public class UsuarioDto {
 	public void setEsPremiumB(Boolean esPremiumB) {
 		this.esPremium = esPremiumB;
 	}
-	
-	
-	//Constructores
+
+	// Constructores
 	public UsuarioDto() {
 		super();
 	}
@@ -101,7 +119,5 @@ public class UsuarioDto {
 		this.correoElectronicoUsu = correoElectronicoUsu;
 		this.contraseniaUsu = contraseniaUsu;
 	}
-	
-	
 
 }
