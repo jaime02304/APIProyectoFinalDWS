@@ -91,7 +91,7 @@ public class controladorApi {
 	 * @param usuario (informacion para el inicio de sesion)
 	 * @return
 	 */
-	@GetMapping("/usuario/inicioSesion")
+	@PostMapping("/usuario/inicioSesion")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> inicioSesionUsuario(@RequestBody UsuarioDto usuario) {
