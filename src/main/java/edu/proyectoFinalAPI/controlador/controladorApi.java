@@ -1,5 +1,6 @@
 package edu.proyectoFinalAPI.controlador;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
@@ -51,33 +51,35 @@ public class controladorApi {
 	@PostMapping("/usuario/registro")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String, Object> registroAPi(@RequestBody UsuarioDto usuario) {
+	public Map<String, Object> registroApi(@RequestBody UsuarioDto usuario) {
 		Map<String, Object> response = new HashMap<>();
+
+		if (usuario == null) {
+			response.put("error", "El usuario no puede ser nulo.");
+			return response;
+		}
+
 		try {
-			if (usuario != null) {
-				UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
-				if (usuarioPerfilDto != null) {
-					response.put("usuario", usuarioPerfilDto);
-					response.put("success", true);
-					response.put("encontrado", false);
-				} else {
-					response.put("success", true);
-					response.put("encontrado", true);
-				}
+			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
+
+			if (usuarioPerfilDto != null) {
+				response.put("idUsu", usuarioPerfilDto.getIdUsu());
+				response.put("nombreCompletoUsu", usuarioPerfilDto.getNombreCompletoUsu());
+				response.put("aliasUsu", usuarioPerfilDto.getAliasUsu());
+				response.put("correoElectronicoUsu", usuarioPerfilDto.getCorreoElectronicoUsu());
+				response.put("movilUsu", usuarioPerfilDto.getMovilUsu());
+				response.put("fotoUsu", usuarioPerfilDto.getFotoUsu());
+				response.put("esPremium", usuarioPerfilDto.getEsPremium());
+				response.put("rolUsu", usuarioPerfilDto.getRolUsu());
+				response.put("esVerificadoEntidad", usuarioPerfilDto.getEsVerificadoEntidad());
 			} else {
-				response.put("success", false);
+				response.put("error", "No se pudo crear el usuario.");
 			}
 		} catch (IllegalArgumentException iaE) {
-			// Manejo de la excepción IllegalArgumentException
-			response.put("success", false);
-			response.put("error", " Los datos proporcionados no son válidos." + iaE.getMessage());
+			response.put("error", "Datos proporcionados no válidos: " + iaE.getMessage());
 		} catch (NullPointerException nE) {
-			// Manejo de la excepción NullPointerException
-			response.put("success", false);
-			response.put("error", "Algunos campos del usuario están vacíos o nulos. " + nE.getMessage());
+			response.put("error", "Algunos campos están vacíos o nulos: " + nE.getMessage());
 		} catch (Exception e) {
-			// Manejo de cualquier otra excepción
-			response.put("success", false);
 			response.put("error", "Error inesperado: " + e.getMessage());
 		}
 
@@ -97,29 +99,36 @@ public class controladorApi {
 	public Map<String, Object> inicioSesionUsuario(@RequestBody UsuarioDto usuario) {
 		Map<String, Object> response = new HashMap<>();
 
+		if (usuario == null) {
+			response.put("error", "El usuario no puede ser nulo.");
+			return response;
+		}
+
 		try {
 			// Llamada al servicio para verificar el inicio de sesión
 			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.inicioSesionUsu(usuario);
 
 			if (usuarioPerfilDto != null) {
-				response.put("usuario", usuarioPerfilDto);
-				response.put("success", true);
-				response.put("encontrado", true);
+				response.put("idUsu", usuarioPerfilDto.getIdUsu());
+				response.put("nombreCompletoUsu", usuarioPerfilDto.getNombreCompletoUsu());
+				response.put("aliasUsu", usuarioPerfilDto.getAliasUsu());
+				response.put("correoElectronicoUsu", usuarioPerfilDto.getCorreoElectronicoUsu());
+				response.put("movilUsu", usuarioPerfilDto.getMovilUsu());
+				response.put("fotoUsu", usuarioPerfilDto.getFotoUsu());
+				response.put("esPremium", usuarioPerfilDto.getEsPremium());
+				response.put("rolUsu", usuarioPerfilDto.getRolUsu());
+				response.put("esVerificadoEntidad", usuarioPerfilDto.getEsVerificadoEntidad());
 			} else {
-				response.put("success", false);
-				response.put("encontrado", false);
+				response.put("error", "Usuario no encontrado.");
 			}
 		} catch (IllegalArgumentException iaE) {
 			// Manejo de la excepción IllegalArgumentException
-			response.put("success", false);
 			response.put("error", "Argumento inválido: " + iaE.getMessage());
 		} catch (NullPointerException nE) {
 			// Manejo de la excepción NullPointerException
-			response.put("success", false);
 			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
 		} catch (Exception e) {
 			// Manejo de cualquier otra excepción
-			response.put("success", false);
 			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
 
@@ -130,39 +139,30 @@ public class controladorApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> obtenerGruposMasNumerosos() {
-		Map<String, Object> response = new HashMap<>();
+	    Map<String, Object> response = new HashMap<>();
 
-		try {
-			// Llamada al servicio para verificar el inicio de sesión
-			List<GruposTopCincoDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
+	    try {
+	        // Llamada al servicio para obtener los 5 grupos más populares
+	        List<GruposTopCincoDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
 
-			if (listadoGrupo != null) {
-				response.put("grupos", listadoGrupo);
-				response.put("success", true);
-				response.put("encontrado", true);
-			} else {
-				response.put("success", false);
-				response.put("encontrado", false);
-			}
-		} catch (IllegalArgumentException iaE) {
-			// Manejo de la excepción IllegalArgumentException
-			response.put("success", false);
-			response.put("error", "Argumento inválido: " + iaE.getMessage());
-		} catch (NullPointerException nE) {
-			// Manejo de la excepción NullPointerException
-			response.put("success", false);
-			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
-		} catch (Exception e) {
-			// Manejo de cualquier otra excepción
-			response.put("success", false);
-			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
-		}
+	        if (listadoGrupo == null || listadoGrupo.isEmpty()) {
+	            // Si no hay grupos, retornar una lista vacía
+	            response.put("grupos", Collections.emptyList());
+	        } else {
+	            response.put("grupos", listadoGrupo);
+	        }
+	    } catch (Exception e) {
+	        // Manejo general de excepciones
+	        response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+	    }
 
-		return response;
+	    return response;
 	}
+
 
 	/**
 	 * Metodo que devuelve el array de comentarios para el index
+	 * 
 	 * @author jpribio - 26/01/25
 	 * @return Devuelve el Map con lo necesario para los grupos del index
 	 */

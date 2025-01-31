@@ -1,7 +1,8 @@
 package edu.proyectoFinalAPI.Servicios;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,25 +41,27 @@ public class GrupoServicios {
 	 * @throws NullPointerException
 	 * @throws IllegalArgumentException
 	 */
-	public List<GruposTopCincoDto> recogerLosGruposMasTop() throws NullPointerException, IllegalArgumentException {
+	public List<GruposTopCincoDto> recogerLosGruposMasTop() {
+	    // Obtener los 5 grupos más populares por número de usuarios
+	    List<GrupoEntidad> gruposE = repositorioGrupos.findTop5GroupsByNumeroUsuariosDesc();
 
-		List<GrupoEntidad> gruposE = repositorioGrupos.findTop5GroupsByNumeroUsuariosDesc();
-		List<GruposTopCincoDto> grupos = new ArrayList<GruposTopCincoDto>();
-		if (gruposE != null) {
-			for (GrupoEntidad grupoEntidad : gruposE) {
-				GruposTopCincoDto grupo = new GruposTopCincoDto();
-				grupo.setIdGrupo(grupoEntidad.getIdGrupo());
-				grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-				// Categoria
-				grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-				// Subcategoria
-				grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
-				grupos.add(grupo);
-			}
-			return grupos;
-		}
-		return null;
+	    // Si no se encuentran grupos, retornar una lista vacía en lugar de null
+	    if (gruposE == null || gruposE.isEmpty()) {
+	        return Collections.emptyList();  // Mejor retornar una lista vacía en vez de null
+	    }
 
+	    // Mapear los grupos a la lista de DTOs
+	    return gruposE.stream()
+	            .map(grupoEntidad -> {
+	                GruposTopCincoDto grupo = new GruposTopCincoDto();
+	                grupo.setIdGrupo(grupoEntidad.getIdGrupo());
+	                grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
+	                grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
+	                grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+	                return grupo;
+	            })
+	            .collect(Collectors.toList());
 	}
+
 
 }

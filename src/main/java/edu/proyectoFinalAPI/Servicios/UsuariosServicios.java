@@ -49,26 +49,23 @@ public class UsuariosServicios {
 	public UsuarioPerfilDto nuevoUsuario(UsuarioDto nuevoUsuarioDatos)
 			throws NullPointerException, IllegalArgumentException {
 
-		UsuarioEntidad usuarioEnt = repositorioUsuario
-				.findByCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
-
-		if (usuarioEnt == null) {
-			UsuarioEntidad usuario = new UsuarioEntidad();
-			usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
-			usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
-			usuario.setCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
-			usuario.setContraseniaUsuEntidad(metodosDeUtilidad.encriptarASHA256(nuevoUsuarioDatos.getContraseniaUsu()));
-			usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
-			usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
-			usuario.setEsVerificadoEntidad(nuevoUsuarioDatos.getEsVerificadoEntidad());
-			// Guarda el nuevo usuario
-			UsuarioEntidad nuevoUsuarioGuardado = repositorioUsuario.save(usuario);
-			UsuarioPerfilDto usuarioPerfil = devolverInformacionUsuarioPerfil(nuevoUsuarioGuardado);
-			return usuarioPerfil;
-		} else {
-			System.err.println("Usuario encontrado");
+		// Verificar si el usuario ya existe en la base de datos
+		if (repositorioUsuario.findByCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu()) != null) {
+			throw new IllegalArgumentException("El usuario ya existe.");
 		}
-		return null;
+
+		// Crear nuevo usuario
+		UsuarioEntidad usuario = new UsuarioEntidad();
+		usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
+		usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
+		usuario.setCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
+		usuario.setContraseniaUsuEntidad(metodosDeUtilidad.encriptarASHA256(nuevoUsuarioDatos.getContraseniaUsu()));
+		usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
+		usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
+		usuario.setEsVerificadoEntidad(nuevoUsuarioDatos.getEsVerificadoEntidad());
+
+		// Guardar usuario en la base de datos y devolver DTO
+		return devolverInformacionUsuarioPerfil(repositorioUsuario.save(usuario));
 	}
 
 	/**
@@ -78,25 +75,30 @@ public class UsuariosServicios {
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */
-	public UsuarioPerfilDto inicioSesionUsu(UsuarioDto verificarUsu)
-			throws NullPointerException, IllegalArgumentException {
-		System.out.println(verificarUsu.getCorreoElectronicoUsu());
+	public UsuarioPerfilDto inicioSesionUsu(UsuarioDto verificarUsu) {
+		if (verificarUsu == null || verificarUsu.getCorreoElectronicoUsu() == null
+				|| verificarUsu.getContraseniaUsu() == null) {
+			throw new IllegalArgumentException("Datos de usuario incompletos.");
+		}
+
+		// Buscar el usuario en la base de datos
 		UsuarioEntidad usuarioEnt = repositorioUsuario
 				.findByCorreoElectronicoUsuEntidad(verificarUsu.getCorreoElectronicoUsu());
 
-		if (usuarioEnt != null) {
-			System.out.println("Usuario-->" + usuarioEnt.getCorreoElectronicoUsuEntidad() + " encontrado");
-			if (usuarioEnt.getContraseniaUsuEntidad()
-					.equals(metodosDeUtilidad.encriptarASHA256(verificarUsu.getContraseniaUsu()))) {
-				UsuarioPerfilDto usuarioPerfilDto = devolverInformacionUsuarioPerfil(usuarioEnt);
-				return usuarioPerfilDto;
-			} else {
-				System.err.println("Contraseña erronea");
-			}
-		} else {
-			System.err.println("Usuario no encontrado");
+		if (usuarioEnt == null) {
+			// Si el usuario no es encontrado, retornar null
+			return null;
 		}
-		return null;
+
+		// Verificar la contraseña
+		String contrasenaEncriptada = metodosDeUtilidad.encriptarASHA256(verificarUsu.getContraseniaUsu());
+		if (!usuarioEnt.getContraseniaUsuEntidad().equals(contrasenaEncriptada)) {
+			// Si la contraseña es incorrecta, retornar null
+			return null;
+		}
+
+		// Si todo es correcto, devolver el perfil del usuario
+		return devolverInformacionUsuarioPerfil(usuarioEnt);
 	}
 
 	/**
@@ -117,7 +119,7 @@ public class UsuariosServicios {
 		usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
 		usuarioPerfil.setEsPremium(nuevoUsuarioGuardado.getEsPremiumEntidad());
 		usuarioPerfil.setEsVerificadoEntidad(nuevoUsuarioGuardado.getEsVerificadoEntidad());
-		//usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
+		// usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
 		return usuarioPerfil;
 	}
 }
