@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
+import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
 import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 import edu.proyectoFinalAPI.Servicios.ComentarioServicio;
 import edu.proyectoFinalAPI.Servicios.GrupoServicios;
+import edu.proyectoFinalAPI.Servicios.PerfilServicios;
 import edu.proyectoFinalAPI.Servicios.UsuariosServicios;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Produces;
@@ -40,6 +42,8 @@ public class controladorApi {
 	private GrupoServicios servicioGrupo;
 	@Autowired
 	private ComentarioServicio servicioComentarios;
+	@Autowired
+	private PerfilServicios serviciosPerfil;
 
 	/**
 	 * Metodo que se enuentra el registro
@@ -139,26 +143,25 @@ public class controladorApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> obtenerGruposMasNumerosos() {
-	    Map<String, Object> response = new HashMap<>();
+		Map<String, Object> response = new HashMap<>();
 
-	    try {
-	        // Llamada al servicio para obtener los 5 grupos más populares
-	        List<GruposTopCincoDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
+		try {
+			// Llamada al servicio para obtener los 5 grupos más populares
+			List<GruposTopCincoDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
 
-	        if (listadoGrupo == null || listadoGrupo.isEmpty()) {
-	            // Si no hay grupos, retornar una lista vacía
-	            response.put("grupos", Collections.emptyList());
-	        } else {
-	            response.put("grupos", listadoGrupo);
-	        }
-	    } catch (Exception e) {
-	        // Manejo general de excepciones
-	        response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
-	    }
+			if (listadoGrupo == null || listadoGrupo.isEmpty()) {
+				// Si no hay grupos, retornar una lista vacía
+				response.put("grupos", Collections.emptyList());
+			} else {
+				response.put("grupos", listadoGrupo);
+			}
+		} catch (Exception e) {
+			// Manejo general de excepciones
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
 
-	    return response;
+		return response;
 	}
-
 
 	/**
 	 * Metodo que devuelve el array de comentarios para el index
@@ -173,38 +176,47 @@ public class controladorApi {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			// Llamada al servicio para verificar el inicio de sesión
 			List<ComentariosIndexDto> listadoComentarios = servicioComentarios.recogerComentariosParaElIndex();
 
-			if (listadoComentarios != null) {
-				if (listadoComentarios.size() >= 1) {
-					response.put("comentarios", listadoComentarios);
-					response.put("success", true);
-					response.put("encontrado", true);
-				} else {
-					response.put("success", true);
-					response.put("encontrado", true);
-					response.put("mensaje", "NO se encuentra ningun comentario de bienvenida");
-				}
-
+			if (listadoComentarios == null || listadoComentarios.isEmpty()) {
+				response.put("mensaje", "No se encuentra ningún comentario de bienvenida");
 			} else {
-				response.put("success", false);
-				response.put("encontrado", false);
+				response.put("comentarios", listadoComentarios);
 			}
 		} catch (IllegalArgumentException iaE) {
-			// Manejo de la excepción IllegalArgumentException
-			response.put("success", false);
 			response.put("error", "Argumento inválido: " + iaE.getMessage());
 		} catch (NullPointerException nE) {
-			// Manejo de la excepción NullPointerException
-			response.put("success", false);
 			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
 		} catch (Exception e) {
-			// Manejo de cualquier otra excepción
-			response.put("success", false);
 			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
 
 		return response;
+	}
+
+	@GetMapping("/perfil/comentario")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerComentarioDelUsuario(@RequestBody UsuarioPerfilDto perfilUsuario) {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			ComentariosPerfilDto comentariosPerfil=serviciosPerfil.obteneroComentarioDelPerfil(perfilUsuario);
+
+			if (comentariosPerfil == null) {
+				response.put("mensaje", "No se encuentra ningún comentario de bienvenida del usuario");
+			} else {
+				response.put("comentarios", comentariosPerfil);
+			}
+		} catch (IllegalArgumentException iaE) {
+			response.put("error", "Argumento inválido: " + iaE.getMessage());
+		} catch (NullPointerException nE) {
+			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
+		} catch (Exception e) {
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+
 	}
 }

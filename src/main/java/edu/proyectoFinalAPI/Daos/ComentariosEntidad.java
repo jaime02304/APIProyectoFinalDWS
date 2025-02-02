@@ -21,9 +21,7 @@ import jakarta.persistence.Table;
 public class ComentariosEntidad {
 
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	@Column(name = "id_comentarios")
 	private Long idComentario;
 
