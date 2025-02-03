@@ -194,14 +194,14 @@ public class controladorApi {
 		return response;
 	}
 
-	@GetMapping("/perfil/comentario")
+	@PostMapping("/perfil/comentario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> obtenerComentarioDelUsuario(@RequestBody UsuarioPerfilDto perfilUsuario) {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			ComentariosPerfilDto comentariosPerfil=serviciosPerfil.obteneroComentarioDelPerfil(perfilUsuario);
+			ComentariosPerfilDto comentariosPerfil = serviciosPerfil.obteneroComentarioDelPerfil(perfilUsuario);
 
 			if (comentariosPerfil == null) {
 				response.put("mensaje", "No se encuentra ningún comentario de bienvenida del usuario");
