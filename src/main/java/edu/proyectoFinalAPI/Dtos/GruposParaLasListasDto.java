@@ -5,7 +5,7 @@ package edu.proyectoFinalAPI.Dtos;
  * 
  * @author jpribio - 21/01/25
  */
-public class GruposTopCincoDto {
+public class GruposParaLasListasDto {
 
 	private Long idGrupo;
 	private String nombreGrupo = "aaaaa";
@@ -46,7 +46,7 @@ public class GruposTopCincoDto {
 		this.subCategoriaNombre = subCategoriaNombre;
 	}
 
-	public GruposTopCincoDto() {
+	public GruposParaLasListasDto() {
 		super();
 	}
 

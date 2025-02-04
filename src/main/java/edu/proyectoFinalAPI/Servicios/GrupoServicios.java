@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
-import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
+import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
+import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 
 /**
  * Clase donde se encuentra los metodos en relacion a los grupos
@@ -41,27 +42,52 @@ public class GrupoServicios {
 	 * @throws NullPointerException
 	 * @throws IllegalArgumentException
 	 */
-	public List<GruposTopCincoDto> recogerLosGruposMasTop() {
-	    // Obtener los 5 grupos más populares por número de usuarios
-	    List<GrupoEntidad> gruposE = repositorioGrupos.findTop5GroupsByNumeroUsuariosDesc();
+	public List<GruposParaLasListasDto> recogerLosGruposMasTop() {
+		// Obtener los 5 grupos más populares por número de usuarios
+		List<GrupoEntidad> gruposE = repositorioGrupos.findTop5GroupsByNumeroUsuariosDesc();
 
-	    // Si no se encuentran grupos, retornar una lista vacía en lugar de null
-	    if (gruposE == null || gruposE.isEmpty()) {
-	        return Collections.emptyList();  // Mejor retornar una lista vacía en vez de null
-	    }
+		// Si no se encuentran grupos, retornar una lista vacía en lugar de null
+		if (gruposE == null || gruposE.isEmpty()) {
+			return Collections.emptyList(); // Mejor retornar una lista vacía en vez de null
+		}
 
-	    // Mapear los grupos a la lista de DTOs
-	    return gruposE.stream()
-	            .map(grupoEntidad -> {
-	                GruposTopCincoDto grupo = new GruposTopCincoDto();
-	                grupo.setIdGrupo(grupoEntidad.getIdGrupo());
-	                grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-	                grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-	                grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
-	                return grupo;
-	            })
-	            .collect(Collectors.toList());
+		// Mapear los grupos a la lista de DTOs
+		return gruposE.stream().map(grupoEntidad -> {
+			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
+			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
+			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			return grupo;
+		}).collect(Collectors.toList());
 	}
 
+	/**
+	 * Metodo que busca el listado de grupos creado por un usuario en especifico
+	 * 
+	 * @author jpribio - 04/02/25
+	 * @param usuarioEspecificado
+	 * @return
+	 */
+	public List<GruposParaLasListasDto> recogerLosGruposDelUsuario(UsuarioPerfilDto usuarioEspecificado) {
+		// Obtener los 5 grupos más populares por número de usuarios
+		List<GrupoEntidad> gruposE = repositorioGrupos
+				.findAllGroupsByUserEmail(usuarioEspecificado.getCorreoElectronicoUsu());
+
+		// Si no se encuentran grupos, retornar una lista vacía en lugar de null
+		if (gruposE == null || gruposE.isEmpty()) {
+			return Collections.emptyList(); // Mejor retornar una lista vacía en vez de null
+		}
+
+		// Mapear los grupos a la lista de DTOs
+		return gruposE.stream().map(grupoEntidad -> {
+			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
+			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
+			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			return grupo;
+		}).collect(Collectors.toList());
+	}
 
 }

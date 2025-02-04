@@ -43,7 +43,7 @@ public class PerfilServicios {
 		ComentariosPerfilDto comentarioPerfilDto = new ComentariosPerfilDto();
 		comentarioPerfilDto.setComentarioTexto(comentarioPerfilE.getComentarioTexto());
 		comentarioPerfilDto.setCategoriaTipo(comentarioPerfilE.getCategoriaId().getNombreTipo());
-		comentarioPerfilDto.setCategoriaTipo(comentarioPerfilE.getSubCategoriaId().getNombreTipo());
+		comentarioPerfilDto.setSubCategoriaTipo(comentarioPerfilE.getSubCategoriaId().getNombreTipo());
 
 		return comentarioPerfilDto;
 

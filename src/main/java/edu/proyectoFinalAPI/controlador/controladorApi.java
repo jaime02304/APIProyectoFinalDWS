@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
-import edu.proyectoFinalAPI.Dtos.GruposTopCincoDto;
+import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 import edu.proyectoFinalAPI.Servicios.ComentarioServicio;
@@ -147,7 +147,7 @@ public class controladorApi {
 
 		try {
 			// Llamada al servicio para obtener los 5 grupos más populares
-			List<GruposTopCincoDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
+			List<GruposParaLasListasDto> listadoGrupo = servicioGrupo.recogerLosGruposMasTop();
 
 			if (listadoGrupo == null || listadoGrupo.isEmpty()) {
 				// Si no hay grupos, retornar una lista vacía
@@ -194,6 +194,13 @@ public class controladorApi {
 		return response;
 	}
 
+	/**
+	 * MEtodo que busca el comentario inicial del usuario en cuestion
+	 * 
+	 * @author jpribio - 04/02/25
+	 * @param perfilUsuario
+	 * @return
+	 */
 	@PostMapping("/perfil/comentario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -218,5 +225,35 @@ public class controladorApi {
 
 		return response;
 
+	}
+
+	/**
+	 * MEtodo que busca el listado de grupos creado por el ususario
+	 * 
+	 * @author jpribio - 04/02/25
+	 * @param ususarioParaFiltrar
+	 * @return
+	 */
+	@PostMapping("/perfil/grupos")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerGruposDelUSuario(@RequestBody UsuarioPerfilDto ususarioParaFiltrar) {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			List<GruposParaLasListasDto> listadoGrupo = servicioGrupo.recogerLosGruposDelUsuario(ususarioParaFiltrar);
+
+			if (listadoGrupo == null || listadoGrupo.isEmpty()) {
+				// Si no hay grupos, retornar una lista vacía
+				response.put("gruposPerfil", Collections.emptyList());
+			} else {
+				response.put("gruposPerfil", listadoGrupo);
+			}
+		} catch (Exception e) {
+			// Manejo general de excepciones
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
 	}
 }
