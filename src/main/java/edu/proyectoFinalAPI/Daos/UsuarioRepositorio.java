@@ -22,6 +22,6 @@ public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> 
 	@Query(value = "SELECT u.* FROM usuarios u WHERE u.rol_usu = 'user'", nativeQuery = true)
 	List<UsuarioEntidad> findByRol();
 	
-	@Query(value = "SELECT u.* FROM usuarios u", nativeQuery = true)
+	@Query(value = "SELECT u.* FROM usuarios u WHERE u.rol_usu != 'user'", nativeQuery = true)
 	List<UsuarioEntidad> findAll();
 }
