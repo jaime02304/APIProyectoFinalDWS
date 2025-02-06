@@ -90,4 +90,30 @@ public class GrupoServicios {
 		}).collect(Collectors.toList());
 	}
 
+	/**
+	 * Metodo que recoge todos los grupos para el que lo vea los administradores
+	 * 
+	 * @author jpribio - 06/02/25
+	 * @return
+	 */
+	public List<GruposParaLasListasDto> recogerLosGrupos() {
+		// Obtener los 5 grupos más populares por número de usuarios
+		List<GrupoEntidad> gruposE = repositorioGrupos.findAll();
+
+		// Si no se encuentran grupos, retornar una lista vacía en lugar de null
+		if (gruposE == null || gruposE.isEmpty()) {
+			return Collections.emptyList(); // Mejor retornar una lista vacía en vez de null
+		}
+
+		// Mapear los grupos a la lista de DTOs
+		return gruposE.stream().map(grupoEntidad -> {
+			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
+			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
+			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			return grupo;
+		}).collect(Collectors.toList());
+	}
+
 }

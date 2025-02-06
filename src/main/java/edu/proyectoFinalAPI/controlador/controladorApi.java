@@ -256,4 +256,62 @@ public class controladorApi {
 
 		return response;
 	}
+
+	/**
+	 * Metodo que recoge la peticion de todos los grupos y los manda a la web
+	 * 
+	 * @author jpribio - 06/02/25
+	 * @return
+	 */
+	@GetMapping("/grupos")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerTodosLOsGrupos() {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			List<GruposParaLasListasDto> listadoGrupo = servicioGrupo.recogerLosGrupos();
+
+			if (listadoGrupo == null || listadoGrupo.isEmpty()) {
+				// Si no hay grupos, retornar una lista vacía
+				response.put("gruposPerfil", Collections.emptyList());
+			} else {
+				response.put("gruposPerfil", listadoGrupo);
+			}
+		} catch (Exception e) {
+			// Manejo general de excepciones
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+	
+	/**
+	 * Metodo que recoge la peticion de todos los usuarios de rol user y los manda a la web
+	 * 
+	 * @author jpribio - 06/02/25
+	 * @return
+	 */
+	@GetMapping("/usuariosPerfil")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerTodosLOsUsuariosRolUser() {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			List<UsuarioPerfilDto> listadoUsuarios = serviciosPerfil.obtenerLosUsuariosAdmin();
+
+			if (listadoUsuarios == null || listadoUsuarios.isEmpty()) {
+				// Si no hay grupos, retornar una lista vacía
+				response.put("usuarioPerfil", Collections.emptyList());
+			} else {
+				response.put("usuarioPerfil", listadoUsuarios);
+			}
+		} catch (Exception e) {
+			// Manejo general de excepciones
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
 }

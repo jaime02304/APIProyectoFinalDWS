@@ -116,9 +116,9 @@ public class UsuariosServicios {
 		usuarioPerfil.setAliasUsu(nuevoUsuarioGuardado.getAliasUsuEntidad());
 		usuarioPerfil.setCorreoElectronicoUsu(nuevoUsuarioGuardado.getCorreoElectronicoUsuEntidad());
 		usuarioPerfil.setMovilUsu(nuevoUsuarioGuardado.getMovilUsuEntidad());
-		usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
 		usuarioPerfil.setEsPremium(nuevoUsuarioGuardado.getEsPremiumEntidad());
 		usuarioPerfil.setEsVerificadoEntidad(nuevoUsuarioGuardado.getEsVerificadoEntidad());
+		usuarioPerfil.setRolUsu(nuevoUsuarioGuardado.getRolUsuEntidad());
 		// usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
 		return usuarioPerfil;
 	}

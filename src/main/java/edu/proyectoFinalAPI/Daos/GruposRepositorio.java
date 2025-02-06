@@ -22,4 +22,7 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 	@Query(value = "SELECT g.* FROM grupos g " + "INNER JOIN usuarios u ON g.creador_usu_id = u.id_usu "
 			+ "WHERE u.correo_electronico_usu = :correoElectronico", nativeQuery = true)
 	List<GrupoEntidad> findAllGroupsByUserEmail(@Param("correoElectronico") String correoElectronico);
+
+	@Query(value = "SELECT g.* FROM grupos g", nativeQuery = true)
+	List<GrupoEntidad> findAll();
 }

@@ -1,6 +1,9 @@
 package edu.proyectoFinalAPI.Daos;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,8 +14,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> {
-	
+
 	UsuarioEntidad findByAliasUsuEntidad(String aliasUsuEntidad);
-	
+
 	UsuarioEntidad findByCorreoElectronicoUsuEntidad(String correoElectronicoUsuEntidad);
+
+	@Query(value = "SELECT u.* FROM usuarios u WHERE u.rol_usu = 'user'", nativeQuery = true)
+	List<UsuarioEntidad> findByRol();
+	
+	@Query(value = "SELECT u.* FROM usuarios u", nativeQuery = true)
+	List<UsuarioEntidad> findAll();
 }
