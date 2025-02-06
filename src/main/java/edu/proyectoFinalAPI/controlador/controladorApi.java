@@ -314,4 +314,33 @@ public class controladorApi {
 
 		return response;
 	}
+	
+	/**
+	 * Metodo que recoge la peticion de todos los usuarios y los manda a la web
+	 * 
+	 * @author jpribio - 06/02/25
+	 * @return
+	 */
+	@GetMapping("/usuarioSAdminPerfil")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> obtenerTodosLOsUsuarios() {
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			List<UsuarioPerfilDto> listadoUsuarios = serviciosPerfil.obtenerLosUsuarios();
+
+			if (listadoUsuarios == null || listadoUsuarios.isEmpty()) {
+				// Si no hay grupos, retornar una lista vacía
+				response.put("usuarioPerfil", Collections.emptyList());
+			} else {
+				response.put("usuarioPerfil", listadoUsuarios);
+			}
+		} catch (Exception e) {
+			// Manejo general de excepciones
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
 }
