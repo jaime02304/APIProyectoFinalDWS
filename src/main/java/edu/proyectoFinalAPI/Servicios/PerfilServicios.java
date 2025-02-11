@@ -119,4 +119,14 @@ public class PerfilServicios {
 		}).collect(Collectors.toList());
 	}
 
+	/**
+	 * Metodo que modifica al usuario con los valores recibidos
+	 * 
+	 * @author jpribio - 11/02/25
+	 * @return devuelve el usuario
+	 */
+	public UsuarioPerfilDto modificarUsuario() {
+		return null;
+	}
+
 }

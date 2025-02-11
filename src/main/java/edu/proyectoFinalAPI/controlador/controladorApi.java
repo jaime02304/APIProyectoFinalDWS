@@ -285,9 +285,10 @@ public class controladorApi {
 
 		return response;
 	}
-	
+
 	/**
-	 * Metodo que recoge la peticion de todos los usuarios de rol user y los manda a la web
+	 * Metodo que recoge la peticion de todos los usuarios de rol user y los manda a
+	 * la web
 	 * 
 	 * @author jpribio - 06/02/25
 	 * @return
@@ -314,7 +315,7 @@ public class controladorApi {
 
 		return response;
 	}
-	
+
 	/**
 	 * Metodo que recoge la peticion de todos los usuarios y los manda a la web
 	 * 
@@ -324,7 +325,7 @@ public class controladorApi {
 	@GetMapping("/usuarioSAdminPerfil")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String, Object> obtenerTodosLOsUsuarios() {
+	public Map<String, Object> obtenerTodosLosUsuarios() {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
@@ -342,5 +343,12 @@ public class controladorApi {
 		}
 
 		return response;
+	}
+
+	@PostMapping("/ModificarUsuario")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String,Object> modificarUsuario(@RequestBody UsuarioPerfilDto usuarioAModificar){
+		return null;
 	}
 }
