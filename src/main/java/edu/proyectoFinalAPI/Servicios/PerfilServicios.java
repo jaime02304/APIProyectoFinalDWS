@@ -125,7 +125,9 @@ public class PerfilServicios {
 	 * @author jpribio - 11/02/25
 	 * @return devuelve el usuario
 	 */
-	public UsuarioPerfilDto modificarUsuario() {
+	public UsuarioPerfilDto modificarUsuario(UsuarioPerfilDto usuarioAModificar){
+		
+		
 		return null;
 	}
 
