@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
+import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 import jakarta.transaction.Transactional;
 
 /**
@@ -26,12 +27,12 @@ public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> 
 
 	@Query(value = "SELECT u.* FROM usuarios u WHERE u.rol_usu = 'user'", nativeQuery = true)
 	List<UsuarioEntidad> findByRol();
-	
+
 	@Query(value = "SELECT u.* FROM usuarios u WHERE u.rol_usu != 'sadmin'", nativeQuery = true)
 	List<UsuarioEntidad> findAll();
-	
-	  @Transactional
-	    @Modifying
-	    @Query("UPDATE UsuarioEntidad u SET u.nombreCompletoUsuEntidad = :#{#usuario.nombreCompleto}, u.aliasUsuEntidad = :#{#usuario.alias}, u.movilUsuEntidad = :#{#usuario.movil}, u.fotoUsuEntidad = :#{#usuario.foto} WHERE u.correoElectronicoUsuEntidad = :#{#usuario.correo}")
-	    int actualizarUsuarioPorCorreo(@Param("usuario") UsuarioDto usuario);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE UsuarioEntidad u SET u.nombreCompletoUsuEntidad = :#{#usuario.nombreCompletoUsu}, u.aliasUsuEntidad = :#{#usuario.aliasUsu}, u.movilUsuEntidad = :#{#usuario.movilUsu}, u.fotoUsuEntidad = :#{#usuario.fotoUsu} WHERE u.correoElectronicoUsuEntidad = :#{#usuario.correoElectronicoUsu}")
+	int actualizarUsuarioPorCorreo(@Param("usuario") UsuarioPerfilDto usuario);
 }

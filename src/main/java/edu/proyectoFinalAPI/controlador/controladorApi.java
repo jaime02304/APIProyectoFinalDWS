@@ -56,38 +56,24 @@ public class controladorApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> registroApi(@RequestBody UsuarioDto usuario) {
-		Map<String, Object> response = new HashMap<>();
-
 		if (usuario == null) {
-			response.put("error", "El usuario no puede ser nulo.");
-			return response;
+			return Map.of("error", "El usuario no puede ser nulo.");
 		}
 
 		try {
 			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
-
 			if (usuarioPerfilDto != null) {
-				response.put("idUsu", usuarioPerfilDto.getIdUsu());
-				response.put("nombreCompletoUsu", usuarioPerfilDto.getNombreCompletoUsu());
-				response.put("aliasUsu", usuarioPerfilDto.getAliasUsu());
-				response.put("correoElectronicoUsu", usuarioPerfilDto.getCorreoElectronicoUsu());
-				response.put("movilUsu", usuarioPerfilDto.getMovilUsu());
-				response.put("fotoUsu", usuarioPerfilDto.getFotoUsu());
-				response.put("esPremium", usuarioPerfilDto.getEsPremium());
-				response.put("rolUsu", usuarioPerfilDto.getRolUsu());
-				response.put("esVerificadoEntidad", usuarioPerfilDto.getEsVerificadoEntidad());
+				return convertirUsuarioDtoAMap(usuarioPerfilDto);
 			} else {
-				response.put("error", "No se pudo crear el usuario.");
+				return Map.of("error", "No se pudo crear el usuario.");
 			}
 		} catch (IllegalArgumentException iaE) {
-			response.put("error", "Datos proporcionados no válidos: " + iaE.getMessage());
+			return Map.of("error", "Datos proporcionados no válidos: " + iaE.getMessage());
 		} catch (NullPointerException nE) {
-			response.put("error", "Algunos campos están vacíos o nulos: " + nE.getMessage());
+			return Map.of("error", "Algunos campos están vacíos o nulos: " + nE.getMessage());
 		} catch (Exception e) {
-			response.put("error", "Error inesperado: " + e.getMessage());
+			return Map.of("error", "Error inesperado: " + e.getMessage());
 		}
-
-		return response;
 	}
 
 	/**
@@ -101,11 +87,8 @@ public class controladorApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> inicioSesionUsuario(@RequestBody UsuarioDto usuario) {
-		Map<String, Object> response = new HashMap<>();
-
 		if (usuario == null) {
-			response.put("error", "El usuario no puede ser nulo.");
-			return response;
+			return Map.of("error", "El usuario no puede ser nulo.");
 		}
 
 		try {
@@ -113,30 +96,17 @@ public class controladorApi {
 			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.inicioSesionUsu(usuario);
 
 			if (usuarioPerfilDto != null) {
-				response.put("idUsu", usuarioPerfilDto.getIdUsu());
-				response.put("nombreCompletoUsu", usuarioPerfilDto.getNombreCompletoUsu());
-				response.put("aliasUsu", usuarioPerfilDto.getAliasUsu());
-				response.put("correoElectronicoUsu", usuarioPerfilDto.getCorreoElectronicoUsu());
-				response.put("movilUsu", usuarioPerfilDto.getMovilUsu());
-				response.put("fotoUsu", usuarioPerfilDto.getFotoUsu());
-				response.put("esPremium", usuarioPerfilDto.getEsPremium());
-				response.put("rolUsu", usuarioPerfilDto.getRolUsu());
-				response.put("esVerificadoEntidad", usuarioPerfilDto.getEsVerificadoEntidad());
+				return convertirUsuarioDtoAMap(usuarioPerfilDto);
 			} else {
-				response.put("error", "Usuario no encontrado.");
+				return Map.of("error", "Usuario no encontrado.");
 			}
 		} catch (IllegalArgumentException iaE) {
-			// Manejo de la excepción IllegalArgumentException
-			response.put("error", "Argumento inválido: " + iaE.getMessage());
+			return Map.of("error", "Argumento inválido: " + iaE.getMessage());
 		} catch (NullPointerException nE) {
-			// Manejo de la excepción NullPointerException
-			response.put("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
+			return Map.of("error", "Se produjo un error debido a un valor nulo: " + nE.getMessage());
 		} catch (Exception e) {
-			// Manejo de cualquier otra excepción
-			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
-
-		return response;
 	}
 
 	@GetMapping("/index/grupos")
@@ -348,7 +318,43 @@ public class controladorApi {
 	@PostMapping("/ModificarUsuario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String,Object> modificarUsuario(@RequestBody UsuarioPerfilDto usuarioAModificar){
-		return null;
+	public Map<String, Object> modificarUsuario(@RequestBody UsuarioPerfilDto usuarioAModificar) {
+		if (usuarioAModificar == null) {
+			return Map.of("error", "El usuario no puede ser nulo.");
+		}
+
+		try {
+			UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.modificarUsuario(usuarioAModificar);
+			if (usuarioPerfilDto == null) {
+				return Map.of("error", "Usuario no encontrado.");
+			}
+			return convertirUsuarioDtoAMap(usuarioPerfilDto);
+		} catch (IllegalArgumentException e) {
+			return Map.of("error", "Argumento inválido: " + e.getMessage());
+		} catch (Exception e) {
+			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+	}
+
+	/**
+	 * Método auxiliar que convierte el DTO de usuario en un Map para la respuesta.
+	 * 
+	 * @author jpribio - 13/02/25
+	 * @param dto
+	 * @return
+	 */
+	private Map<String, Object> convertirUsuarioDtoAMap(UsuarioPerfilDto dto) {
+		Map<String, Object> response = new HashMap<>();
+		response.put("idUsu", dto.getIdUsu());
+		response.put("nombreCompletoUsu", dto.getNombreCompletoUsu());
+		response.put("aliasUsu", dto.getAliasUsu());
+		response.put("correoElectronicoUsu", dto.getCorreoElectronicoUsu());
+		response.put("movilUsu", dto.getMovilUsu());
+		// Manejo de la foto: si es null, se devuelve un array vacío
+		response.put("fotoUsu", dto.getFotoUsu() != null ? dto.getFotoUsu() : new byte[0]);
+		response.put("esPremium", dto.getEsPremium());
+		response.put("rolUsu", dto.getRolUsu());
+		response.put("esVerificadoEntidad", dto.getEsVerificadoEntidad());
+		return response;
 	}
 }

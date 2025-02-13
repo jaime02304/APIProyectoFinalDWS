@@ -40,7 +40,7 @@ public class PerfilServicios {
 	 * @param PerfilUsuario
 	 * @return
 	 */
-	public ComentariosPerfilDto obteneroComentarioDelPerfil(UsuarioPerfilDto PerfilUsuario) {
+	public ComentariosPerfilDto obteneroComentarioDelPerfil(UsuarioPerfilDto PerfilUsuario) throws Exception {
 		ComentariosEntidad comentarioPerfilE = repositorioComentariorepositorio
 				.findLatestByCorreoElectronico(PerfilUsuario.getCorreoElectronicoUsu());
 		if (comentarioPerfilE == null) {
@@ -62,7 +62,7 @@ public class PerfilServicios {
 	 * @author jptibio - 06/02/25
 	 * @return
 	 */
-	public List<UsuarioPerfilDto> obtenerLosUsuariosAdmin() {
+	public List<UsuarioPerfilDto> obtenerLosUsuariosAdmin() throws Exception {
 		// Obtener los 5 grupos más populares por número de usuarios
 		List<UsuarioEntidad> usuarioE = repositorioUsuario.findByRol();
 
@@ -94,7 +94,7 @@ public class PerfilServicios {
 	 * @author jptibio - 06/02/25
 	 * @return
 	 */
-	public List<UsuarioPerfilDto> obtenerLosUsuarios() {
+	public List<UsuarioPerfilDto> obtenerLosUsuarios() throws Exception {
 		// Obtener los 5 grupos más populares por número de usuarios
 		List<UsuarioEntidad> usuarioE = repositorioUsuario.findAll();
 
@@ -117,18 +117,6 @@ public class PerfilServicios {
 			usuario.setRolUsu(usuarioEntidad.getRolUsuEntidad());
 			return usuario;
 		}).collect(Collectors.toList());
-	}
-
-	/**
-	 * Metodo que modifica al usuario con los valores recibidos
-	 * 
-	 * @author jpribio - 11/02/25
-	 * @return devuelve el usuario
-	 */
-	public UsuarioPerfilDto modificarUsuario(UsuarioPerfilDto usuarioAModificar){
-		
-		
-		return null;
 	}
 
 }

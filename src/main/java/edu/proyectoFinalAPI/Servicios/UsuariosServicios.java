@@ -1,6 +1,7 @@
 package edu.proyectoFinalAPI.Servicios;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
-import edu.proyectoFinalAPI.utilidades.*;
+import edu.proyectoFinalAPI.utilidades.Util;
 
 /**
  * Clase donde se encuentra todos los metodos en relacion con el usuario
@@ -99,6 +100,28 @@ public class UsuariosServicios {
 
 		// Si todo es correcto, devolver el perfil del usuario
 		return devolverInformacionUsuarioPerfil(usuarioEnt);
+	}
+
+	/**
+	 * Metodo que modifica al usuario con los valores recibidos
+	 * 
+	 * @author jpribio - 11/02/25
+	 * @return devuelve el usuario
+	 */
+	public UsuarioPerfilDto modificarUsuario(UsuarioPerfilDto usuarioAModificar)
+			throws Exception, NullPointerException, IllegalArgumentException {
+		  if (usuarioAModificar == null) {
+		        throw new IllegalArgumentException("Datos de usuario incompletos. No hay usuario");
+		    }
+
+		    // Actualiza el usuario (la variable 'columnasCambiadas' se omite si no se utiliza)
+		    repositorioUsuario.actualizarUsuarioPorCorreo(usuarioAModificar);
+
+		    // Recupera y mapea el usuario de forma funcional
+		    return Optional.ofNullable(
+		            repositorioUsuario.findByCorreoElectronicoUsuEntidad(usuarioAModificar.getCorreoElectronicoUsu()))
+		            .map(this::devolverInformacionUsuarioPerfil)
+		            .orElse(null);
 	}
 
 	/**
