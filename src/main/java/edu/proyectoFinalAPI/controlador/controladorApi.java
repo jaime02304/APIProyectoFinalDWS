@@ -351,7 +351,7 @@ public class controladorApi {
 		response.put("correoElectronicoUsu", dto.getCorreoElectronicoUsu());
 		response.put("movilUsu", dto.getMovilUsu());
 		// Manejo de la foto: si es null, se devuelve un array vacío
-		response.put("fotoUsu", dto.getFotoUsu() != null ? dto.getFotoUsu() : new byte[0]);
+		response.put("fotoString", dto.getFotoUsu() != null ? dto.getFotoUsu() : new byte[0]);
 		response.put("esPremium", dto.getEsPremium());
 		response.put("rolUsu", dto.getRolUsu());
 		response.put("esVerificadoEntidad", dto.getEsVerificadoEntidad());
