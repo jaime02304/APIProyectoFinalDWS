@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
+import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
@@ -24,6 +25,8 @@ import edu.proyectoFinalAPI.Servicios.UsuariosServicios;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * Controlador principal de la APi donde tiene las rutas de los metodos de la
@@ -334,6 +337,37 @@ public class controladorApi {
 		} catch (Exception e) {
 			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
+	}
+
+	@PostMapping("/EliminarElemento")
+	public Response eliminarElementoComoAdmin(@RequestBody EliminarElementoPerfilDto elementoAEliminar) {
+		 if (elementoAEliminar == null) {
+		        return Response.status(Status.BAD_REQUEST)
+		                       .entity(Map.of("error", "El elemento a eliminar no puede ser nulo."))
+		                       .build();
+		    }
+
+		    try {
+		        // Aquí deberías llamar a la lógica de negocio o servicio que realice la eliminación.
+		        // Por ejemplo:
+		        boolean eliminado = serviciosPerfil.eliminarElemento(elementoAEliminar);
+		        
+		        if (eliminado) {
+		            return Response.ok(Map.of("message", "Elemento eliminado correctamente.")).build();
+		        } else {
+		            return Response.status(Status.INTERNAL_SERVER_ERROR)
+		                           .entity(Map.of("error", "No se pudo eliminar el elemento."))
+		                           .build();
+		        }
+		    } catch (IllegalArgumentException e) {
+		        return Response.status(Status.BAD_REQUEST)
+		                       .entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
+		                       .build();
+		    } catch (Exception e) {
+		        return Response.status(Status.INTERNAL_SERVER_ERROR)
+		                       .entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage()))
+		                       .build();
+		    }
 	}
 
 	/**

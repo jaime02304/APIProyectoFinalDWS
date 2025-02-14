@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.ComentarioRepositorio;
 import edu.proyectoFinalAPI.Daos.ComentariosEntidad;
+import edu.proyectoFinalAPI.Daos.GruposRepositorio;
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
+import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 
 /**
@@ -31,6 +33,9 @@ public class PerfilServicios {
 
 	@Autowired
 	private UsuarioRepositorio repositorioUsuario;
+
+	@Autowired
+	private GruposRepositorio repositorioGrupo;
 
 	/**
 	 * MEtodo que mediante el parametro del correo electronico busca el mensaje del
@@ -117,6 +122,20 @@ public class PerfilServicios {
 			usuario.setRolUsu(usuarioEntidad.getRolUsuEntidad());
 			return usuario;
 		}).collect(Collectors.toList());
+	}
+
+	/**
+	 * Metodo que elimina elemento por su nombre
+	 * 
+	 * @param eliminarElemento
+	 * @return
+	 */
+	public Boolean eliminarElemento(EliminarElementoPerfilDto eliminarElemento)
+			throws IllegalArgumentException, Exception {
+		int filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar())
+				+ repositorioGrupo.eliminarGrupoPorNombre(eliminarElemento.getElementoEliminar());
+
+		return filasAfectadas > 0;
 	}
 
 }

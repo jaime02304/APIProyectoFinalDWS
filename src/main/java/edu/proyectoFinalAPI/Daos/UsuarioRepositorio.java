@@ -35,4 +35,9 @@ public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> 
 	@Modifying
 	@Query("UPDATE UsuarioEntidad u SET u.nombreCompletoUsuEntidad = :#{#usuario.nombreCompletoUsu}, u.aliasUsuEntidad = :#{#usuario.aliasUsu}, u.movilUsuEntidad = :#{#usuario.movilUsu}, u.fotoUsuEntidad = :#{#usuario.fotoUsu} WHERE u.correoElectronicoUsuEntidad = :#{#usuario.correoElectronicoUsu}")
 	int actualizarUsuarioPorCorreo(@Param("usuario") UsuarioPerfilDto usuario);
+	
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM UsuarioEntidad u WHERE u.nombreCompletoUsuEntidad = :nombre")
+	int eliminarUsuarioPorNombre(@Param("nombre") String nombre);
 }
