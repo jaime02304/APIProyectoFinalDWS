@@ -318,6 +318,13 @@ public class controladorApi {
 		return response;
 	}
 
+	/**
+	 * Metodo que modifica el perfil personal del usuario
+	 * 
+	 * @author jpribio - 15/02/25
+	 * @param usuarioAModificar
+	 * @return
+	 */
 	@PostMapping("/ModificarUsuario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -339,6 +346,14 @@ public class controladorApi {
 		}
 	}
 
+	/**
+	 * Metodo que elimina un elemento(usuario o grupo) por el identificador del
+	 * alias o el nombre del grupo
+	 * 
+	 * @author jpribio - 15/02/25
+	 * @param elementoAEliminar
+	 * @return
+	 */
 	@PostMapping("/EliminarElemento")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -369,6 +384,13 @@ public class controladorApi {
 		}
 	}
 
+	/**
+	 * Metodo que modifica al usuario con las caracteristicas nuevas dadas
+	 * 
+	 * @author jpribio - 15/02/25
+	 * @param usuarioAModificar
+	 * @return
+	 */
 	@PostMapping("/ModificarUsuarioComoAdmin")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -387,6 +409,41 @@ public class controladorApi {
 			} else {
 				return Response.status(Status.INTERNAL_SERVER_ERROR)
 						.entity(Map.of("error", "No se pudo modificar el usuario.")).build();
+			}
+		} catch (IllegalArgumentException e) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
+					.build();
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR)
+					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+		}
+	}
+
+	/**
+	 * Metodo para modificar el grupo siendo administrador
+	 * 
+	 * @author jpribio - 15/02/25
+	 * @param usuarioAModificar
+	 * @return
+	 */
+	@PostMapping("/ModificarGrupoComoAdmin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response modificarGrupoComoAdministrador(@RequestBody GruposParaLasListasDto grupoAMNodificar) {
+		if (grupoAMNodificar == null) {
+			return Response.status(Status.BAD_REQUEST)
+					.entity(Map.of("error", "El grupo a modificar no puede ser nulo.")).build();
+		}
+
+		try {
+			// Llamada a la lógica de negocio o servicio que realiza la modificación.
+			boolean modificado = serviciosPerfil.modificarGrupoComoAdministrador(grupoAMNodificar);
+
+			if (modificado) {
+				return Response.ok(Map.of("message", "Grupo modificado correctamente.")).build();
+			} else {
+				return Response.status(Status.INTERNAL_SERVER_ERROR)
+						.entity(Map.of("error", "No se pudo modificar el grupo.")).build();
 			}
 		} catch (IllegalArgumentException e) {
 			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))

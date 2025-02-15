@@ -14,6 +14,7 @@ import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
 import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
+import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 
 /**
@@ -127,14 +128,18 @@ public class PerfilServicios {
 	/**
 	 * Metodo que elimina elemento por su nombre
 	 * 
+	 * @author jpribio - 15/02/25
 	 * @param eliminarElemento
 	 * @return
 	 */
 	public Boolean eliminarElemento(EliminarElementoPerfilDto eliminarElemento)
 			throws IllegalArgumentException, Exception {
-		int filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar())
-				+ repositorioGrupo.eliminarGrupoPorNombre(eliminarElemento.getElementoEliminar());
-
+		int filasAfectadas=0;
+		if (eliminarElemento.isEsUsuarioEliminar()) {
+			 filasAfectadas= repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar());
+		}else {
+			 filasAfectadas =repositorioGrupo.eliminarGrupoPorNombre(eliminarElemento.getElementoEliminar());
+		}
 		return filasAfectadas > 0;
 	}
 
@@ -151,6 +156,25 @@ public class PerfilServicios {
 	public boolean modificarUsuarioComoAdministrador(UsuarioPerfilDto usuarioAModificar)
 			throws IllegalArgumentException, Exception {
 		int filasAfectadas = repositorioUsuario.actualizarUsuarioCompletoPorCorreoComoAdmin(usuarioAModificar);
+
+		return filasAfectadas > 0;
+	}
+
+	/**
+	 * MEtodo que manda un grupo completo con los nuevos valores que se han
+	 * modificado y las sustituye por las antiguas
+	 * 
+	 * @author jpribio - 15/02/25
+	 * @param grupoAModificar
+	 * @return
+	 * @throws IllegalArgumentException
+	 * @throws Exception
+	 */
+	public boolean modificarGrupoComoAdministrador(GruposParaLasListasDto grupoAModificar)
+			throws IllegalArgumentException, Exception {
+		int filasAfectadas = repositorioGrupo.actualizarGrupoNombre(grupoAModificar)
+				+ repositorioGrupo.actualizarCategoria(grupoAModificar)
+				+ repositorioGrupo.actualizarSubCategoria(grupoAModificar);
 
 		return filasAfectadas > 0;
 	}

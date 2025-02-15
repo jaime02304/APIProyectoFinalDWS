@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import jakarta.transaction.Transactional;
 
 /**
@@ -33,5 +34,25 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 	@Modifying
 	@Query("DELETE FROM GrupoEntidad g WHERE g.nombreGrupo = :nombreGrupo")
 	int eliminarGrupoPorNombre(@Param("nombreGrupo") String nombreGrupo);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE GrupoEntidad g " + "SET g.nombreGrupo = :#{#grupo.nombreGrupo} "
+			+ "WHERE g.idGrupo = :#{#grupo.idGrupo}")
+	int actualizarGrupoNombre(@Param("grupo") GruposParaLasListasDto grupo);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE GrupoEntidad g "
+			+ "SET g.categoriaId = (SELECT t.idTipo FROM TiposEntidad t WHERE t.nombreTipo = :#{#grupo.categoriaNombre}) "
+			+ "WHERE g.idGrupo = :#{#grupo.idGrupo}")
+	int actualizarCategoria(@Param("grupo") GruposParaLasListasDto grupo);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE GrupoEntidad g "
+			+ "SET g.subCategoriaId = (SELECT t.idTipo FROM TiposEntidad t WHERE t.nombreTipo = :#{#grupo.subCategoriaNombre}) "
+			+ "WHERE g.idGrupo = :#{#grupo.idGrupo}")
+	int actualizarSubCategoria(@Param("grupo") GruposParaLasListasDto grupo);
 
 }
