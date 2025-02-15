@@ -340,34 +340,61 @@ public class controladorApi {
 	}
 
 	@PostMapping("/EliminarElemento")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response eliminarElementoComoAdmin(@RequestBody EliminarElementoPerfilDto elementoAEliminar) {
-		 if (elementoAEliminar == null) {
-		        return Response.status(Status.BAD_REQUEST)
-		                       .entity(Map.of("error", "El elemento a eliminar no puede ser nulo."))
-		                       .build();
-		    }
+		if (elementoAEliminar == null) {
+			return Response.status(Status.BAD_REQUEST)
+					.entity(Map.of("error", "El elemento a eliminar no puede ser nulo.")).build();
+		}
 
-		    try {
-		        // Aquí deberías llamar a la lógica de negocio o servicio que realice la eliminación.
-		        // Por ejemplo:
-		        boolean eliminado = serviciosPerfil.eliminarElemento(elementoAEliminar);
-		        
-		        if (eliminado) {
-		            return Response.ok(Map.of("message", "Elemento eliminado correctamente.")).build();
-		        } else {
-		            return Response.status(Status.INTERNAL_SERVER_ERROR)
-		                           .entity(Map.of("error", "No se pudo eliminar el elemento."))
-		                           .build();
-		        }
-		    } catch (IllegalArgumentException e) {
-		        return Response.status(Status.BAD_REQUEST)
-		                       .entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
-		                       .build();
-		    } catch (Exception e) {
-		        return Response.status(Status.INTERNAL_SERVER_ERROR)
-		                       .entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage()))
-		                       .build();
-		    }
+		try {
+			// Aquí deberías llamar a la lógica de negocio o servicio que realice la
+			// eliminación.
+			// Por ejemplo:
+			boolean eliminado = serviciosPerfil.eliminarElemento(elementoAEliminar);
+
+			if (eliminado) {
+				return Response.ok(Map.of("message", "Elemento eliminado correctamente.")).build();
+			} else {
+				return Response.status(Status.INTERNAL_SERVER_ERROR)
+						.entity(Map.of("error", "No se pudo eliminar el elemento.")).build();
+			}
+		} catch (IllegalArgumentException e) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
+					.build();
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR)
+					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+		}
+	}
+
+	@PostMapping("/ModificarUsuarioComoAdmin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response modificarUsuarioComoAdministrador(@RequestBody UsuarioPerfilDto usuarioAModificar) {
+		if (usuarioAModificar == null) {
+			return Response.status(Status.BAD_REQUEST)
+					.entity(Map.of("error", "El usuario a modificar no puede ser nulo.")).build();
+		}
+
+		try {
+			// Llamada a la lógica de negocio o servicio que realiza la modificación.
+			boolean modificado = serviciosPerfil.modificarUsuarioComoAdministrador(usuarioAModificar);
+
+			if (modificado) {
+				return Response.ok(Map.of("message", "Usuario modificado correctamente.")).build();
+			} else {
+				return Response.status(Status.INTERNAL_SERVER_ERROR)
+						.entity(Map.of("error", "No se pudo modificar el usuario.")).build();
+			}
+		} catch (IllegalArgumentException e) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
+					.build();
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR)
+					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+		}
 	}
 
 	/**

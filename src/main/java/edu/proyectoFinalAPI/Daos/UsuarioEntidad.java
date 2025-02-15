@@ -42,7 +42,7 @@ public class UsuarioEntidad {
 	private byte[] fotoUsuEntidad;
 
 	@Column(name = "contrasenia_usu")
-	private String contraseniaUsuEntidad;;
+	private String contraseniaUsuEntidad;
 
 	@Column(name = "es_premium")
 	private Boolean esPremiumEntidad;

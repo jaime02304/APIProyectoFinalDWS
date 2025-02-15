@@ -138,4 +138,21 @@ public class PerfilServicios {
 		return filasAfectadas > 0;
 	}
 
+	/**
+	 * MEtodo que manda un usuario completo con los nuevos valores que se han
+	 * modificado y las sustituye por las antiguas
+	 * 
+	 * @author jpribio - 15/02/25
+	 * @param usuarioAModificar
+	 * @return
+	 * @throws IllegalArgumentException
+	 * @throws Exception
+	 */
+	public boolean modificarUsuarioComoAdministrador(UsuarioPerfilDto usuarioAModificar)
+			throws IllegalArgumentException, Exception {
+		int filasAfectadas = repositorioUsuario.actualizarUsuarioCompletoPorCorreoComoAdmin(usuarioAModificar);
+
+		return filasAfectadas > 0;
+	}
+
 }
