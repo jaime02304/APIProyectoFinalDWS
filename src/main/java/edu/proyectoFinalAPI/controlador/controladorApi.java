@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
 import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
+import edu.proyectoFinalAPI.Dtos.GruposDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
@@ -444,6 +445,76 @@ public class controladorApi {
 			} else {
 				return Response.status(Status.INTERNAL_SERVER_ERROR)
 						.entity(Map.of("error", "No se pudo modificar el grupo.")).build();
+			}
+		} catch (IllegalArgumentException e) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
+					.build();
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR)
+					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+		}
+	}
+
+	/**
+	 * Metodo que crea un nuevo usuario
+	 * 
+	 * @author jpribio - 16/02/25
+	 * @param usuarioACrear
+	 * @return
+	 */
+	@PostMapping("/CrearUsuarioComoAdmin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response crearUnUsuarioComAdmin(@RequestBody UsuarioDto usuarioACrear) {
+		if (usuarioACrear == null) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "El usuario a crear no puede ser nulo."))
+					.build();
+		}
+
+		try {
+			// Llamada a la lógica de negocio o servicio que realiza la creación del usuario
+			boolean creado = serviciosPerfil.crearUsuarioComoAdministrador(usuarioACrear);
+
+			if (creado) {
+				return Response.ok(Map.of("message", "Usuario creado correctamente.")).build();
+			} else {
+				return Response.status(Status.INTERNAL_SERVER_ERROR)
+						.entity(Map.of("error", "No se pudo crear el usuario.")).build();
+			}
+		} catch (IllegalArgumentException e) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
+					.build();
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR)
+					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+		}
+	}
+
+	/**
+	 * Método que crea un nuevo grupo.
+	 * 
+	 * @author jpribio - 16/02/25
+	 * @param grupoACrear DTO con la información del grupo a crear.
+	 * @return Response con el resultado de la operación.
+	 */
+	@PostMapping("/CrearGrupoComoAdmin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response crearUnGrupoComAdmin(@RequestBody GruposDto grupoACrear) {
+		if (grupoACrear == null) {
+			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "El grupo a crear no puede ser nulo."))
+					.build();
+		}
+
+		try {
+			// Llamada a la lógica de negocio o servicio que realiza la creación del grupo.
+			boolean creado = serviciosPerfil.crearGrupoComoAdministrador(grupoACrear);
+
+			if (creado) {
+				return Response.ok(Map.of("message", "Grupo creado correctamente.")).build();
+			} else {
+				return Response.status(Status.INTERNAL_SERVER_ERROR)
+						.entity(Map.of("error", "No se pudo crear el grupo.")).build();
 			}
 		} catch (IllegalArgumentException e) {
 			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))

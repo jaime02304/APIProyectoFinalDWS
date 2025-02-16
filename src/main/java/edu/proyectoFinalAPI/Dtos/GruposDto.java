@@ -15,12 +15,8 @@ public class GruposDto {
 	private String aliasCreadorUString = "aaaaa";
 	private Long numeroUsuarios = (long) 0;
 	private LocalDateTime fechaGrupo = LocalDateTime.now();
-	private Long categoriaId;
 	private String categoriaNombre = "aaaaa";
-	private int categoriaNivel = 0;
-	private Long subCategoriaId;
 	private String subCategoriaNombre = "aaaaa";
-	private int subCategoriaNivel = 0;
 
 	// No se si se deberia de cambiar por los tipos entidad paara tener la
 	// informacion
@@ -73,14 +69,6 @@ public class GruposDto {
 		this.aliasCreadorUString = aliasCreadorUString;
 	}
 
-	public Long getCategoriaId() {
-		return categoriaId;
-	}
-
-	public void setCategoriaId(Long categoriaId) {
-		this.categoriaId = categoriaId;
-	}
-
 	public String getCategoriaNombre() {
 		return categoriaNombre;
 	}
@@ -89,36 +77,12 @@ public class GruposDto {
 		this.categoriaNombre = categoriaNombre;
 	}
 
-	public int getCategoriaNivel() {
-		return categoriaNivel;
-	}
-
-	public void setCategoriaNivel(int categoriaNivel) {
-		this.categoriaNivel = categoriaNivel;
-	}
-
-	public Long getSubCategoriaId() {
-		return subCategoriaId;
-	}
-
-	public void setSubCategoriaId(Long subCategoriaId) {
-		this.subCategoriaId = subCategoriaId;
-	}
-
 	public String getSubCategoriaNombre() {
 		return subCategoriaNombre;
 	}
 
 	public void setSubCategoriaNombre(String subCategoriaNombre) {
 		this.subCategoriaNombre = subCategoriaNombre;
-	}
-
-	public int getSubCategoriaNivel() {
-		return subCategoriaNivel;
-	}
-
-	public void setSubCategoriaNivel(int subCategoriaNivel) {
-		this.subCategoriaNivel = subCategoriaNivel;
 	}
 
 	// Constructor

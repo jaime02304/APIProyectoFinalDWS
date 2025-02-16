@@ -46,4 +46,20 @@ public class TiposEntidad {
 		return nivelTipo;
 	}
 
+	public void setIdTipo(Long idTipo) {
+		this.idTipo = idTipo;
+	}
+
+	public void setNombreTipo(String nombreTipo) {
+		this.nombreTipo = nombreTipo;
+	}
+
+	public void setDescripcionTipo(String descripcionTipo) {
+		this.descripcionTipo = descripcionTipo;
+	}
+
+	public void setNivelTipo(int nivelTipo) {
+		this.nivelTipo = nivelTipo;
+	}
+
 }
