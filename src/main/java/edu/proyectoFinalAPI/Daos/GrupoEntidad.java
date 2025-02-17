@@ -90,7 +90,7 @@ public class GrupoEntidad {
 		return categoriaId;
 	}
 
-	public void setCategoriaIdLong(TiposEntidad categoriaId) {
+	public void setCategoriaId(TiposEntidad categoriaId) {
 		this.categoriaId = categoriaId;
 	}
 

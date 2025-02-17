@@ -220,59 +220,22 @@ public class PerfilServicios {
 		return usuarioGuardado != null && usuarioGuardado.getIdUsuEntidad() != null;
 	}
 
-	/*
-	 * public boolean crearGrupoComoAdministrador(GruposDto grupoACrear) throws
-	 * IllegalArgumentException, Exception { GrupoEntidad grupo = new
-	 * GrupoEntidad();
+	/**
+	 * Metodo que crea un nuevo grupo en la base de datos
 	 * 
-	 * // Asignar datos directos del DTO
-	 * grupo.setNombreGrupo(grupoACrear.getNombreGrupo());
-	 * grupo.getCreadorUsuId().setIdUsuEntidad(grupoACrear.getCreadorUsuId());
-	 * grupo.getCreadorUsuId().setAliasUsuEntidad(grupoACrear.getAliasCreadorUString
-	 * ()); grupo.setNumeroUsuarios(grupoACrear.getNumeroUsuarios() != null ?
-	 * grupoACrear.getNumeroUsuarios() : 0L);
-	 * grupo.setFechaGrupo(LocalDateTime.now()); // Se puede usar la fecha actual
-	 * 
-	 * // Buscar la categoría y subcategoría en la tabla "tipos" TiposEntidad
-	 * categoria =
-	 * repositorioTipos.findByNombreTipoAndNivelTipo(grupoACrear.getCategoriaNombre(
-	 * ), 1); if (categoria == null) { throw new
-	 * IllegalArgumentException("La categoría especificada no existe."); }
-	 * 
-	 * TiposEntidad subCategoria =
-	 * repositorioTipos.findByNombreTipoAndNivelTipo(grupoACrear.
-	 * getSubCategoriaNombre(), 2); if (subCategoria == null) { throw new
-	 * IllegalArgumentException("La subcategoría especificada no existe."); }
-	 * 
-	 * // Asignar los IDs obtenidos a la entidad
-	 * grupo.getCategoriaId().setIdTipo(categoria.getIdTipo()); // ID de la
-	 * categoría grupo.getSubCategoriaId().setIdTipo(subCategoria.getIdTipo()); //
-	 * ID de la subcategoría
-	 * 
-	 * // Guardar la entidad en la base de datos GrupoEntidad grupoGuardado =
-	 * repositorioGrupo.save(grupo);
-	 * 
-	 * // Se considera exitosa la inserción si la entidad guardada no es nula y
-	 * tiene // asignado un ID. return grupoGuardado != null &&
-	 * grupoGuardado.getIdGrupo() != null; }
+	 * @author jpribio - 17/02/25
+	 * @param grupoACrear
+	 * @return
+	 * @throws IllegalArgumentException
+	 * @throws Exception
 	 */
-
 	public boolean crearGrupoComoAdministrador(GruposDto grupoACrear) throws IllegalArgumentException, Exception {
+		if (grupoACrear == null) {
+			throw new IllegalArgumentException("El DTO de grupo no puede ser nulo.");
+		}
+
 		GrupoEntidad grupo = new GrupoEntidad();
 
-		// Asignar datos directos del DTO
-		grupo.setNombreGrupo(grupoACrear.getNombreGrupo());
-
-		// Crear y asignar el usuario creador
-		UsuarioEntidad creador = new UsuarioEntidad();
-		creador.setIdUsuEntidad(grupoACrear.getCreadorUsuId());
-		creador.setAliasUsuEntidad(grupoACrear.getAliasCreadorUString());
-		grupo.setCreadorUsuId(creador);
-
-		grupo.setNumeroUsuarios(grupoACrear.getNumeroUsuarios() != null ? grupoACrear.getNumeroUsuarios() : 0L);
-		grupo.setFechaGrupo(LocalDateTime.now()); // Se puede usar la fecha actual
-
-		// Buscar la categoría y subcategoría en la tabla "tipos"
 		TiposEntidad categoria = repositorioTipos.findByNombreTipoAndNivelTipo(grupoACrear.getCategoriaNombre(), 1);
 		if (categoria == null) {
 			throw new IllegalArgumentException("La categoría especificada no existe.");
@@ -283,16 +246,20 @@ public class PerfilServicios {
 		if (subCategoria == null) {
 			throw new IllegalArgumentException("La subcategoría especificada no existe.");
 		}
+		UsuarioEntidad creador = repositorioUsuario.findByAliasUsuEntidad(grupoACrear.getAliasCreadorUString());
+		if (creador == null) {
+			throw new IllegalArgumentException(
+					"El usuario creador con alias " + grupoACrear.getAliasCreadorUString() + " no existe.");
+		}
 
-		// Asignar las entidades encontradas directamente al grupo
+		grupo.setNombreGrupo(grupoACrear.getNombreGrupo());
+		grupo.setNumeroUsuarios(grupoACrear.getNumeroUsuarios() != null ? grupoACrear.getNumeroUsuarios() : 0L);
+		grupo.setFechaGrupo(LocalDateTime.now());
 		grupo.setCategoriaId(categoria);
 		grupo.setSubCategoriaId(subCategoria);
-
-		// Guardar la entidad en la base de datos
+		grupo.setCreadorUsuId(creador);
 		GrupoEntidad grupoGuardado = repositorioGrupo.save(grupo);
 
-		// Se considera exitosa la inserción si la entidad guardada no es nula y tiene
-		// asignado un ID.
 		return grupoGuardado != null && grupoGuardado.getIdGrupo() != null;
 	}
 

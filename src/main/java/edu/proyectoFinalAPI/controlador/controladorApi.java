@@ -505,11 +505,8 @@ public class controladorApi {
 			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "El grupo a crear no puede ser nulo."))
 					.build();
 		}
-
 		try {
-			// Llamada a la lógica de negocio o servicio que realiza la creación del grupo.
 			boolean creado = serviciosPerfil.crearGrupoComoAdministrador(grupoACrear);
-
 			if (creado) {
 				return Response.ok(Map.of("message", "Grupo creado correctamente.")).build();
 			} else {
