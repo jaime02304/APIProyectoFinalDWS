@@ -22,7 +22,6 @@ import edu.proyectoFinalAPI.Dtos.GruposDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
-import edu.proyectoFinalAPI.utilidades.Util;
 
 /**
  * Clase donde se encuentra todos los metodos que tenga relacion con el perfil
@@ -35,8 +34,6 @@ public class PerfilServicios {
 	/**
 	 * Nueva instancia del repositorios de los comentarios
 	 */
-
-	Util utilidades = new Util();
 
 	@Autowired
 	private ComentarioRepositorio repositorioComentariorepositorio;
@@ -208,7 +205,7 @@ public class PerfilServicios {
 		usuario.setMovilUsuEntidad(usuarioACrear.getMovilUsu());
 		usuario.setRolUsuEntidad(usuarioACrear.getRolUsu());
 		usuario.setFotoUsuEntidad(usuarioACrear.getFotoUsu());
-		usuario.setContraseniaUsuEntidad(utilidades.encriptarASHA256(usuarioACrear.getContraseniaUsu()));
+		usuario.setContraseniaUsuEntidad(usuarioACrear.getContraseniaUsu());
 		usuario.setEsPremiumEntidad(usuarioACrear.getEsPremium());
 		usuario.setEsVerificadoEntidad(usuarioACrear.getEsVerificadoEntidad());
 

@@ -10,7 +10,6 @@ import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
-import edu.proyectoFinalAPI.utilidades.Util;
 
 /**
  * Clase donde se encuentra todos los metodos en relacion con el usuario
@@ -19,13 +18,6 @@ import edu.proyectoFinalAPI.utilidades.Util;
  */
 @Service
 public class UsuariosServicios {
-
-	/*
-	 * Inicializa la utilizacion de los metodos util
-	 *
-	 */
-	private Util metodosDeUtilidad = new Util();
-
 	/**
 	 * Método que llama a usuarioRepositorio que contiene por lo que se va a buscar
 	 * a los usuarios.
@@ -60,7 +52,7 @@ public class UsuariosServicios {
 		usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
 		usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
 		usuario.setCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
-		usuario.setContraseniaUsuEntidad(metodosDeUtilidad.encriptarASHA256(nuevoUsuarioDatos.getContraseniaUsu()));
+		usuario.setContraseniaUsuEntidad(nuevoUsuarioDatos.getContraseniaUsu());
 		usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
 		usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
 		usuario.setEsVerificadoEntidad(nuevoUsuarioDatos.getEsVerificadoEntidad());
@@ -92,8 +84,7 @@ public class UsuariosServicios {
 		}
 
 		// Verificar la contraseña
-		String contrasenaEncriptada = metodosDeUtilidad.encriptarASHA256(verificarUsu.getContraseniaUsu());
-		if (!usuarioEnt.getContraseniaUsuEntidad().equals(contrasenaEncriptada)) {
+		if (!usuarioEnt.getContraseniaUsuEntidad().equals(verificarUsu.getContraseniaUsu())) {
 			// Si la contraseña es incorrecta, retornar null
 			return null;
 		}
@@ -110,18 +101,19 @@ public class UsuariosServicios {
 	 */
 	public UsuarioPerfilDto modificarUsuario(UsuarioPerfilDto usuarioAModificar)
 			throws Exception, NullPointerException, IllegalArgumentException {
-		  if (usuarioAModificar == null) {
-		        throw new IllegalArgumentException("Datos de usuario incompletos. No hay usuario");
-		    }
+		if (usuarioAModificar == null) {
+			throw new IllegalArgumentException("Datos de usuario incompletos. No hay usuario");
+		}
 
-		    // Actualiza el usuario (la variable 'columnasCambiadas' se omite si no se utiliza)
-		    repositorioUsuario.actualizarUsuarioPorCorreo(usuarioAModificar);
+		// Actualiza el usuario (la variable 'columnasCambiadas' se omite si no se
+		// utiliza)
+		repositorioUsuario.actualizarUsuarioPorCorreo(usuarioAModificar);
 
-		    // Recupera y mapea el usuario de forma funcional
-		    return Optional.ofNullable(
-		            repositorioUsuario.findByCorreoElectronicoUsuEntidad(usuarioAModificar.getCorreoElectronicoUsu()))
-		            .map(this::devolverInformacionUsuarioPerfil)
-		            .orElse(null);
+		// Recupera y mapea el usuario de forma funcional
+		return Optional
+				.ofNullable(repositorioUsuario
+						.findByCorreoElectronicoUsuEntidad(usuarioAModificar.getCorreoElectronicoUsu()))
+				.map(this::devolverInformacionUsuarioPerfil).orElse(null);
 	}
 
 	/**
