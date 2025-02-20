@@ -21,6 +21,8 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> {
 
+	UsuarioEntidad findByIdUsuEntidad(Long idUsuEntidad);
+
 	UsuarioEntidad findByAliasUsuEntidad(String aliasUsuEntidad);
 
 	UsuarioEntidad findByCorreoElectronicoUsuEntidad(String correoElectronicoUsuEntidad);
@@ -51,4 +53,9 @@ public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> 
 			+ "WHERE u.correoElectronicoUsuEntidad = :#{#usuario.correoElectronicoUsu}")
 	int actualizarUsuarioCompletoPorCorreoComoAdmin(@Param("usuario") UsuarioPerfilDto usuario);
 
+	boolean existsByCorreoElectronicoUsuEntidad(String correoElectronico);
+
+	boolean existsByAliasUsuEntidadAndIdUsuEntidadNot(String alias, Long idUsu);
+
+	boolean existsByAliasUsuEntidad(String alias);
 }

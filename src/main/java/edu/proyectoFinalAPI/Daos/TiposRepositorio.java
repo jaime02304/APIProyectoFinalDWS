@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TiposRepositorio extends JpaRepository<TiposEntidad, Object> {
 
-	TiposEntidad findByNombreTipoAndNivelTipo(String nombreTipo, int nivelTipo);
+	TiposEntidad findByNombreTipo(String nombreTipo);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
 import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
@@ -500,18 +501,72 @@ public class controladorApi {
 	@PostMapping("/CrearGrupoComoAdmin")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response crearUnGrupoComAdmin(@RequestBody GruposDto grupoACrear) {
+	public Map<String, Object> crearUnGrupoComAdmin(@RequestBody GruposDto grupoACrear) {
+		Map<String, Object> response = new HashMap<>();
 		if (grupoACrear == null) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "El grupo a crear no puede ser nulo."))
-					.build();
+			response.put("error", "El grupo a crear no puede ser nulo.");
+			return response; // Devolver un mapa con el mensaje de error
 		}
 		try {
-			boolean creado = serviciosPerfil.crearGrupoComoAdministrador(grupoACrear);
+			GrupoEntidad grupoCreado = serviciosPerfil.crearGrupoComoAdministrador(grupoACrear);
+			GruposDto grupo = cambiaraDTO(grupoCreado);
+			response.put("grupo", grupo);
+		} catch (IllegalArgumentException e) {
+			response.put("error", "Argumento inválido: " + e.getMessage());
+			response.put("grupo", "");
+		} catch (Exception e) {
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+			response.put("grupo", "");
+		}
+		return response;
+	}
+
+	/**
+	 * Metodo privado para cambiar de entidad a dto el grupo
+	 * 
+	 * @author jpribio - 20/02/25
+	 * @param grupoCreado
+	 * @return
+	 */
+	private GruposDto cambiaraDTO(GrupoEntidad grupoCreado) {
+		GruposDto grupoDto = new GruposDto();
+		grupoDto.setIdGrupo(grupoCreado.getIdGrupo());
+		grupoDto.setNombreGrupo(grupoCreado.getNombreGrupo());
+		grupoDto.setCreadorUsuId(
+				grupoCreado.getCreadorUsuId() != null ? grupoCreado.getCreadorUsuId().getIdUsuEntidad() : null);
+		grupoDto.setAliasCreadorUString(
+				grupoCreado.getCreadorUsuId() != null ? grupoCreado.getCreadorUsuId().getAliasUsuEntidad() : null);
+		grupoDto.setNumeroUsuarios(grupoCreado.getNumeroUsuarios());
+		grupoDto.setFechaGrupo(grupoCreado.getFechaGrupo());
+		grupoDto.setCategoriaNombre(
+				grupoCreado.getCategoriaId() != null ? grupoCreado.getCategoriaId().getNombreTipo() : null);
+		grupoDto.setSubCategoriaNombre(
+				grupoCreado.getSubCategoriaId() != null ? grupoCreado.getSubCategoriaId().getNombreTipo() : null);
+		return grupoDto;
+	}
+
+	/**
+	 * Metodo que recoge los valores de un comentario e inserta en la base de datos
+	 * 
+	 * @author jpribio - 20/02/25
+	 * @param nuevoComentario
+	 * @return
+	 */
+	@PostMapping("/CrearComentarioPerfil")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response crearComentarioNuevo(@RequestBody ComentariosPerfilDto nuevoComentario) {
+		if (nuevoComentario == null) {
+			return Response.status(Status.BAD_REQUEST)
+					.entity(Map.of("error", "El comentario a crear no puede ser nulo.")).build();
+		}
+		try {
+			boolean creado = serviciosPerfil.crearNuevoComentario(nuevoComentario);
 			if (creado) {
-				return Response.ok(Map.of("message", "Grupo creado correctamente.")).build();
+				return Response.ok(Map.of("message", "Comentario creado correctamente.")).build();
 			} else {
 				return Response.status(Status.INTERNAL_SERVER_ERROR)
-						.entity(Map.of("error", "No se pudo crear el grupo.")).build();
+						.entity(Map.of("error", "No se pudo crear el comentario.")).build();
 			}
 		} catch (IllegalArgumentException e) {
 			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))

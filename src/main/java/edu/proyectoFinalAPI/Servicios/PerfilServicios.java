@@ -143,6 +143,9 @@ public class PerfilServicios {
 	 */
 	public Boolean eliminarElemento(EliminarElementoPerfilDto eliminarElemento)
 			throws IllegalArgumentException, Exception {
+		if (eliminarElemento == null) {
+			throw new IllegalArgumentException("El DTO de elemento no puede ser nulo.");
+		}
 		int filasAfectadas = 0;
 		if (eliminarElemento.isEsUsuarioEliminar()) {
 			filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar());
@@ -164,6 +167,13 @@ public class PerfilServicios {
 	 */
 	public boolean modificarUsuarioComoAdministrador(UsuarioPerfilDto usuarioAModificar)
 			throws IllegalArgumentException, Exception {
+		if (usuarioAModificar == null) {
+			throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
+		}
+		if (repositorioUsuario.existsByAliasUsuEntidadAndIdUsuEntidadNot(usuarioAModificar.getAliasUsu(),
+				usuarioAModificar.getIdUsu())) {
+			throw new IllegalArgumentException("El DTO de usuario ya existe");
+		}
 		int filasAfectadas = repositorioUsuario.actualizarUsuarioCompletoPorCorreoComoAdmin(usuarioAModificar);
 
 		return filasAfectadas > 0;
@@ -181,6 +191,13 @@ public class PerfilServicios {
 	 */
 	public boolean modificarGrupoComoAdministrador(GruposParaLasListasDto grupoAModificar)
 			throws IllegalArgumentException, Exception {
+		if (grupoAModificar == null) {
+			throw new IllegalArgumentException("El DTO de grupo no puede ser nulo.");
+		}
+		if (repositorioGrupo.existsByNombreGrupoAndIdGrupoNot(grupoAModificar.getNombreGrupo(),
+				grupoAModificar.getIdGrupo())) {
+			throw new IllegalArgumentException("El DTO de grupo ya existe.");
+		}
 		int filasAfectadas = repositorioGrupo.actualizarGrupoNombre(grupoAModificar)
 				+ repositorioGrupo.actualizarCategoria(grupoAModificar)
 				+ repositorioGrupo.actualizarSubCategoria(grupoAModificar);
@@ -197,6 +214,13 @@ public class PerfilServicios {
 	 * @throws Exception
 	 */
 	public boolean crearUsuarioComoAdministrador(UsuarioDto usuarioACrear) throws IllegalArgumentException, Exception {
+		if (usuarioACrear == null) {
+			throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
+		}
+		if (repositorioUsuario.existsByAliasUsuEntidad(usuarioACrear.getAliasUsu())
+				|| repositorioUsuario.existsByCorreoElectronicoUsuEntidad(usuarioACrear.getCorreoElectronicoUsu())) {
+			throw new IllegalArgumentException("El DTO de usuario ya existe");
+		}
 		UsuarioEntidad usuario = new UsuarioEntidad();
 
 		usuario.setNombreCompletoUsuEntidad(usuarioACrear.getNombreCompletoUsu());
@@ -226,38 +250,49 @@ public class PerfilServicios {
 	 * @throws IllegalArgumentException
 	 * @throws Exception
 	 */
-	public boolean crearGrupoComoAdministrador(GruposDto grupoACrear) throws IllegalArgumentException, Exception {
-		if (grupoACrear == null) {
-			throw new IllegalArgumentException("El DTO de grupo no puede ser nulo.");
-		}
-
+	public GrupoEntidad crearGrupoComoAdministrador(GruposDto grupoACrear) throws IllegalArgumentException, Exception {
 		GrupoEntidad grupo = new GrupoEntidad();
-
-		TiposEntidad categoria = repositorioTipos.findByNombreTipoAndNivelTipo(grupoACrear.getCategoriaNombre(), 1);
-		if (categoria == null) {
-			throw new IllegalArgumentException("La categoría especificada no existe.");
-		}
-
-		TiposEntidad subCategoria = repositorioTipos.findByNombreTipoAndNivelTipo(grupoACrear.getSubCategoriaNombre(),
-				2);
-		if (subCategoria == null) {
-			throw new IllegalArgumentException("La subcategoría especificada no existe.");
-		}
+		TiposEntidad categoria = repositorioTipos.findByNombreTipo(grupoACrear.getCategoriaNombre());
+		TiposEntidad subCategoria = repositorioTipos.findByNombreTipo(grupoACrear.getSubCategoriaNombre());
 		UsuarioEntidad creador = repositorioUsuario.findByAliasUsuEntidad(grupoACrear.getAliasCreadorUString());
-		if (creador == null) {
-			throw new IllegalArgumentException(
-					"El usuario creador con alias " + grupoACrear.getAliasCreadorUString() + " no existe.");
-		}
-
 		grupo.setNombreGrupo(grupoACrear.getNombreGrupo());
 		grupo.setNumeroUsuarios(grupoACrear.getNumeroUsuarios() != null ? grupoACrear.getNumeroUsuarios() : 0L);
 		grupo.setFechaGrupo(LocalDateTime.now());
 		grupo.setCategoriaId(categoria);
 		grupo.setSubCategoriaId(subCategoria);
 		grupo.setCreadorUsuId(creador);
-		GrupoEntidad grupoGuardado = repositorioGrupo.save(grupo);
-
-		return grupoGuardado != null && grupoGuardado.getIdGrupo() != null;
+		return repositorioGrupo.save(grupo);
 	}
 
+	/**
+	 * Metodo que inserta en la base de datos el comentario del usuario
+	 * 
+	 * @author jpribio - 20/02/25
+	 * @param nuevoComentario
+	 * @return
+	 * @throws IllegalArgumentException
+	 * @throws Exception
+	 */
+	public boolean crearNuevoComentario(ComentariosPerfilDto nuevoComentario)
+			throws IllegalArgumentException, Exception {
+		if (nuevoComentario == null) {
+			throw new IllegalArgumentException("El DTO de grupo no puede ser nulo.");
+		}
+
+		ComentariosEntidad comentario = new ComentariosEntidad();
+		TiposEntidad categoria = repositorioTipos.findByNombreTipo(nuevoComentario.getCategoriaTipo());
+		TiposEntidad subCategoria = repositorioTipos.findByNombreTipo(nuevoComentario.getSubCategoriaTipo());
+		UsuarioEntidad creador = repositorioUsuario.findByIdUsuEntidad(nuevoComentario.getIdUsuario());
+		// Mapear los campos del DTO a la entidad.
+		comentario.setComentarioTexto(nuevoComentario.getComentarioTexto());
+		comentario.setFechaComentario(LocalDateTime.now());
+		comentario.setUsuarioId(creador);
+		comentario.setCategoriaId(categoria);
+		comentario.setSubCategoriaId(subCategoria);
+
+		// Persistir la entidad.
+		ComentariosEntidad comentarioGuardado = repositorioComentariorepositorio.save(comentario);
+
+		return comentarioGuardado != null && comentarioGuardado.getIdComentario() != null;
+	}
 }

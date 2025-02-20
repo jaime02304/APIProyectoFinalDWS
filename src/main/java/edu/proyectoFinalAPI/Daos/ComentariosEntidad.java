@@ -28,10 +28,6 @@ public class ComentariosEntidad {
 	@Column(name = "comentario")
 	private String comentarioTexto = "aaaaa";
 
-	@Lob
-	@Column(name = "archivo_comentario")
-	private byte[] archivoComentario;
-
 	@Column(name = "fecha_comentario")
 	private LocalDateTime fechaComentario = LocalDateTime.now();
 
@@ -84,14 +80,6 @@ public class ComentariosEntidad {
 
 	public void setComentarioTexto(String comentarioTexto) {
 		this.comentarioTexto = comentarioTexto;
-	}
-
-	public byte[] getArchivoComentario() {
-		return archivoComentario;
-	}
-
-	public void setArchivoComentario(byte[] archivoComentario) {
-		this.archivoComentario = archivoComentario;
 	}
 
 	public UsuarioEntidad getUsuarioId() {

@@ -55,4 +55,8 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 			+ "WHERE g.idGrupo = :#{#grupo.idGrupo}")
 	int actualizarSubCategoria(@Param("grupo") GruposParaLasListasDto grupo);
 
+	boolean existsByNombreGrupo(String nombreGrupo);
+
+	boolean existsByNombreGrupoAndIdGrupoNot(String nombreGrupo, Long idGrupo);
+
 }
