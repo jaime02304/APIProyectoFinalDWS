@@ -359,30 +359,24 @@ public class controladorApi {
 	@PostMapping("/EliminarElemento")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response eliminarElementoComoAdmin(@RequestBody EliminarElementoPerfilDto elementoAEliminar) {
+	public Map<String, Object> eliminarElementoComoAdmin(@RequestBody EliminarElementoPerfilDto elementoAEliminar) {
 		if (elementoAEliminar == null) {
-			return Response.status(Status.BAD_REQUEST)
-					.entity(Map.of("error", "El elemento a eliminar no puede ser nulo.")).build();
+			return Map.of("error", "El elemento a eliminar no puede ser nulo.");
 		}
 
 		try {
-			// Aquí deberías llamar a la lógica de negocio o servicio que realice la
-			// eliminación.
-			// Por ejemplo:
+			// Llamada a la lógica de negocio para eliminar el elemento.
 			boolean eliminado = serviciosPerfil.eliminarElemento(elementoAEliminar);
 
 			if (eliminado) {
-				return Response.ok(Map.of("message", "Elemento eliminado correctamente.")).build();
+				return Map.of("message", "Elemento eliminado correctamente.");
 			} else {
-				return Response.status(Status.INTERNAL_SERVER_ERROR)
-						.entity(Map.of("error", "No se pudo eliminar el elemento.")).build();
+				return Map.of("error", "No se pudo eliminar el elemento.");
 			}
 		} catch (IllegalArgumentException e) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
-					.build();
+			return Map.of("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR)
-					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
 	}
 
