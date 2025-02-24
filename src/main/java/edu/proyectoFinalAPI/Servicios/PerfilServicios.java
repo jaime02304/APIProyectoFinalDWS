@@ -167,15 +167,11 @@ public class PerfilServicios {
 	 */
 	public boolean modificarUsuarioComoAdministrador(UsuarioPerfilDto usuarioAModificar)
 			throws IllegalArgumentException, Exception {
-		if (usuarioAModificar == null) {
-			throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
-		}
 		if (repositorioUsuario.existsByAliasUsuEntidadAndIdUsuEntidadNot(usuarioAModificar.getAliasUsu(),
 				usuarioAModificar.getIdUsu())) {
-			throw new IllegalArgumentException("El DTO de usuario ya existe");
+			return false;
 		}
 		int filasAfectadas = repositorioUsuario.actualizarUsuarioCompletoPorCorreoComoAdmin(usuarioAModificar);
-
 		return filasAfectadas > 0;
 	}
 
@@ -191,17 +187,13 @@ public class PerfilServicios {
 	 */
 	public boolean modificarGrupoComoAdministrador(GruposParaLasListasDto grupoAModificar)
 			throws IllegalArgumentException, Exception {
-		if (grupoAModificar == null) {
-			throw new IllegalArgumentException("El DTO de grupo no puede ser nulo.");
-		}
 		if (repositorioGrupo.existsByNombreGrupoAndIdGrupoNot(grupoAModificar.getNombreGrupo(),
 				grupoAModificar.getIdGrupo())) {
-			throw new IllegalArgumentException("El DTO de grupo ya existe.");
+			return false;
 		}
 		int filasAfectadas = repositorioGrupo.actualizarGrupoNombre(grupoAModificar)
 				+ repositorioGrupo.actualizarCategoria(grupoAModificar)
 				+ repositorioGrupo.actualizarSubCategoria(grupoAModificar);
-
 		return filasAfectadas > 0;
 	}
 
@@ -214,15 +206,10 @@ public class PerfilServicios {
 	 * @throws Exception
 	 */
 	public boolean crearUsuarioComoAdministrador(UsuarioDto usuarioACrear) throws IllegalArgumentException, Exception {
-		if (usuarioACrear == null) {
-			throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
-		}
-		if (repositorioUsuario.existsByAliasUsuEntidad(usuarioACrear.getAliasUsu())
-				|| repositorioUsuario.existsByCorreoElectronicoUsuEntidad(usuarioACrear.getCorreoElectronicoUsu())) {
-			throw new IllegalArgumentException("El DTO de usuario ya existe");
+		if (repositorioUsuario.existsByAliasUsuEntidad(usuarioACrear.getAliasUsu())) {
+			return false; // Alias ya existe, no se crea el usuario
 		}
 		UsuarioEntidad usuario = new UsuarioEntidad();
-
 		usuario.setNombreCompletoUsuEntidad(usuarioACrear.getNombreCompletoUsu());
 		usuario.setAliasUsuEntidad(usuarioACrear.getAliasUsu());
 		usuario.setCorreoElectronicoUsuEntidad(usuarioACrear.getCorreoElectronicoUsu());
@@ -232,12 +219,8 @@ public class PerfilServicios {
 		usuario.setContraseniaUsuEntidad(usuarioACrear.getContraseniaUsu());
 		usuario.setEsPremiumEntidad(usuarioACrear.getEsPremium());
 		usuario.setEsVerificadoEntidad(usuarioACrear.getEsVerificadoEntidad());
-
-		// Se guarda la entidad en la base de datos
 		UsuarioEntidad usuarioGuardado = repositorioUsuario.save(usuario);
 
-		// Se considera exitosa la inserción si la entidad guardada no es nula y tiene
-		// un ID asignado.
 		return usuarioGuardado != null && usuarioGuardado.getIdUsuEntidad() != null;
 	}
 
@@ -273,12 +256,8 @@ public class PerfilServicios {
 	 * @throws IllegalArgumentException
 	 * @throws Exception
 	 */
-	public boolean crearNuevoComentario(ComentariosPerfilDto nuevoComentario)
+	public ComentariosEntidad crearNuevoComentario(ComentariosPerfilDto nuevoComentario)
 			throws IllegalArgumentException, Exception {
-		if (nuevoComentario == null) {
-			throw new IllegalArgumentException("El DTO de grupo no puede ser nulo.");
-		}
-
 		ComentariosEntidad comentario = new ComentariosEntidad();
 		TiposEntidad categoria = repositorioTipos.findByNombreTipo(nuevoComentario.getCategoriaTipo());
 		TiposEntidad subCategoria = repositorioTipos.findByNombreTipo(nuevoComentario.getSubCategoriaTipo());
@@ -289,10 +268,6 @@ public class PerfilServicios {
 		comentario.setUsuarioId(creador);
 		comentario.setCategoriaId(categoria);
 		comentario.setSubCategoriaId(subCategoria);
-
-		// Persistir la entidad.
-		ComentariosEntidad comentarioGuardado = repositorioComentariorepositorio.save(comentario);
-
-		return comentarioGuardado != null && comentarioGuardado.getIdComentario() != null;
+		return repositorioComentariorepositorio.save(comentario);
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.proyectoFinalAPI.Daos.ComentariosEntidad;
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
@@ -360,24 +361,21 @@ public class controladorApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> eliminarElementoComoAdmin(@RequestBody EliminarElementoPerfilDto elementoAEliminar) {
+		Map<String, Object> respuesta = new HashMap<>();
 		if (elementoAEliminar == null) {
 			return Map.of("error", "El elemento a eliminar no puede ser nulo.");
 		}
-
 		try {
-			// Llamada a la lógica de negocio para eliminar el elemento.
 			boolean eliminado = serviciosPerfil.eliminarElemento(elementoAEliminar);
-
-			if (eliminado) {
-				return Map.of("message", "Elemento eliminado correctamente.");
-			} else {
-				return Map.of("error", "No se pudo eliminar el elemento.");
-			}
+			respuesta.put("message",
+					eliminado ? "Elemento eliminado correctamente." : "No se pudo eliminar el elemento.");
 		} catch (IllegalArgumentException e) {
-			return Map.of("error", "Argumento inválido: " + e.getMessage());
+			respuesta.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
-			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
+			respuesta.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
+
+		return respuesta;
 	}
 
 	/**
@@ -390,29 +388,23 @@ public class controladorApi {
 	@PostMapping("/ModificarUsuarioComoAdmin")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response modificarUsuarioComoAdministrador(@RequestBody UsuarioPerfilDto usuarioAModificar) {
+	public Map<String, String> modificarUsuarioComoAdministrador(@RequestBody UsuarioPerfilDto usuarioAModificar) {
+		Map<String, String> respuesta = new HashMap<>();
 		if (usuarioAModificar == null) {
-			return Response.status(Status.BAD_REQUEST)
-					.entity(Map.of("error", "El usuario a modificar no puede ser nulo.")).build();
+			respuesta.put("error", "El usuario a modificar no puede ser nulo.");
+			return respuesta;
 		}
-
 		try {
 			// Llamada a la lógica de negocio o servicio que realiza la modificación.
 			boolean modificado = serviciosPerfil.modificarUsuarioComoAdministrador(usuarioAModificar);
-
-			if (modificado) {
-				return Response.ok(Map.of("message", "Usuario modificado correctamente.")).build();
-			} else {
-				return Response.status(Status.INTERNAL_SERVER_ERROR)
-						.entity(Map.of("error", "No se pudo modificar el usuario.")).build();
-			}
+			respuesta.put("message",
+					modificado ? "Usuario modificado correctamente." : "No se pudo modificar el usuario.");
 		} catch (IllegalArgumentException e) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
-					.build();
+			respuesta.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR)
-					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+			respuesta.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
+		return respuesta;
 	}
 
 	/**
@@ -425,29 +417,23 @@ public class controladorApi {
 	@PostMapping("/ModificarGrupoComoAdmin")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response modificarGrupoComoAdministrador(@RequestBody GruposParaLasListasDto grupoAMNodificar) {
+	public Map<String, Object> modificarGrupoComoAdministrador(@RequestBody GruposParaLasListasDto grupoAMNodificar) {
+		Map<String, Object> respuesta = new HashMap<>();
 		if (grupoAMNodificar == null) {
-			return Response.status(Status.BAD_REQUEST)
-					.entity(Map.of("error", "El grupo a modificar no puede ser nulo.")).build();
+			respuesta.put("error", "El grupo a modificar no puede ser nulo.");
+			return respuesta;
 		}
-
 		try {
 			// Llamada a la lógica de negocio o servicio que realiza la modificación.
 			boolean modificado = serviciosPerfil.modificarGrupoComoAdministrador(grupoAMNodificar);
-
-			if (modificado) {
-				return Response.ok(Map.of("message", "Grupo modificado correctamente.")).build();
-			} else {
-				return Response.status(Status.INTERNAL_SERVER_ERROR)
-						.entity(Map.of("error", "No se pudo modificar el grupo.")).build();
-			}
+			respuesta.put("message", modificado ? "Grupo modificado correctamente." : "No se pudo modificar el grupo.");
 		} catch (IllegalArgumentException e) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
-					.build();
+			respuesta.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR)
-					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+			respuesta.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
+
+		return respuesta;
 	}
 
 	/**
@@ -460,29 +446,22 @@ public class controladorApi {
 	@PostMapping("/CrearUsuarioComoAdmin")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response crearUnUsuarioComAdmin(@RequestBody UsuarioDto usuarioACrear) {
-		if (usuarioACrear == null) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "El usuario a crear no puede ser nulo."))
-					.build();
-		}
-
+	public Map<String, Object> crearUnUsuarioComAdmin(@RequestBody UsuarioDto usuarioACrear) {
+		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Llamada a la lógica de negocio o servicio que realiza la creación del usuario
-			boolean creado = serviciosPerfil.crearUsuarioComoAdministrador(usuarioACrear);
-
-			if (creado) {
-				return Response.ok(Map.of("message", "Usuario creado correctamente.")).build();
-			} else {
-				return Response.status(Status.INTERNAL_SERVER_ERROR)
-						.entity(Map.of("error", "No se pudo crear el usuario.")).build();
+			if (usuarioACrear == null) {
+				respuesta.put("error", "El usuario a crear no puede ser nulo.");
+				return respuesta;
 			}
+			boolean creado = serviciosPerfil.crearUsuarioComoAdministrador(usuarioACrear);
+			respuesta.put("message", creado ? "Usuario creado correctamente." : "No se pudo crear el usuario.");
 		} catch (IllegalArgumentException e) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
-					.build();
+			respuesta.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR)
-					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+			respuesta.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
+
+		return respuesta;
 	}
 
 	/**
@@ -549,26 +528,40 @@ public class controladorApi {
 	@PostMapping("/CrearComentarioPerfil")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response crearComentarioNuevo(@RequestBody ComentariosPerfilDto nuevoComentario) {
-		if (nuevoComentario == null) {
-			return Response.status(Status.BAD_REQUEST)
-					.entity(Map.of("error", "El comentario a crear no puede ser nulo.")).build();
-		}
+	public Map<String, Object> crearComentarioNuevo(@RequestBody ComentariosPerfilDto nuevoComentario) {
+		Map<String, Object> response = new HashMap<>();
+
 		try {
-			boolean creado = serviciosPerfil.crearNuevoComentario(nuevoComentario);
-			if (creado) {
-				return Response.ok(Map.of("message", "Comentario creado correctamente.")).build();
-			} else {
-				return Response.status(Status.INTERNAL_SERVER_ERROR)
-						.entity(Map.of("error", "No se pudo crear el comentario.")).build();
-			}
+			// Intentar crear el nuevo comentario
+			ComentariosEntidad comentarioCreado = serviciosPerfil.crearNuevoComentario(nuevoComentario);
+
+			// Convertir el comentario creado a DTO
+			ComentariosPerfilDto comentarioDto = convertirAComentarioDTO(comentarioCreado);
+			response.put("comentario", comentarioDto);
+			response.put("message", "Comentario creado correctamente."); // Mensaje de éxito
+
 		} catch (IllegalArgumentException e) {
-			return Response.status(Status.BAD_REQUEST).entity(Map.of("error", "Argumento inválido: " + e.getMessage()))
-					.build();
+			response.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR)
-					.entity(Map.of("error", "Ocurrió un error inesperado: " + e.getMessage())).build();
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
+
+		return response;
+	}
+
+	/**
+	 * Método privado para cambiar de entidad a DTO el comentario
+	 * 
+	 * @param comentarioCreado
+	 * @return
+	 */
+	private ComentariosPerfilDto convertirAComentarioDTO(ComentariosEntidad comentarioCreado) {
+		ComentariosPerfilDto comentarioDto = new ComentariosPerfilDto();
+		comentarioDto.setComentarioTexto(comentarioCreado.getComentarioTexto());
+		comentarioDto.setIdUsuario(comentarioCreado.getUsuarioId().getIdUsuEntidad());
+		comentarioDto.setCategoriaTipo(comentarioCreado.getCategoriaId().getNombreTipo());
+		comentarioDto.setSubCategoriaTipo(comentarioCreado.getSubCategoriaId().getNombreTipo());
+		return comentarioDto;
 	}
 
 	/**
