@@ -28,8 +28,6 @@ import edu.proyectoFinalAPI.Servicios.UsuariosServicios;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.Status;
 
 /**
  * Controlador principal de la APi donde tiene las rutas de los metodos de la

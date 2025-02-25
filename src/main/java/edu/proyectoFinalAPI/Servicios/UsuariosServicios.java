@@ -104,12 +104,7 @@ public class UsuariosServicios {
 		if (usuarioAModificar == null) {
 			throw new IllegalArgumentException("Datos de usuario incompletos. No hay usuario");
 		}
-
-		// Actualiza el usuario (la variable 'columnasCambiadas' se omite si no se
-		// utiliza)
 		repositorioUsuario.actualizarUsuarioPorCorreo(usuarioAModificar);
-
-		// Recupera y mapea el usuario de forma funcional
 		return Optional
 				.ofNullable(repositorioUsuario
 						.findByCorreoElectronicoUsuEntidad(usuarioAModificar.getCorreoElectronicoUsu()))

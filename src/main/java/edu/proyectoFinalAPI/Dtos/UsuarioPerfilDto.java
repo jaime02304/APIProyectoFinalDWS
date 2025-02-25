@@ -1,5 +1,8 @@
 package edu.proyectoFinalAPI.Dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 /**
  * Atributos donde tiene la indormacion para que aparezca en la pagina de perfil
  * 
@@ -12,6 +15,7 @@ public class UsuarioPerfilDto {
 	private String aliasUsu = "aaaaa";
 	private String correoElectronicoUsu = "aaaaa";
 	private int movilUsu = 0;
+	@JsonFormat(shape = Shape.STRING)
 	private byte[] fotoUsu;
 	private Boolean esPremium = false;
 	private String rolUsu = "user";
