@@ -1,6 +1,7 @@
 package edu.proyectoFinalAPI.Servicios;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,7 +130,15 @@ public class UsuariosServicios {
 		usuarioPerfil.setEsPremium(nuevoUsuarioGuardado.getEsPremiumEntidad());
 		usuarioPerfil.setEsVerificadoEntidad(nuevoUsuarioGuardado.getEsVerificadoEntidad());
 		usuarioPerfil.setRolUsu(nuevoUsuarioGuardado.getRolUsuEntidad());
-		// usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
+		usuarioPerfil.setFotoUsu(nuevoUsuarioGuardado.getFotoUsuEntidad());
+		byte[] fotoBytes = nuevoUsuarioGuardado.getFotoUsuEntidad();
+		usuarioPerfil.setFotoUsu(fotoBytes);
+		if (fotoBytes != null && fotoBytes.length > 0) {
+			String fotoBase64 = Base64.getEncoder().encodeToString(fotoBytes);
+			usuarioPerfil.setFotoString(fotoBase64);
+		} else {
+			usuarioPerfil.setFotoString(null);
+		}
 		return usuarioPerfil;
 	}
 }

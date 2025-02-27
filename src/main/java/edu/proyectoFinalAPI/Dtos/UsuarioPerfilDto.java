@@ -15,6 +15,7 @@ public class UsuarioPerfilDto {
 	private String aliasUsu = "aaaaa";
 	private String correoElectronicoUsu = "aaaaa";
 	private int movilUsu = 0;
+	private String fotoString = "";
 	@JsonFormat(shape = Shape.STRING)
 	private byte[] fotoUsu;
 	private Boolean esPremium = false;
@@ -22,6 +23,15 @@ public class UsuarioPerfilDto {
 	private Boolean esVerificadoEntidad = false;
 
 	// Getter y setter
+
+	public String getFotoString() {
+		return fotoString;
+	}
+
+	public void setFotoString(String fotoString) {
+		this.fotoString = fotoString;
+	}
+
 	public Boolean getEsVerificadoEntidad() {
 		return esVerificadoEntidad;
 	}

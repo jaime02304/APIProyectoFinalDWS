@@ -38,7 +38,7 @@ public class UsuarioEntidad {
 	private String rolUsuEntidad;
 
 	@Lob
-	@Column(name = "foto_usu")
+	@Column(name = "foto_usu", columnDefinition = "LongBlob")
 	private byte[] fotoUsuEntidad;
 
 	@Column(name = "contrasenia_usu")
