@@ -1,6 +1,7 @@
 package edu.proyectoFinalAPI.Servicios;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -94,10 +95,17 @@ public class PerfilServicios {
 			usuario.setCorreoElectronicoUsu(usuarioEntidad.getCorreoElectronicoUsuEntidad());
 			usuario.setEsPremium(usuarioEntidad.getEsPremiumEntidad());
 			usuario.setEsVerificadoEntidad(usuarioEntidad.getEsVerificadoEntidad());
-			usuario.setFotoUsu(usuarioEntidad.getFotoUsuEntidad());
 			usuario.setMovilUsu(usuarioEntidad.getMovilUsuEntidad());
 			usuario.setNombreCompletoUsu(usuarioEntidad.getNombreCompletoUsuEntidad());
 			usuario.setRolUsu(usuarioEntidad.getRolUsuEntidad());
+			byte[] fotoBytes = usuarioEntidad.getFotoUsuEntidad();
+			usuario.setFotoUsu(fotoBytes);
+			if (fotoBytes != null && fotoBytes.length > 0) {
+				String fotoBase64 = Base64.getEncoder().encodeToString(fotoBytes);
+				usuario.setFotoString(fotoBase64);
+			} else {
+				usuario.setFotoString(null);
+			}
 			return usuario;
 		}).collect(Collectors.toList());
 	}
@@ -126,10 +134,17 @@ public class PerfilServicios {
 			usuario.setCorreoElectronicoUsu(usuarioEntidad.getCorreoElectronicoUsuEntidad());
 			usuario.setEsPremium(usuarioEntidad.getEsPremiumEntidad());
 			usuario.setEsVerificadoEntidad(usuarioEntidad.getEsVerificadoEntidad());
-			usuario.setFotoUsu(usuarioEntidad.getFotoUsuEntidad());
 			usuario.setMovilUsu(usuarioEntidad.getMovilUsuEntidad());
 			usuario.setNombreCompletoUsu(usuarioEntidad.getNombreCompletoUsuEntidad());
 			usuario.setRolUsu(usuarioEntidad.getRolUsuEntidad());
+			byte[] fotoBytes = usuarioEntidad.getFotoUsuEntidad();
+			usuario.setFotoUsu(fotoBytes);
+			if (fotoBytes != null && fotoBytes.length > 0) {
+				String fotoBase64 = Base64.getEncoder().encodeToString(fotoBytes);
+				usuario.setFotoString(fotoBase64);
+			} else {
+				usuario.setFotoString(null);
+			}
 			return usuario;
 		}).collect(Collectors.toList());
 	}
