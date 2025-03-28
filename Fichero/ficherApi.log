@@ -1,0 +1,508 @@
+2025-03-28 17:42:08 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 13324 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-03-28 17:42:08 - No active profile set, falling back to 1 default profile: "default"
+2025-03-28 17:42:09 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 17:42:09 - Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2025-03-28 17:42:09 - Tomcat initialized with port 8081 (http)
+2025-03-28 17:42:09 - Starting service [Tomcat]
+2025-03-28 17:42:09 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-28 17:42:09 - Initializing Spring embedded WebApplicationContext
+2025-03-28 17:42:09 - Root WebApplicationContext: initialization completed in 1187 ms
+2025-03-28 17:42:09 - HikariPool-1 - Starting...
+2025-03-28 17:42:10 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@afde064
+2025-03-28 17:42:10 - HikariPool-1 - Start completed.
+2025-03-28 17:42:10 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-28 17:42:11 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-28 17:42:11 - HHH000026: Second-level cache disabled
+2025-03-28 17:42:11 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 17:42:11 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.4.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-28 17:42:12 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 17:42:12 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 17:42:12 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 17:42:13 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 17:42:13 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-03-28 17:42:13 - Tomcat started on port 8081 (http) with context path '/'
+2025-03-28 17:42:13 - Started ProyectoFinalApiApplication in 5.466 seconds (process running for 6.039)
+2025-03-28 17:46:23 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-28 17:46:23 - Initializing Servlet 'dispatcherServlet'
+2025-03-28 17:46:23 - Completed initialization in 1 ms
+2025-03-28 17:46:23 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 17:46:24 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 17:49:27 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@116aa8d
+2025-03-28 17:49:28 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@3eae6b3
+2025-03-28 17:49:28 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 17:49:28 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 17:49:30 - Solicitud para obtener todos los grupos.
+2025-03-28 17:49:31 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 17:49:31 - Solicitud para obtener todos los usuarios.
+2025-03-28 17:49:31 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 17:55:31 - Solicitud para obtener todos los grupos.
+2025-03-28 17:55:32 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 17:55:32 - Solicitud para obtener todos los usuarios.
+2025-03-28 17:55:33 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 17:56:03 - Solicitud para obtener todos los grupos.
+2025-03-28 17:56:05 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 17:56:05 - Solicitud para obtener todos los usuarios.
+2025-03-28 17:56:05 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 17:57:20 - Solicitud para obtener todos los grupos.
+2025-03-28 17:57:21 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 17:57:21 - Solicitud para obtener todos los usuarios.
+2025-03-28 17:57:22 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 17:59:31 - Solicitud para obtener todos los grupos.
+2025-03-28 17:59:32 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 17:59:32 - Solicitud para obtener todos los usuarios.
+2025-03-28 17:59:32 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:01:42 - Solicitud para obtener todos los grupos.
+2025-03-28 18:01:44 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:01:44 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:01:44 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:03:42 - Solicitud para obtener todos los grupos.
+2025-03-28 18:03:44 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:03:44 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:03:44 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:05:22 - Solicitud para obtener todos los grupos.
+2025-03-28 18:05:23 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:05:23 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:05:23 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:07:02 - Solicitud para obtener todos los grupos.
+2025-03-28 18:07:04 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:07:04 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:07:04 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:08:57 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:08:58 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:09:03 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@1a46fd10
+2025-03-28 18:09:03 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@76e7f5e4
+2025-03-28 18:09:03 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:09:04 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:09:08 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@8903dc5
+2025-03-28 18:09:08 - Se encontraron 1 grupos para el usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@8903dc5.
+2025-03-28 18:09:08 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@af3890
+2025-03-28 18:09:09 - Comentario obtenido exitosamente para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@af3890
+2025-03-28 18:09:43 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@40ddad74
+2025-03-28 18:09:43 - Se encontraron 1 grupos para el usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@40ddad74.
+2025-03-28 18:09:43 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7173052
+2025-03-28 18:09:43 - Comentario obtenido exitosamente para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7173052
+2025-03-28 18:11:16 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@3531f141
+2025-03-28 18:11:17 - Se encontraron 1 grupos para el usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@3531f141.
+2025-03-28 18:11:17 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@4e81d04f
+2025-03-28 18:11:17 - Comentario obtenido exitosamente para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@4e81d04f
+2025-03-28 18:11:28 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:11:29 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:11:35 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@34f558c5
+2025-03-28 18:11:45 - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@525d8266 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-03-28 18:11:55 - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@64f7917b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-03-28 18:11:59 - Application shutdown requested.
+2025-03-28 18:11:59 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-28 18:12:02 - Application shutdown requested.
+2025-03-28 18:12:05 - Application shutdown requested.
+2025-03-28 18:12:05 - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@884d4bb (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-03-28 18:12:05 - SQL Error: 0, SQLState: 08003
+2025-03-28 18:12:05 - HikariPool-1 - Connection is not available, request timed out after 30055ms (total=8, active=0, idle=8, waiting=0)
+2025-03-28 18:12:05 - No operations allowed after connection closed.
+2025-03-28 18:12:05 - Error inesperado durante el inicio de sesión: Unable to acquire JDBC Connection [HikariPool-1 - Connection is not available, request timed out after 30055ms (total=8, active=0, idle=8, waiting=0)] [n/a]
+org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection [HikariPool-1 - Connection is not available, request timed out after 30055ms (total=8, active=0, idle=8, waiting=0)] [n/a]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:274)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.findByCorreoElectronicoUsuEntidad(Unknown Source)
+	at edu.proyectoFinalAPI.Servicios.UsuariosServicios.inicioSesionUsu(UsuariosServicios.java:80)
+	at edu.proyectoFinalAPI.controlador.controladorApi.inicioSesionUsuario(controladorApi.java:103)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to acquire JDBC Connection [HikariPool-1 - Connection is not available, request timed out after 30055ms (total=8, active=0, idle=8, waiting=0)] [n/a]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:51)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:129)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.getPhysicalConnection(LogicalConnectionManagedImpl.java:156)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.connection(StatementPreparerImpl.java:56)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$4.doPrepare(StatementPreparerImpl.java:151)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:180)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:153)
+	at org.hibernate.sql.exec.internal.StandardStatementCreator.createStatement(StandardStatementCreator.java:49)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:235)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:171)
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.<init>(JdbcValuesResultSetImpl.java:74)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource(JdbcSelectExecutorStandardImpl.java:355)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:137)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102)
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91)
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:152)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:442)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:362)
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380)
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143)
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:275)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:224)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:93)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:170)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	... 55 common frames omitted
+Caused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30055ms (total=8, active=0, idle=8, waiting=0)
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:686)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:179)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:144)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:127)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126)
+	at org.hibernate.internal.NonContextualJdbcConnectionAccess.obtainConnection(NonContextualJdbcConnectionAccess.java:46)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:126)
+	... 90 common frames omitted
+Caused by: java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:102)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:81)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:55)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:65)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setNetworkTimeout(ConnectionImpl.java:2779)
+	at com.zaxxer.hikari.pool.PoolBase.setNetworkTimeout(PoolBase.java:562)
+	at com.zaxxer.hikari.pool.PoolBase.isConnectionDead(PoolBase.java:169)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:168)
+	... 95 common frames omitted
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:929)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:565)
+	at com.mysql.cj.jdbc.ConnectionImpl.setNetworkTimeout(ConnectionImpl.java:2773)
+	... 98 common frames omitted
+2025-03-28 18:12:05 - Graceful shutdown complete
+2025-03-28 18:12:05 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 18:12:05 - HikariPool-1 - Shutdown initiated...
+2025-03-28 18:12:14 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 3472 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-03-28 18:12:14 - No active profile set, falling back to 1 default profile: "default"
+2025-03-28 18:12:15 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 18:12:15 - Finished Spring Data repository scanning in 42 ms. Found 4 JPA repository interfaces.
+2025-03-28 18:12:15 - Tomcat initialized with port 8081 (http)
+2025-03-28 18:12:15 - Starting service [Tomcat]
+2025-03-28 18:12:15 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-28 18:12:15 - Initializing Spring embedded WebApplicationContext
+2025-03-28 18:12:15 - Root WebApplicationContext: initialization completed in 898 ms
+2025-03-28 18:12:15 - HikariPool-1 - Starting...
+2025-03-28 18:12:16 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@723e3c17
+2025-03-28 18:12:16 - HikariPool-1 - Start completed.
+2025-03-28 18:12:16 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-28 18:12:16 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-28 18:12:16 - HHH000026: Second-level cache disabled
+2025-03-28 18:12:17 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 18:12:17 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.4.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-28 18:12:18 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 18:12:18 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 18:12:18 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 18:12:18 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 18:12:18 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-03-28 18:12:19 - Tomcat started on port 8081 (http) with context path '/'
+2025-03-28 18:12:19 - Started ProyectoFinalApiApplication in 4.682 seconds (process running for 5.164)
+2025-03-28 18:12:41 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-28 18:12:41 - Initializing Servlet 'dispatcherServlet'
+2025-03-28 18:12:41 - Completed initialization in 0 ms
+2025-03-28 18:12:41 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:12:42 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:12:49 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@1d177fc8
+2025-03-28 18:12:49 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@2e8418b8
+2025-03-28 18:12:49 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:12:50 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:12:52 - Solicitud para obtener todos los grupos.
+2025-03-28 18:12:53 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:12:53 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:12:53 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:16:05 - Solicitud para obtener todos los grupos.
+2025-03-28 18:16:06 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:16:06 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:16:06 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:19:42 - Solicitud para obtener todos los grupos.
+2025-03-28 18:19:43 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:19:43 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:19:44 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:20:34 - Solicitud para obtener todos los grupos.
+2025-03-28 18:20:35 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:20:35 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:20:35 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:21:42 - Solicitud para obtener todos los grupos.
+2025-03-28 18:21:44 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:21:44 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:21:44 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:24:12 - Solicitud para obtener todos los grupos.
+2025-03-28 18:24:13 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:24:14 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:24:14 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:24:42 - Solicitud para obtener todos los grupos.
+2025-03-28 18:24:43 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:24:43 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:24:44 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:26:38 - Solicitud para obtener todos los grupos.
+2025-03-28 18:26:40 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:26:40 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:26:40 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:27:01 - Solicitud para obtener todos los grupos.
+2025-03-28 18:27:02 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:27:02 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:27:03 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:27:26 - Solicitud para obtener todos los grupos.
+2025-03-28 18:27:28 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:27:28 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:27:28 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:27:44 - Solicitud para obtener todos los grupos.
+2025-03-28 18:27:45 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:27:45 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:27:45 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:28:56 - Solicitud para obtener todos los grupos.
+2025-03-28 18:28:57 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:28:57 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:28:57 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:32:15 - Solicitud para obtener todos los grupos.
+2025-03-28 18:32:17 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:32:17 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:32:17 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:33:24 - Solicitud para modificar usuario como administrador: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@18899a20
+2025-03-28 18:33:24 - Usuario modificado correctamente: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@18899a20
+2025-03-28 18:33:25 - Solicitud para obtener todos los grupos.
+2025-03-28 18:33:27 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:33:27 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:33:27 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:33:30 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:33:31 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:33:38 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@62c0e82d
+2025-03-28 18:33:38 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7de535b
+2025-03-28 18:33:38 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:33:39 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:33:40 - Solicitud para obtener todos los grupos.
+2025-03-28 18:33:41 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:33:41 - Solicitud para obtener todos los usuarios con rol 'User'.
+2025-03-28 18:33:41 - Se encontraron 5 usuarios con rol 'User'.
+2025-03-28 18:33:48 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:33:49 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:33:55 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@2c297efd
+2025-03-28 18:33:56 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@24bf89d1
+2025-03-28 18:33:56 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:33:57 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:34:07 - Solicitud para obtener todos los grupos.
+2025-03-28 18:34:08 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:34:08 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:34:09 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:38:57 - Solicitud para obtener todos los grupos.
+2025-03-28 18:38:59 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:38:59 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:38:59 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:49:34 - Solicitud para obtener todos los grupos.
+2025-03-28 18:49:35 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:49:35 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:49:36 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:50:14 - Solicitud para obtener todos los grupos.
+2025-03-28 18:50:15 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:50:15 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:50:15 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:54:03 - Solicitud para obtener todos los grupos.
+2025-03-28 18:54:04 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:54:04 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:54:05 - Se encontraron 9 usuarios en la base de datos.
+2025-03-28 18:54:19 - Solicitud para eliminar el elemento: edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto@5b757972
+2025-03-28 18:54:20 - Elemento eliminado correctamente: edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto@5b757972
+2025-03-28 18:54:23 - Solicitud para obtener todos los grupos.
+2025-03-28 18:54:24 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:54:24 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:54:25 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 18:55:08 - Solicitud para obtener todos los grupos.
+2025-03-28 18:55:09 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:55:09 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:55:10 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 18:55:28 - Solicitud para obtener todos los grupos.
+2025-03-28 18:55:29 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:55:29 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:55:30 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 18:55:48 - Solicitud para obtener todos los grupos.
+2025-03-28 18:55:49 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:55:49 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:55:49 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 18:55:58 - Solicitud para obtener todos los grupos.
+2025-03-28 18:55:59 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:55:59 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:55:59 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 18:56:06 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:56:07 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:56:44 - Solicitud para obtener todos los grupos.
+2025-03-28 18:56:45 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 18:56:45 - Solicitud para obtener todos los usuarios.
+2025-03-28 18:56:46 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 18:57:32 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:57:33 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 18:59:04 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 18:59:05 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:03:28 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:03:29 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:03:42 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:03:43 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:05:06 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:05:07 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:05:18 - Solicitud para obtener todos los grupos.
+2025-03-28 19:05:19 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:05:19 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:05:20 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:05:22 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:05:23 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:05:52 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:05:53 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:06:07 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@3ec4a2a3
+2025-03-28 19:06:07 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@39daa3bd
+2025-03-28 19:06:07 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:06:08 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:06:10 - Solicitud para obtener todos los grupos.
+2025-03-28 19:06:11 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:06:11 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:06:12 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:06:15 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:06:16 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:07:27 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:07:28 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:08:01 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:08:02 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:08:30 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:08:31 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:09:21 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:09:22 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:12:10 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:12:11 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:15:06 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:15:07 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:15:24 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@5fb4c43e
+2025-03-28 19:15:25 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7924800e
+2025-03-28 19:15:25 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:15:25 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:15:29 - Solicitud para obtener todos los grupos.
+2025-03-28 19:15:30 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:15:30 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:15:31 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:16:25 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:16:26 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:16:30 - Solicitud para obtener todos los grupos.
+2025-03-28 19:16:31 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:16:31 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:16:32 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:16:37 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:16:38 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:16:39 - Solicitud para obtener todos los grupos.
+2025-03-28 19:16:41 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:16:41 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:16:41 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:18:19 - Solicitud para obtener todos los grupos.
+2025-03-28 19:18:21 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:18:21 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:18:21 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:18:30 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:18:31 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:22:05 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:22:06 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:22:45 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:22:46 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:25:02 - Solicitud para obtener todos los grupos.
+2025-03-28 19:25:03 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:25:03 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:25:04 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:25:15 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:25:16 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:27:10 - Solicitud para obtener todos los grupos.
+2025-03-28 19:27:12 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:27:12 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:27:12 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:29:17 - Solicitud para obtener todos los grupos.
+2025-03-28 19:29:18 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:29:18 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:29:18 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:30:44 - Solicitud para obtener todos los grupos.
+2025-03-28 19:30:45 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:30:45 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:30:45 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:31:22 - Solicitud para obtener todos los grupos.
+2025-03-28 19:31:23 - Se encontraron 5 grupos en la base de datos.
+2025-03-28 19:31:23 - Solicitud para obtener todos los usuarios.
+2025-03-28 19:31:24 - Se encontraron 8 usuarios en la base de datos.
+2025-03-28 19:31:32 - Solicitud para obtener los grupos más numerosos recibida.
+2025-03-28 19:31:33 - Grupos obtenidos exitosamente. Cantidad: 5
+2025-03-28 19:31:46 - Application shutdown requested.
+2025-03-28 19:31:46 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-28 19:31:46 - Graceful shutdown complete
+2025-03-28 19:31:46 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 19:31:46 - HikariPool-1 - Shutdown initiated...
