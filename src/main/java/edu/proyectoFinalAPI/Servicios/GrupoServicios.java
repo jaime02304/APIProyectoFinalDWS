@@ -56,8 +56,8 @@ public class GrupoServicios {
 			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
 			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreCategoria());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreSubcategoria());
 			return grupo;
 		}).collect(Collectors.toList());
 	}
@@ -84,8 +84,8 @@ public class GrupoServicios {
 			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
 			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreCategoria());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreSubcategoria());
 			return grupo;
 		}).collect(Collectors.toList());
 	}
@@ -110,8 +110,8 @@ public class GrupoServicios {
 			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
 			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
-			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreTipo());
-			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreTipo());
+			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreCategoria());
+			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreSubcategoria());
 			return grupo;
 		}).collect(Collectors.toList());
 	}

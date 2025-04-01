@@ -17,12 +17,21 @@ public class GruposDto {
 	private LocalDateTime fechaGrupo = LocalDateTime.now();
 	private String categoriaNombre = "aaaaa";
 	private String subCategoriaNombre = "aaaaa";
+	private String descripcionGrupo = "";
 
 	// No se si se deberia de cambiar por los tipos entidad paara tener la
 	// informacion
 
 	public Long getIdGrupo() {
 		return idGrupo;
+	}
+
+	public String getDescripcionGrupo() {
+		return descripcionGrupo;
+	}
+
+	public void setDescripcionGrupo(String descripcionGrupo) {
+		this.descripcionGrupo = descripcionGrupo;
 	}
 
 	public void setIdGrupo(Long idGrupo) {

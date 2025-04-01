@@ -43,16 +43,12 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE GrupoEntidad g "
-			+ "SET g.categoriaId = (SELECT t.idTipo FROM TiposEntidad t WHERE t.nombreTipo = :#{#grupo.categoriaNombre}) "
-			+ "WHERE g.idGrupo = :#{#grupo.idGrupo}")
+	@Query("UPDATE GrupoEntidad g SET g.categoriaId = (SELECT c.idCategoria FROM CategoriaEntidad c WHERE c.nombreCategoria = :#{#grupo.categoriaNombre}) WHERE g.idGrupo = :#{#grupo.idGrupo}")
 	int actualizarCategoria(@Param("grupo") GruposParaLasListasDto grupo);
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE GrupoEntidad g "
-			+ "SET g.subCategoriaId = (SELECT t.idTipo FROM TiposEntidad t WHERE t.nombreTipo = :#{#grupo.subCategoriaNombre}) "
-			+ "WHERE g.idGrupo = :#{#grupo.idGrupo}")
+	@Query("UPDATE GrupoEntidad g SET g.subCategoriaId = (SELECT s.idSubcategoria FROM SubcategoriaEntidad s WHERE s.nombreSubcategoria = :#{#grupo.subCategoriaNombre}) WHERE g.idGrupo = :#{#grupo.idGrupo}")
 	int actualizarSubCategoria(@Param("grupo") GruposParaLasListasDto grupo);
 
 	boolean existsByNombreGrupo(String nombreGrupo);

@@ -554,9 +554,10 @@ public class controladorApi {
 		grupoDto.setNumeroUsuarios(grupoCreado.getNumeroUsuarios());
 		grupoDto.setFechaGrupo(grupoCreado.getFechaGrupo());
 		grupoDto.setCategoriaNombre(
-				grupoCreado.getCategoriaId() != null ? grupoCreado.getCategoriaId().getNombreTipo() : null);
+				grupoCreado.getCategoriaId() != null ? grupoCreado.getCategoriaId().getNombreCategoria() : null);
 		grupoDto.setSubCategoriaNombre(
-				grupoCreado.getSubCategoriaId() != null ? grupoCreado.getSubCategoriaId().getNombreTipo() : null);
+				grupoCreado.getSubCategoriaId() != null ? grupoCreado.getSubCategoriaId().getNombreSubcategoria() : null);
+		grupoDto.setDescripcionGrupo(grupoCreado.getDescripcionGrupo());
 		return grupoDto;
 	}
 
@@ -600,8 +601,8 @@ public class controladorApi {
 		ComentariosPerfilDto comentarioDto = new ComentariosPerfilDto();
 		comentarioDto.setComentarioTexto(comentarioCreado.getComentarioTexto());
 		comentarioDto.setIdUsuario(comentarioCreado.getUsuarioId().getIdUsuEntidad());
-		comentarioDto.setCategoriaTipo(comentarioCreado.getCategoriaId().getNombreTipo());
-		comentarioDto.setSubCategoriaTipo(comentarioCreado.getSubCategoriaId().getNombreTipo());
+		comentarioDto.setCategoriaTipo(comentarioCreado.getCategoriaId().getNombreCategoria());
+		comentarioDto.setSubCategoriaTipo(comentarioCreado.getSubCategoriaId().getNombreSubcategoria());
 		return comentarioDto;
 	}
 

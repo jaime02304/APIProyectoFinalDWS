@@ -9,12 +9,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.proyectoFinalAPI.Daos.CategoriaEntidad;
+import edu.proyectoFinalAPI.Daos.CategoriaRepositorio;
 import edu.proyectoFinalAPI.Daos.ComentarioRepositorio;
 import edu.proyectoFinalAPI.Daos.ComentariosEntidad;
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
-import edu.proyectoFinalAPI.Daos.TiposEntidad;
-import edu.proyectoFinalAPI.Daos.TiposRepositorio;
+import edu.proyectoFinalAPI.Daos.SubcategoriaEntidad;
+import edu.proyectoFinalAPI.Daos.SubcategoriaRepositorio;
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
@@ -46,7 +48,10 @@ public class PerfilServicios {
 	private GruposRepositorio repositorioGrupo;
 
 	@Autowired
-	private TiposRepositorio repositorioTipos;
+	private CategoriaRepositorio repositorioCategoria;
+	
+	@Autowired
+	private SubcategoriaRepositorio repositorioSubcategoria;
 
 	/**
 	 * MEtodo que mediante el parametro del correo electronico busca el mensaje del
@@ -64,8 +69,8 @@ public class PerfilServicios {
 		}
 		ComentariosPerfilDto comentarioPerfilDto = new ComentariosPerfilDto();
 		comentarioPerfilDto.setComentarioTexto(comentarioPerfilE.getComentarioTexto());
-		comentarioPerfilDto.setCategoriaTipo(comentarioPerfilE.getCategoriaId().getNombreTipo());
-		comentarioPerfilDto.setSubCategoriaTipo(comentarioPerfilE.getSubCategoriaId().getNombreTipo());
+		comentarioPerfilDto.setCategoriaTipo(comentarioPerfilE.getCategoriaId().getNombreCategoria());
+		comentarioPerfilDto.setSubCategoriaTipo(comentarioPerfilE.getSubCategoriaId().getNombreSubcategoria());
 
 		return comentarioPerfilDto;
 
@@ -250,8 +255,8 @@ public class PerfilServicios {
 	 */
 	public GrupoEntidad crearGrupoComoAdministrador(GruposDto grupoACrear) throws IllegalArgumentException, Exception {
 		GrupoEntidad grupo = new GrupoEntidad();
-		TiposEntidad categoria = repositorioTipos.findByNombreTipo(grupoACrear.getCategoriaNombre());
-		TiposEntidad subCategoria = repositorioTipos.findByNombreTipo(grupoACrear.getSubCategoriaNombre());
+		CategoriaEntidad categoria = repositorioCategoria.findByNombreCategoria(grupoACrear.getCategoriaNombre());
+		SubcategoriaEntidad subCategoria = repositorioSubcategoria.findByNombreSubcategoria(grupoACrear.getSubCategoriaNombre());
 		UsuarioEntidad creador = repositorioUsuario.findByAliasUsuEntidad(grupoACrear.getAliasCreadorUString());
 		grupo.setNombreGrupo(grupoACrear.getNombreGrupo());
 		grupo.setNumeroUsuarios(grupoACrear.getNumeroUsuarios() != null ? grupoACrear.getNumeroUsuarios() : 0L);
@@ -259,6 +264,7 @@ public class PerfilServicios {
 		grupo.setCategoriaId(categoria);
 		grupo.setSubCategoriaId(subCategoria);
 		grupo.setCreadorUsuId(creador);
+		grupo.setDescripcionGrupo(grupoACrear.getDescripcionGrupo());
 		return repositorioGrupo.save(grupo);
 	}
 
@@ -274,8 +280,8 @@ public class PerfilServicios {
 	public ComentariosEntidad crearNuevoComentario(ComentariosPerfilDto nuevoComentario)
 			throws IllegalArgumentException, Exception {
 		ComentariosEntidad comentario = new ComentariosEntidad();
-		TiposEntidad categoria = repositorioTipos.findByNombreTipo(nuevoComentario.getCategoriaTipo());
-		TiposEntidad subCategoria = repositorioTipos.findByNombreTipo(nuevoComentario.getSubCategoriaTipo());
+		CategoriaEntidad categoria = repositorioCategoria.findByNombreCategoria(nuevoComentario.getCategoriaTipo());
+		SubcategoriaEntidad subCategoria = repositorioSubcategoria.findByNombreSubcategoria(nuevoComentario.getSubCategoriaTipo());
 		UsuarioEntidad creador = repositorioUsuario.findByIdUsuEntidad(nuevoComentario.getIdUsuario());
 		// Mapear los campos del DTO a la entidad.
 		comentario.setComentarioTexto(nuevoComentario.getComentarioTexto());

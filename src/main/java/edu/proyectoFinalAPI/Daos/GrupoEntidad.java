@@ -40,11 +40,23 @@ public class GrupoEntidad {
 
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
-	private TiposEntidad categoriaId;
+	private CategoriaEntidad categoriaId;
 
 	@ManyToOne
 	@JoinColumn(name = "subcategoria_id")
-	private TiposEntidad subCategoriaId;
+	private SubcategoriaEntidad subCategoriaId;
+
+	@Column(name = "descripcion")
+	private String descripcionGrupo = "";
+
+	public String getDescripcionGrupo() {
+		return descripcionGrupo;
+	}
+
+	public void setDescripcionGrupo(String descripcionGrupo) {
+		this.descripcionGrupo = descripcionGrupo;
+	}
+
 
 	public Long getIdGrupo() {
 		return idGrupo;
@@ -86,19 +98,19 @@ public class GrupoEntidad {
 		this.fechaGrupo = fechaGrupo;
 	}
 
-	public TiposEntidad getCategoriaId() {
+	public CategoriaEntidad getCategoriaId() {
 		return categoriaId;
 	}
 
-	public void setCategoriaId(TiposEntidad categoriaId) {
+	public void setCategoriaId(CategoriaEntidad categoriaId) {
 		this.categoriaId = categoriaId;
 	}
 
-	public TiposEntidad getSubCategoriaId() {
+	public SubcategoriaEntidad getSubCategoriaId() {
 		return subCategoriaId;
 	}
 
-	public void setSubCategoriaId(TiposEntidad subCategoriaId) {
+	public void setSubCategoriaId(SubcategoriaEntidad subCategoriaId) {
 		this.subCategoriaId = subCategoriaId;
 	}
 
