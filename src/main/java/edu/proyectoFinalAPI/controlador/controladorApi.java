@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Daos.ComentariosEntidad;
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
+import edu.proyectoFinalAPI.Dtos.ComentariosDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
 import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
@@ -556,7 +557,8 @@ public class controladorApi {
 		grupoDto.setCategoriaNombre(
 				grupoCreado.getCategoriaId() != null ? grupoCreado.getCategoriaId().getNombreCategoria() : null);
 		grupoDto.setSubCategoriaNombre(
-				grupoCreado.getSubCategoriaId() != null ? grupoCreado.getSubCategoriaId().getNombreSubcategoria() : null);
+				grupoCreado.getSubCategoriaId() != null ? grupoCreado.getSubCategoriaId().getNombreSubcategoria()
+						: null);
 		grupoDto.setDescripcionGrupo(grupoCreado.getDescripcionGrupo());
 		return grupoDto;
 	}
@@ -585,6 +587,32 @@ public class controladorApi {
 			response.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
 			logger.error("Error inesperado al crear comentario: {}", e.getMessage(), e);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	/**
+	 * Metodo para recoger todos los comentarios
+	 * 
+	 * @author jpribio - 16/04/25
+	 * @return
+	 */
+	@GetMapping("/RecogerComentarios")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> recogerComentarios() {
+		Map<String, Object> response = new HashMap<>();
+		logger.info("Recogida de todos los comentarios.");
+		try {
+			List<ComentariosDto> comentarioDto = servicioComentarios.recogerTodosLosComentarios();
+			response.put("listaCompletaComentarios", comentarioDto);
+		} catch (IllegalArgumentException e) {
+			logger.error("Error de argumento inválido al recoger los comentarios: {}", e.getMessage());
+			response.put("error", "Argumento inválido: " + e.getMessage());
+		} catch (Exception e) {
+			logger.error("Error inesperado al recoger los comentarios: {}", e.getMessage(), e);
 			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
 

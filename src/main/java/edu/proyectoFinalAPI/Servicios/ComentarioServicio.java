@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.ComentarioRepositorio;
 import edu.proyectoFinalAPI.Daos.ComentariosEntidad;
+import edu.proyectoFinalAPI.Dtos.ComentariosDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 
 /**
@@ -52,6 +53,37 @@ public class ComentarioServicio {
 				} else {
 					comentarioDto.setImagenUsuario(null);
 				}
+				listaComentariosIndex.add(comentarioDto);
+			}
+			return listaComentariosIndex;
+		}
+		return null;
+	}
+
+	/**
+	 * Metod que recoge todos los comentarios para la seccion de comentarios
+	 * 
+	 * @author jpribio - 16/04/25
+	 * @return
+	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 */
+	public List<ComentariosDto> recogerTodosLosComentarios() throws NullPointerException, IllegalArgumentException {
+		List<ComentariosEntidad> listaComentariosEnt = repositorioComentariorepositorio.findAll();
+		List<ComentariosDto> listaComentariosIndex = new ArrayList<>();
+		if (listaComentariosEnt != null) {
+			for (ComentariosEntidad comentario : listaComentariosEnt) {
+				ComentariosDto comentarioDto = new ComentariosDto();
+				comentarioDto.setAliasUsuarioComentario(comentario.getUsuarioId().getAliasUsuEntidad());
+				comentarioDto.setComentarioTexto(comentario.getComentarioTexto());
+				comentarioDto.setIdUsuario(comentario.getUsuarioId().getIdUsuEntidad());
+				comentarioDto.setCategoriaTipo(comentario.getCategoriaId().getNombreCategoria());
+				comentarioDto.setSubCategoriaTipo(comentario.getSubCategoriaId().getNombreSubcategoria());
+				  if (comentario.getGrupoId() != null) {
+		                comentarioDto.setGrupoComentario(comentario.getGrupoId().getNombreGrupo());
+		            } else {
+		                comentarioDto.setGrupoComentario("");
+		            }
 				listaComentariosIndex.add(comentarioDto);
 			}
 			return listaComentariosIndex;
