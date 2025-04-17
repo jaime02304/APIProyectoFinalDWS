@@ -69,7 +69,7 @@ public class ComentarioServicio {
 	 * @throws IllegalArgumentException
 	 */
 	public List<ComentariosDto> recogerTodosLosComentarios() throws NullPointerException, IllegalArgumentException {
-		List<ComentariosEntidad> listaComentariosEnt = repositorioComentariorepositorio.findAll();
+		List<ComentariosEntidad> listaComentariosEnt = repositorioComentariorepositorio.findAllByOrderByFechaComentarioDesc();
 		List<ComentariosDto> listaComentariosIndex = new ArrayList<>();
 		if (listaComentariosEnt != null) {
 			for (ComentariosEntidad comentario : listaComentariosEnt) {
