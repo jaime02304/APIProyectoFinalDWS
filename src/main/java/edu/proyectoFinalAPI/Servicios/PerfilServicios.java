@@ -17,6 +17,7 @@ import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
 import edu.proyectoFinalAPI.Daos.SubcategoriaEntidad;
 import edu.proyectoFinalAPI.Daos.SubcategoriaRepositorio;
+import edu.proyectoFinalAPI.Daos.TokenRepositorio;
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
@@ -25,6 +26,7 @@ import edu.proyectoFinalAPI.Dtos.GruposDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
+import jakarta.persistence.EntityNotFoundException;
 
 /**
  * Clase donde se encuentra todos los metodos que tenga relacion con el perfil
@@ -52,6 +54,9 @@ public class PerfilServicios {
 	
 	@Autowired
 	private SubcategoriaRepositorio repositorioSubcategoria;
+	
+	@Autowired
+	private TokenRepositorio repositorioToken;
 
 	/**
 	 * MEtodo que mediante el parametro del correo electronico busca el mensaje del
@@ -168,8 +173,17 @@ public class PerfilServicios {
 		}
 		int filasAfectadas = 0;
 		if (eliminarElemento.isEsUsuarioEliminar()) {
-			filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar());
-		} else {
+			  // Obtener el usuario
+	        UsuarioEntidad usuario = repositorioUsuario.findByAliasUsuEntidad(eliminarElemento.getElementoEliminar());
+	        // Eliminar entidades relacionadas primero
+	        repositorioToken.deleteByUsuario(usuario);
+	        repositorioComentariorepositorio.deleteByUsuario(usuario);
+	        repositorioGrupo.deleteByCreador(usuario);
+	        // Agrega aquí cualquier otro repositorio con datos relacionados
+
+	        // Ahora eliminar el usuario
+	        filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar());
+	    		} else {
 			filasAfectadas = repositorioGrupo.eliminarGrupoPorNombre(eliminarElemento.getElementoEliminar());
 		}
 		return filasAfectadas > 0;

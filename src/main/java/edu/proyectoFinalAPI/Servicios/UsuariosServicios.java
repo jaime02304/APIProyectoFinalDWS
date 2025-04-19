@@ -1,12 +1,16 @@
 package edu.proyectoFinalAPI.Servicios;
 
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.proyectoFinalAPI.Daos.TokenEntidad;
+import edu.proyectoFinalAPI.Daos.TokenRepositorio;
 import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
 import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
@@ -27,6 +31,11 @@ public class UsuariosServicios {
 	 */
 	@Autowired
 	private UsuarioRepositorio repositorioUsuario;
+	@Autowired
+	private TokenRepositorio repositorioToken;
+
+	@Autowired
+	private EmailServicios servicioEmail;
 
 	public UsuariosServicios(UsuarioRepositorio repositorioUsuario) {
 		this.repositorioUsuario = repositorioUsuario;
@@ -43,12 +52,10 @@ public class UsuariosServicios {
 	public UsuarioPerfilDto nuevoUsuario(UsuarioDto nuevoUsuarioDatos)
 			throws NullPointerException, IllegalArgumentException {
 
-		// Verificar si el usuario ya existe en la base de datos
 		if (repositorioUsuario.findByCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu()) != null) {
 			throw new IllegalArgumentException("El usuario ya existe.");
 		}
 
-		// Crear nuevo usuario
 		UsuarioEntidad usuario = new UsuarioEntidad();
 		usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
 		usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
@@ -56,15 +63,27 @@ public class UsuariosServicios {
 		usuario.setContraseniaUsuEntidad(nuevoUsuarioDatos.getContraseniaUsu());
 		usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
 		usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
-		usuario.setEsVerificadoEntidad(nuevoUsuarioDatos.getEsVerificadoEntidad());
+		usuario.setEsVerificadoEntidad(false);
+		UsuarioEntidad guardado = repositorioUsuario.save(usuario);
 
-		// Guardar usuario en la base de datos y devolver DTO
-		return devolverInformacionUsuarioPerfil(repositorioUsuario.save(usuario));
+		String token = UUID.randomUUID().toString();
+		TokenEntidad tokenVer = new TokenEntidad();
+		tokenVer.setToken(token);
+		tokenVer.setCorreoUsuario(usuario.getCorreoElectronicoUsuEntidad());
+		tokenVer.setFechaExpiracion(LocalDateTime.now().plusHours(24));
+		tokenVer.setUsado(false);
+		tokenVer.setUsuario(usuario);
+		repositorioToken.save(tokenVer);
+
+		servicioEmail.enviarVerificacioEmail(usuario.getCorreoElectronicoUsuEntidad(), token);
+
+		return devolverInformacionUsuarioPerfil(guardado);
 	}
 
 	/**
 	 * Metodo que verifica el inicio de sesion del usuario
 	 * 
+	 * @author jpribio - 19/01/25
 	 * @param verificarUsu
 	 * @return
 	 * @throws NoSuchAlgorithmException

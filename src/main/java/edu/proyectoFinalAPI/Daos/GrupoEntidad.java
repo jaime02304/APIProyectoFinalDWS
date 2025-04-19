@@ -2,6 +2,9 @@ package edu.proyectoFinalAPI.Daos;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +33,7 @@ public class GrupoEntidad {
 
 	@ManyToOne
 	@JoinColumn(name = "creador_usu_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private UsuarioEntidad creadorUsuId;
 
 	@Column(name = "numero_usuarios")

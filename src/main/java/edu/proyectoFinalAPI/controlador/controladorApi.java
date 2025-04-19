@@ -1,21 +1,29 @@
 package edu.proyectoFinalAPI.controlador;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.proyectoFinalAPI.Daos.ComentariosEntidad;
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
+import edu.proyectoFinalAPI.Daos.TokenEntidad;
+import edu.proyectoFinalAPI.Daos.TokenRepositorio;
+import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
+import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
 import edu.proyectoFinalAPI.Dtos.ComentariosDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
@@ -51,6 +59,11 @@ public class controladorApi {
 	private ComentarioServicio servicioComentarios;
 	@Autowired
 	private PerfilServicios serviciosPerfil;
+
+	@Autowired
+	private UsuarioRepositorio repositorioUsuario;
+	@Autowired
+	private TokenRepositorio repositorioToken;
 
 	private static final Logger logger = LoggerFactory.getLogger(controladorApi.class);
 
@@ -121,6 +134,31 @@ public class controladorApi {
 			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
 	}
+
+	/**
+	 * Trata de un metodo donde verifica el usuario con el token para verificar el perfil de dicho usuario
+	 * @author jpribio - 19/04/25
+	 * @param token
+	 * @return
+	 */
+	@GetMapping("/usuario/verificar")
+	    public ResponseEntity<String> verificar(@RequestParam String token) {
+	        Optional<TokenEntidad> opt = repositorioToken.findByToken(token);
+	        if (opt.isEmpty()) return ResponseEntity.status(404).body("Token inválido.");
+
+	        TokenEntidad tokenEntidad = opt.get();
+	        if (tokenEntidad.isUsado()) return ResponseEntity.badRequest().body("Token ya usado.");
+	        if (tokenEntidad.getFechaExpiracion().isBefore(LocalDateTime.now()))
+	            return ResponseEntity.badRequest().body("Token expirado.");
+
+	        UsuarioEntidad usuario = tokenEntidad.getUsuario();
+	        usuario.setEsVerificadoEntidad(true);
+	        tokenEntidad.setUsado(true);
+	        repositorioUsuario.save(usuario);
+	        repositorioToken.save(tokenEntidad);
+
+	        return ResponseEntity.ok("Usuario verificado correctamente.");
+	    }
 
 	@GetMapping("/index/grupos")
 	@Consumes(MediaType.APPLICATION_JSON)

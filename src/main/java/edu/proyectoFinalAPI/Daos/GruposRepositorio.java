@@ -55,4 +55,9 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 
 	boolean existsByNombreGrupoAndIdGrupoNot(String nombreGrupo, Long idGrupo);
 
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM GrupoEntidad g WHERE g.creadorUsuId = :creador")
+	void deleteByCreador(@Param("creador") UsuarioEntidad creador);
+
 }
