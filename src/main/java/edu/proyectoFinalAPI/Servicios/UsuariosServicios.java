@@ -33,7 +33,6 @@ public class UsuariosServicios {
 	private UsuarioRepositorio repositorioUsuario;
 	@Autowired
 	private TokenRepositorio repositorioToken;
-
 	@Autowired
 	private EmailServicios servicioEmail;
 
@@ -70,9 +69,10 @@ public class UsuariosServicios {
 		TokenEntidad tokenVer = new TokenEntidad();
 		tokenVer.setToken(token);
 		tokenVer.setCorreoUsuario(usuario.getCorreoElectronicoUsuEntidad());
-		tokenVer.setFechaExpiracion(LocalDateTime.now().plusHours(24));
+		tokenVer.setFechaExpiracion(LocalDateTime.now().plusDays(30));
 		tokenVer.setUsado(false);
 		tokenVer.setUsuario(usuario);
+		tokenVer.setVerificacion(true);
 		repositorioToken.save(tokenVer);
 
 		servicioEmail.enviarVerificacioEmail(usuario.getCorreoElectronicoUsuEntidad(), token);
@@ -93,23 +93,14 @@ public class UsuariosServicios {
 				|| verificarUsu.getContraseniaUsu() == null) {
 			throw new IllegalArgumentException("Datos de usuario incompletos.");
 		}
-
-		// Buscar el usuario en la base de datos
 		UsuarioEntidad usuarioEnt = repositorioUsuario
 				.findByCorreoElectronicoUsuEntidad(verificarUsu.getCorreoElectronicoUsu());
-
 		if (usuarioEnt == null) {
-			// Si el usuario no es encontrado, retornar null
 			return null;
 		}
-
-		// Verificar la contraseña
 		if (!usuarioEnt.getContraseniaUsuEntidad().equals(verificarUsu.getContraseniaUsu())) {
-			// Si la contraseña es incorrecta, retornar null
 			return null;
 		}
-
-		// Si todo es correcto, devolver el perfil del usuario
 		return devolverInformacionUsuarioPerfil(usuarioEnt);
 	}
 
@@ -159,5 +150,56 @@ public class UsuariosServicios {
 			usuarioPerfil.setFotoString(null);
 		}
 		return usuarioPerfil;
+	}
+
+	/**
+	 * MEtodo que inicia la recuperacion para el cambio de contraseña
+	 * 
+	 * @author jpribio - 21/04/25
+	 * @param correo
+	 * @return
+	 */
+	public boolean iniciarRecuperacion(String correo) {
+		// Buscar el usuario por correo
+		UsuarioEntidad usuario = repositorioUsuario.findByCorreoElectronicoUsuEntidad(correo);
+		if (usuario == null) {
+			return false;
+		}
+		String tokenGenerado = UUID.randomUUID().toString();
+		TokenEntidad tokenEntidad = new TokenEntidad();
+		tokenEntidad.setToken(tokenGenerado);
+		tokenEntidad.setCorreoUsuario(correo);
+		tokenEntidad.setFechaExpiracion(LocalDateTime.now().plusHours(1));
+		tokenEntidad.setUsado(false);
+		tokenEntidad.setVerificacion(false);
+		tokenEntidad.setUsuario(usuario);
+		repositorioToken.save(tokenEntidad);
+		servicioEmail.enviarRecuperacionEmail(correo, tokenGenerado);
+
+		return true;
+	}
+
+	/**
+	 * Metodo que efectua el cambio de contraseña
+	 * 
+	 * @author jpribio - 21/04/25
+	 * @param token
+	 * @param nuevaContrasena
+	 * @return
+	 */
+	public boolean cambiarContrasenaConToken(String token, String nuevaContrasena) {
+		TokenEntidad tokenEntidad = repositorioToken.findByToken(token);
+
+		if (tokenEntidad == null || tokenEntidad.getFechaExpiracion().isBefore(LocalDateTime.now())) {
+			return false;
+		}
+
+		UsuarioEntidad usuario = tokenEntidad.getUsuario();
+		usuario.setContraseniaUsuEntidad(nuevaContrasena);
+		repositorioUsuario.save(usuario);
+
+		// ❌ Borra el token después de usarlo
+		repositorioToken.delete(tokenEntidad);
+		return true;
 	}
 }

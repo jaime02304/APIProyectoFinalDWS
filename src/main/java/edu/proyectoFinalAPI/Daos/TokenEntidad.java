@@ -34,6 +34,9 @@ public class TokenEntidad {
 
 	@Column(name = "usado")
 	private boolean usado;
+	
+	@Column(name = "is_verificacion")
+	private boolean isVerificacion = false;
 
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
@@ -87,6 +90,14 @@ public class TokenEntidad {
 		this.usuario = usuario;
 	}
 
+	public boolean isVerificacion() {
+		return isVerificacion;
+	}
+
+	public void setVerificacion(boolean isVerificacion) {
+		this.isVerificacion = isVerificacion;
+	}
 	
 	
+
 }

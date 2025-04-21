@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -136,30 +137,85 @@ public class controladorApi {
 	}
 
 	/**
-	 * Trata de un metodo donde verifica el usuario con el token para verificar el perfil de dicho usuario
+	 * Trata de un metodo donde verifica el usuario con el token para verificar el
+	 * perfil de dicho usuario
+	 * 
 	 * @author jpribio - 19/04/25
 	 * @param token
 	 * @return
 	 */
 	@GetMapping("/usuario/verificar")
-	    public ResponseEntity<String> verificar(@RequestParam String token) {
-	        Optional<TokenEntidad> opt = repositorioToken.findByToken(token);
-	        if (opt.isEmpty()) return ResponseEntity.status(404).body("Token inválido.");
+	public ResponseEntity<String> verificar(@RequestParam String token) {
+		TokenEntidad tokenEntidad = repositorioToken.findByToken(token);
+		if (tokenEntidad == null)
+			return ResponseEntity.status(404).body("Token inválido.");
+		if (tokenEntidad.isUsado())
+			return ResponseEntity.badRequest().body("Token ya usado.");
+		if (tokenEntidad.getFechaExpiracion().isBefore(LocalDateTime.now()))
+			return ResponseEntity.badRequest().body("Token expirado.");
 
-	        TokenEntidad tokenEntidad = opt.get();
-	        if (tokenEntidad.isUsado()) return ResponseEntity.badRequest().body("Token ya usado.");
-	        if (tokenEntidad.getFechaExpiracion().isBefore(LocalDateTime.now()))
-	            return ResponseEntity.badRequest().body("Token expirado.");
+		UsuarioEntidad usuario = tokenEntidad.getUsuario();
+		usuario.setEsVerificadoEntidad(true);
+		tokenEntidad.setUsado(true);
+		repositorioUsuario.save(usuario);
+		repositorioToken.delete(tokenEntidad);
 
-	        UsuarioEntidad usuario = tokenEntidad.getUsuario();
-	        usuario.setEsVerificadoEntidad(true);
-	        tokenEntidad.setUsado(true);
-	        repositorioUsuario.save(usuario);
-	        repositorioToken.save(tokenEntidad);
+		return ResponseEntity.ok("Usuario verificado correctamente.");
+	}
 
-	        return ResponseEntity.ok("Usuario verificado correctamente.");
-	    }
+	/**
+	 * Metodo que recibe el correo electronico para poder mandar el email a ese
+	 * correo para el cambio de contraseña
+	 * 
+	 * @author jpribio - 21/04/25
+	 * @param datos
+	 * @return
+	 */
+	@PostMapping("/usuario/recuperarContrasena")
+	public ResponseEntity<String> recuperarContrasena(@RequestBody Map<String, String> datos) {
+		String correo = datos.get("correo");
 
+		if (correo == null || correo.isBlank()) {
+			return ResponseEntity.badRequest().body("El correo es obligatorio.");
+		}
+
+		boolean enviado = servicioUsuario.iniciarRecuperacion(correo);
+
+		if (enviado) {
+			return ResponseEntity.ok("Correo de recuperación enviado.");
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado o error al procesar.");
+		}
+	}
+
+	/**
+	 * Metodo que cambia a la nueva contraseña el usuario y borra el token para
+	 * dejarlo inutilizado
+	 * 
+	 * @author jpribio - 21/04/25
+	 * @param datos
+	 * @return
+	 */
+	@PostMapping("/usuario/cambiarContrasena")
+	public ResponseEntity<String> cambiarContrasena(@RequestBody Map<String, String> datos) {
+		String token = datos.get("token");
+		String nuevaContrasena = datos.get("nuevaContrasena");
+
+		boolean cambiado = servicioUsuario.cambiarContrasenaConToken(token, nuevaContrasena);
+
+		if (cambiado) {
+			return ResponseEntity.ok("Contraseña cambiada exitosamente.");
+		} else {
+			return ResponseEntity.badRequest().body("Token inválido, expirado o ya usado.");
+		}
+	}
+
+	/**
+	 * Metodo que muestra los grupos top en el index
+	 * 
+	 * @author jpribio - 21/04/25
+	 * @return
+	 */
 	@GetMapping("/index/grupos")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
