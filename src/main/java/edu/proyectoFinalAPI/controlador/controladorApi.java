@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,6 +66,17 @@ public class controladorApi {
 	private TokenRepositorio repositorioToken;
 
 	private static final Logger logger = LoggerFactory.getLogger(controladorApi.class);
+
+	/**
+	 * Método que devuelve la lista de todos los alias existentes
+	 * 
+	 * @author jpribio - 26/04/25
+	 * @return lista de alias
+	 */
+	@GetMapping("/usuario/alias")
+	public List<String> obtenerTodosLosAlias() {
+		return repositorioUsuario.obtenerTodosAlias();
+	}
 
 	/**
 	 * Metodo que se enuentra el registro
@@ -133,6 +143,46 @@ public class controladorApi {
 		} catch (Exception e) {
 			logger.error("Error inesperado durante el inicio de sesión: {}", e.getMessage(), e);
 			return Map.of("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+	}
+
+	/**
+	 * Metodo para hacer el registro/login de google
+	 * 
+	 * @author jpribio - 26/04/25
+	 * @param usuario
+	 * @return
+	 */
+	@PostMapping("/usuario/googleLogin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> loginRegistroGoogle(@RequestBody UsuarioDto usuario) {
+		logger.info("Login/Registro mediante Google para usuario: {}", usuario);
+		try {
+			// Primero, verificamos si el usuario ya existe por su correo
+			UsuarioEntidad usuarioExistente = repositorioUsuario
+					.findByCorreoElectronicoUsuEntidad(usuario.getCorreoElectronicoUsu());
+
+			if (usuarioExistente != null) {
+				logger.info("Usuario ya existe. Procediendo a iniciar sesión: {}", usuarioExistente);
+				// El usuario existe, intentamos iniciar sesión
+				UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.inicioSesionUsu(usuario);
+				return convertirUsuarioDtoAMap(usuarioPerfilDto);
+			} else {
+				logger.info("Usuario no encontrado. Procediendo a registrar nuevo usuario: {}", usuario);
+				// El usuario no existe, registramos uno nuevo
+				UsuarioPerfilDto usuarioPerfilDto = servicioUsuario.nuevoUsuario(usuario);
+				return convertirUsuarioDtoAMap(usuarioPerfilDto);
+			}
+		} catch (IllegalArgumentException iaE) {
+			logger.warn("Fallo en login/registro de Google por argumento inválido: {}", iaE.getMessage(), iaE);
+			return Map.of("error", "Argumento inválido: " + iaE.getMessage());
+		} catch (NullPointerException nE) {
+			logger.warn("Fallo en login/registro de Google debido a un valor nulo: {}", nE.getMessage(), nE);
+			return Map.of("error", "Valor nulo detectado: " + nE.getMessage());
+		} catch (Exception e) {
+			logger.error("Error inesperado durante el login/registro de Google: {}", e.getMessage(), e);
+			return Map.of("error", "Error inesperado: " + e.getMessage());
 		}
 	}
 

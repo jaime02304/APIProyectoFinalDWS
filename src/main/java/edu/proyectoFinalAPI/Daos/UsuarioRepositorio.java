@@ -58,4 +58,7 @@ public interface UsuarioRepositorio extends JpaRepository<UsuarioEntidad, Long> 
 	boolean existsByAliasUsuEntidadAndIdUsuEntidadNot(String alias, Long idUsu);
 
 	boolean existsByAliasUsuEntidad(String alias);
+
+	@Query("SELECT u.aliasUsuEntidad FROM UsuarioEntidad u")
+	List<String> obtenerTodosAlias();
 }

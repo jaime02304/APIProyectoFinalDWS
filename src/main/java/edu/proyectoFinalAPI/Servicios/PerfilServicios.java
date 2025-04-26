@@ -253,6 +253,7 @@ public class PerfilServicios {
 		usuario.setContraseniaUsuEntidad(usuarioACrear.getContraseniaUsu());
 		usuario.setEsPremiumEntidad(usuarioACrear.getEsPremium());
 		usuario.setEsVerificadoEntidad(usuarioACrear.getEsVerificadoEntidad());
+		usuario.setEsLoginDeGoogle(false);
 		UsuarioEntidad usuarioGuardado = repositorioUsuario.save(usuario);
 
 		return usuarioGuardado != null && usuarioGuardado.getIdUsuEntidad() != null;

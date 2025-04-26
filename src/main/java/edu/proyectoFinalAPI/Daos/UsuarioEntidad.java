@@ -50,7 +50,18 @@ public class UsuarioEntidad {
 	@Column(name = "verificado_usu")
 	private Boolean esVerificadoEntidad;
 
+	@Column(name = "login_google")
+	private boolean esLoginDeGoogle;
+
 	// Getters y setters
+
+	public boolean isEsLoginDeGoogle() {
+		return esLoginDeGoogle;
+	}
+
+	public void setEsLoginDeGoogle(boolean esLoginDeGoogle) {
+		this.esLoginDeGoogle = esLoginDeGoogle;
+	}
 
 	public Long getIdUsuEntidad() {
 		return idUsuEntidad;

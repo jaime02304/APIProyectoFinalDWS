@@ -18,8 +18,16 @@ public class UsuarioDto {
 	private String contraseniaUsu = "aaaaa";
 	private Boolean esPremium = false;
 	private Boolean esVerificadoEntidad = false;
+	private boolean esConGoogle = false;
 
 	// Getters y setters
+	public boolean isEsConGoogle() {
+		return esConGoogle;
+	}
+
+	public void setEsConGoogle(boolean esConGoogle) {
+		this.esConGoogle = esConGoogle;
+	}
 
 	public Long getIdUsu() {
 		return idUsu;

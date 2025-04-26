@@ -25,6 +25,6 @@ public interface TokenRepositorio extends JpaRepository<TokenEntidad, Long> {
 	@Query("DELETE FROM TokenEntidad t WHERE t.usuario = :usuario")
 	void deleteByUsuario(@Param("usuario") UsuarioEntidad usuario);
 
-	List<TokenEntidad> findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(LocalDateTime fecha);
+	List<TokenEntidad> findByIsVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(LocalDateTime fecha);
 
 }

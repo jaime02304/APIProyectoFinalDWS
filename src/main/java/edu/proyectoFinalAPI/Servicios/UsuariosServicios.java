@@ -3,6 +3,7 @@ package edu.proyectoFinalAPI.Servicios;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -55,16 +56,58 @@ public class UsuariosServicios {
 			throw new IllegalArgumentException("El usuario ya existe.");
 		}
 
-		UsuarioEntidad usuario = new UsuarioEntidad();
-		usuario.setNombreCompletoUsuEntidad(nuevoUsuarioDatos.getNombreCompletoUsu());
-		usuario.setAliasUsuEntidad(nuevoUsuarioDatos.getAliasUsu());
-		usuario.setCorreoElectronicoUsuEntidad(nuevoUsuarioDatos.getCorreoElectronicoUsu());
-		usuario.setContraseniaUsuEntidad(nuevoUsuarioDatos.getContraseniaUsu());
-		usuario.setRolUsuEntidad(nuevoUsuarioDatos.getRolUsu());
-		usuario.setEsPremiumEntidad(nuevoUsuarioDatos.getEsPremiumB());
-		usuario.setEsVerificadoEntidad(false);
+		// Mapeo común de DTO a entidad
+		UsuarioEntidad usuario = mapearDtoAEntidad(nuevoUsuarioDatos);
 		UsuarioEntidad guardado = repositorioUsuario.save(usuario);
 
+		// Procesar registro según tipo de login
+		if (nuevoUsuarioDatos.isEsConGoogle()) {
+			procesarRegistroGoogle(guardado);
+		} else {
+			procesarRegistroNormal(guardado);
+		}
+
+		return devolverInformacionUsuarioPerfil(guardado);
+	}
+
+	/**
+	 * Metodo auxiliar para mappear el dto hacia la entidad
+	 * 
+	 * @author jpribio - 26/04/25
+	 * @param dto
+	 * @return
+	 */
+	private UsuarioEntidad mapearDtoAEntidad(UsuarioDto dto) {
+		UsuarioEntidad usuario = new UsuarioEntidad();
+		usuario.setNombreCompletoUsuEntidad(dto.getNombreCompletoUsu());
+		usuario.setAliasUsuEntidad(dto.getAliasUsu());
+		usuario.setCorreoElectronicoUsuEntidad(dto.getCorreoElectronicoUsu());
+		usuario.setContraseniaUsuEntidad(dto.getContraseniaUsu());
+		usuario.setRolUsuEntidad(dto.getRolUsu());
+		usuario.setEsPremiumEntidad(dto.getEsPremiumB());
+		usuario.setEsLoginDeGoogle(dto.isEsConGoogle());
+		usuario.setEsVerificadoEntidad(dto.isEsConGoogle());
+		return usuario;
+	}
+
+	/**
+	 * Metodo que verifica el usuario si el registro es de google
+	 * 
+	 * @author jpribio - 26/04/25
+	 * @param usuario
+	 */
+	private void procesarRegistroGoogle(UsuarioEntidad usuario) {
+		usuario.setEsVerificadoEntidad(true);
+		repositorioUsuario.save(usuario);
+	}
+
+	/**
+	 * Metodo que verifica el usuario si el registro es tradicional
+	 * 
+	 * @author jpribio - 26/04/25
+	 * @param usuario
+	 */
+	private void procesarRegistroNormal(UsuarioEntidad usuario) {
 		String token = UUID.randomUUID().toString();
 		TokenEntidad tokenVer = new TokenEntidad();
 		tokenVer.setToken(token);
@@ -74,10 +117,8 @@ public class UsuariosServicios {
 		tokenVer.setUsuario(usuario);
 		tokenVer.setVerificacion(true);
 		repositorioToken.save(tokenVer);
-
+		// Enviar email de verificación
 		servicioEmail.enviarVerificacioEmail(usuario.getCorreoElectronicoUsuEntidad(), token);
-
-		return devolverInformacionUsuarioPerfil(guardado);
 	}
 
 	/**
@@ -160,7 +201,6 @@ public class UsuariosServicios {
 	 * @return
 	 */
 	public boolean iniciarRecuperacion(String correo) {
-		// Buscar el usuario por correo
 		UsuarioEntidad usuario = repositorioUsuario.findByCorreoElectronicoUsuEntidad(correo);
 		if (usuario == null) {
 			return false;

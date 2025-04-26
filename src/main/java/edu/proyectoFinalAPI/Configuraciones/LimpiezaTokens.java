@@ -32,7 +32,7 @@ public class LimpiezaTokens {
 	public void eliminarTokensYUsuariosNoVerificados() {
 		LocalDateTime ahora = LocalDateTime.now();
 		List<TokenEntidad> tokensExpirados = repositorioToken
-				.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(ahora);
+				.findByIsVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(ahora);
 
 		for (TokenEntidad token : tokensExpirados) {
 			UsuarioEntidad usuario = token.getUsuario();
