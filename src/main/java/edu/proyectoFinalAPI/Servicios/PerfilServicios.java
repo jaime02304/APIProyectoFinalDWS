@@ -51,10 +51,10 @@ public class PerfilServicios {
 
 	@Autowired
 	private CategoriaRepositorio repositorioCategoria;
-	
+
 	@Autowired
 	private SubcategoriaRepositorio repositorioSubcategoria;
-	
+
 	@Autowired
 	private TokenRepositorio repositorioToken;
 
@@ -173,17 +173,17 @@ public class PerfilServicios {
 		}
 		int filasAfectadas = 0;
 		if (eliminarElemento.isEsUsuarioEliminar()) {
-			  // Obtener el usuario
-	        UsuarioEntidad usuario = repositorioUsuario.findByAliasUsuEntidad(eliminarElemento.getElementoEliminar());
-	        // Eliminar entidades relacionadas primero
-	        repositorioToken.deleteByUsuario(usuario);
-	        repositorioComentariorepositorio.deleteByUsuario(usuario);
-	        repositorioGrupo.deleteByCreador(usuario);
-	        // Agrega aquí cualquier otro repositorio con datos relacionados
+			// Obtener el usuario
+			UsuarioEntidad usuario = repositorioUsuario.findByAliasUsuEntidad(eliminarElemento.getElementoEliminar());
+			// Eliminar entidades relacionadas primero
+			repositorioToken.deleteByUsuario(usuario);
+			repositorioComentariorepositorio.deleteByUsuario(usuario);
+			repositorioGrupo.deleteByCreador(usuario);
+			// Agrega aquí cualquier otro repositorio con datos relacionados
 
-	        // Ahora eliminar el usuario
-	        filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar());
-	    		} else {
+			// Ahora eliminar el usuario
+			filasAfectadas = repositorioUsuario.eliminarUsuarioPorNombre(eliminarElemento.getElementoEliminar());
+		} else {
 			filasAfectadas = repositorioGrupo.eliminarGrupoPorNombre(eliminarElemento.getElementoEliminar());
 		}
 		return filasAfectadas > 0;
@@ -227,7 +227,8 @@ public class PerfilServicios {
 		}
 		int filasAfectadas = repositorioGrupo.actualizarGrupoNombre(grupoAModificar)
 				+ repositorioGrupo.actualizarCategoria(grupoAModificar)
-				+ repositorioGrupo.actualizarSubCategoria(grupoAModificar);
+				+ repositorioGrupo.actualizarSubCategoria(grupoAModificar)
+				+ repositorioGrupo.actualizarDescripcion(grupoAModificar);
 		return filasAfectadas > 0;
 	}
 
@@ -271,7 +272,8 @@ public class PerfilServicios {
 	public GrupoEntidad crearGrupoComoAdministrador(GruposDto grupoACrear) throws IllegalArgumentException, Exception {
 		GrupoEntidad grupo = new GrupoEntidad();
 		CategoriaEntidad categoria = repositorioCategoria.findByNombreCategoria(grupoACrear.getCategoriaNombre());
-		SubcategoriaEntidad subCategoria = repositorioSubcategoria.findByNombreSubcategoria(grupoACrear.getSubCategoriaNombre());
+		SubcategoriaEntidad subCategoria = repositorioSubcategoria
+				.findByNombreSubcategoria(grupoACrear.getSubCategoriaNombre());
 		UsuarioEntidad creador = repositorioUsuario.findByAliasUsuEntidad(grupoACrear.getAliasCreadorUString());
 		grupo.setNombreGrupo(grupoACrear.getNombreGrupo());
 		grupo.setNumeroUsuarios(grupoACrear.getNumeroUsuarios() != null ? grupoACrear.getNumeroUsuarios() : 0L);
@@ -296,7 +298,8 @@ public class PerfilServicios {
 			throws IllegalArgumentException, Exception {
 		ComentariosEntidad comentario = new ComentariosEntidad();
 		CategoriaEntidad categoria = repositorioCategoria.findByNombreCategoria(nuevoComentario.getCategoriaTipo());
-		SubcategoriaEntidad subCategoria = repositorioSubcategoria.findByNombreSubcategoria(nuevoComentario.getSubCategoriaTipo());
+		SubcategoriaEntidad subCategoria = repositorioSubcategoria
+				.findByNombreSubcategoria(nuevoComentario.getSubCategoriaTipo());
 		UsuarioEntidad creador = repositorioUsuario.findByIdUsuEntidad(nuevoComentario.getIdUsuario());
 		// Mapear los campos del DTO a la entidad.
 		comentario.setComentarioTexto(nuevoComentario.getComentarioTexto());

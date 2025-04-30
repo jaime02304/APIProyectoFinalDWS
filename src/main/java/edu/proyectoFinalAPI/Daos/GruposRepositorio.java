@@ -51,6 +51,11 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 	@Query("UPDATE GrupoEntidad g SET g.subCategoriaId = (SELECT s.idSubcategoria FROM SubcategoriaEntidad s WHERE s.nombreSubcategoria = :#{#grupo.subCategoriaNombre}) WHERE g.idGrupo = :#{#grupo.idGrupo}")
 	int actualizarSubCategoria(@Param("grupo") GruposParaLasListasDto grupo);
 
+	@Transactional
+	@Modifying
+	@Query("UPDATE GrupoEntidad g SET g.descripcionGrupo = :#{#grupo.descripcionGrupo} WHERE g.idGrupo = :#{#grupo.idGrupo}")
+	int actualizarDescripcion(@Param("grupo") GruposParaLasListasDto grupo);
+
 	boolean existsByNombreGrupo(String nombreGrupo);
 
 	boolean existsByNombreGrupoAndIdGrupoNot(String nombreGrupo, Long idGrupo);
@@ -59,5 +64,7 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 	@Modifying
 	@Query("DELETE FROM GrupoEntidad g WHERE g.creadorUsuId = :creador")
 	void deleteByCreador(@Param("creador") UsuarioEntidad creador);
+
+	List<GrupoEntidad> findAllByOrderByNumeroUsuariosDesc();
 
 }

@@ -764,6 +764,32 @@ public class controladorApi {
 	}
 
 	/**
+	 * MEtodo para recoger todos los grupos desde la api
+	 * 
+	 * @author jpribio - 30/04/25
+	 * @return
+	 */
+	@GetMapping("/RecogerGruposTotales")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> recogerTodosLOsGrupos() {
+		Map<String, Object> response = new HashMap<>();
+		logger.info("Recogida de todos los grupos.");
+		try {
+			List<GruposDto> gruposDto = servicioGrupo.recogerTodosLosGrupos();
+			response.put("listaCompletaGrupos", gruposDto);
+		} catch (IllegalArgumentException e) {
+			logger.error("Error de argumento inválido al recoger los grupos: {}", e.getMessage());
+			response.put("error", "Argumento inválido: " + e.getMessage());
+		} catch (Exception e) {
+			logger.error("Error inesperado al recoger los grupos: {}", e.getMessage(), e);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	/**
 	 * Método privado para cambiar de entidad a DTO el comentario
 	 * 
 	 * @param comentarioCreado

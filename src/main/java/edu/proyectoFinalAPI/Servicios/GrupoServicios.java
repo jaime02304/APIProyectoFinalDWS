@@ -1,5 +1,6 @@
 package edu.proyectoFinalAPI.Servicios;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
+import edu.proyectoFinalAPI.Dtos.GruposDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 
@@ -86,6 +88,7 @@ public class GrupoServicios {
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
 			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreCategoria());
 			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreSubcategoria());
+			grupo.setDescripcionGrupo(grupoEntidad.getDescripcionGrupo());
 			return grupo;
 		}).collect(Collectors.toList());
 	}
@@ -112,8 +115,52 @@ public class GrupoServicios {
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
 			grupo.setCategoriaNombre(grupoEntidad.getCategoriaId().getNombreCategoria());
 			grupo.setSubCategoriaNombre(grupoEntidad.getSubCategoriaId().getNombreSubcategoria());
+			grupo.setDescripcionGrupo(grupoEntidad.getDescripcionGrupo());
 			return grupo;
 		}).collect(Collectors.toList());
+	}
+
+	/**
+	 * Metodo para recoger todo el listado de comentarios
+	 * 
+	 * @author jpribio - 30/04/25
+	 * @return
+	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 */
+	public List<GruposDto> recogerTodosLosGrupos() throws NullPointerException, IllegalArgumentException {
+
+		List<GrupoEntidad> listaEnt = repositorioGrupos.findAllByOrderByNumeroUsuariosDesc();
+		List<GruposDto> listaDto = new ArrayList<>();
+
+		if (listaEnt != null) {
+			for (GrupoEntidad ent : listaEnt) {
+				GruposDto dto = new GruposDto();
+				dto.setIdGrupo(ent.getIdGrupo());
+				dto.setNombreGrupo(ent.getNombreGrupo());
+				dto.setCreadorUsuId(ent.getCreadorUsuId().getIdUsuEntidad());
+				dto.setAliasCreadorUString(ent.getCreadorUsuId().getAliasUsuEntidad());
+				dto.setNumeroUsuarios(ent.getNumeroUsuarios());
+				dto.setFechaGrupo(ent.getFechaGrupo());
+				if (ent.getCategoriaId() != null) {
+					dto.setCategoriaNombre(ent.getCategoriaId().getNombreCategoria());
+				} else {
+					dto.setCategoriaNombre("");
+				}
+				if (ent.getSubCategoriaId() != null) {
+					dto.setSubCategoriaNombre(ent.getSubCategoriaId().getNombreSubcategoria());
+				} else {
+					dto.setSubCategoriaNombre("");
+				}
+
+				dto.setDescripcionGrupo(ent.getDescripcionGrupo());
+
+				listaDto.add(dto);
+			}
+			return listaDto;
+		}
+
+		return null;
 	}
 
 }

@@ -11,8 +11,17 @@ public class GruposParaLasListasDto {
 	private String nombreGrupo = "aaaaa";
 	private String categoriaNombre = "aaaaa";
 	private String subCategoriaNombre = "aaaaa";
+	private String descripcionGrupo = "";
 
 	// No se sabe si se debe de poner l entidad (el tipo) ahí
+
+	public String getDescripcionGrupo() {
+		return descripcionGrupo;
+	}
+
+	public void setDescripcionGrupo(String descripcionGrupo) {
+		this.descripcionGrupo = descripcionGrupo;
+	}
 
 	public Long getIdGrupo() {
 		return idGrupo;

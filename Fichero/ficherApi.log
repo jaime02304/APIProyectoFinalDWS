@@ -1,20 +1,20 @@
-2025-04-26 12:42:24 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 4744 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 12:42:24 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 12:42:25 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 12:42:25 - Finished Spring Data repository scanning in 45 ms. Found 6 JPA repository interfaces.
-2025-04-26 12:42:25 - Tomcat initialized with port 8081 (http)
-2025-04-26 12:42:25 - Starting service [Tomcat]
-2025-04-26 12:42:25 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 12:42:25 - Initializing Spring embedded WebApplicationContext
-2025-04-26 12:42:25 - Root WebApplicationContext: initialization completed in 957 ms
-2025-04-26 12:42:25 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 12:42:25 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 12:42:25 - HHH000026: Second-level cache disabled
-2025-04-26 12:42:26 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 12:42:26 - HikariPool-1 - Starting...
-2025-04-26 12:42:27 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a4f8e8a
-2025-04-26 12:42:27 - HikariPool-1 - Start completed.
-2025-04-26 12:42:27 - HHH10001005: Database info:
+2025-04-30 17:28:33 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 3692 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 17:28:33 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 17:28:34 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 17:28:34 - Finished Spring Data repository scanning in 40 ms. Found 6 JPA repository interfaces.
+2025-04-30 17:28:34 - Tomcat initialized with port 8081 (http)
+2025-04-30 17:28:34 - Starting service [Tomcat]
+2025-04-30 17:28:34 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 17:28:34 - Initializing Spring embedded WebApplicationContext
+2025-04-30 17:28:34 - Root WebApplicationContext: initialization completed in 785 ms
+2025-04-30 17:28:34 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 17:28:34 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 17:28:34 - HHH000026: Second-level cache disabled
+2025-04-30 17:28:35 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 17:28:35 - HikariPool-1 - Starting...
+2025-04-30 17:28:36 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1da53f4f
+2025-04-30 17:28:36 - HikariPool-1 - Start completed.
+2025-04-30 17:28:36 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -22,115 +22,98 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 12:42:28 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 12:42:29 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 12:42:29 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'limpiezaTokens': Unsatisfied dependency expressed through field 'repositorioToken': Error creating bean with name 'tokenRepositorio' defined in edu.proyectoFinalAPI.Daos.TokenRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Reason: Failed to create query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Could not resolve attribute 'verificacion' of 'edu.proyectoFinalAPI.Daos.TokenEntidad'
-2025-04-26 12:42:29 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 12:42:29 - HikariPool-1 - Shutdown initiated...
-2025-04-26 12:42:30 - HikariPool-1 - Shutdown completed.
-2025-04-26 12:42:30 - Stopping service [Tomcat]
-2025-04-26 12:42:30 - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-04-26 12:42:30 - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'limpiezaTokens': Unsatisfied dependency expressed through field 'repositorioToken': Error creating bean with name 'tokenRepositorio' defined in edu.proyectoFinalAPI.Daos.TokenRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Reason: Failed to create query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Could not resolve attribute 'verificacion' of 'edu.proyectoFinalAPI.Daos.TokenEntidad'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1445)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at edu.proyectoFinalAPI.ProyectoFinalApiApplication.main(ProyectoFinalApiApplication.java:12)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tokenRepositorio' defined in edu.proyectoFinalAPI.Daos.TokenRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Reason: Failed to create query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Could not resolve attribute 'verificacion' of 'edu.proyectoFinalAPI.Daos.TokenEntidad'
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1812)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1664)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1552)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
-	... 22 common frames omitted
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Reason: Failed to create query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Could not resolve attribute 'verificacion' of 'edu.proyectoFinalAPI.Daos.TokenEntidad'
-	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:120)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:104)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:92)
-	at java.base/java.util.Optional.map(Optional.java:260)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:92)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:440)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$4(RepositoryFactoryBeanSupport.java:350)
-	at org.springframework.data.util.Lazy.getNullable(Lazy.java:135)
-	at org.springframework.data.util.Lazy.get(Lazy.java:113)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:356)
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808)
-	... 32 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.TokenRepositorio.findByVerificacionTrueAndUsadoFalseAndFechaExpiracionBefore(java.time.LocalDateTime); Could not resolve attribute 'verificacion' of 'edu.proyectoFinalAPI.Daos.TokenEntidad'
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:107)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:128)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:262)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:99)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:116)
-	... 44 common frames omitted
-Caused by: org.hibernate.query.sqm.PathElementException: Could not resolve attribute 'verificacion' of 'edu.proyectoFinalAPI.Daos.TokenEntidad'
-	at org.hibernate.query.sqm.SqmPathSource.getSubPathSource(SqmPathSource.java:95)
-	at org.hibernate.query.sqm.tree.domain.AbstractSqmPath.get(AbstractSqmPath.java:198)
-	at org.hibernate.query.sqm.tree.domain.AbstractSqmPath.get(AbstractSqmPath.java:44)
-	at org.springframework.data.jpa.repository.query.QueryUtils.getModelForPath(QueryUtils.java:982)
-	at org.springframework.data.jpa.repository.query.QueryUtils.requiresOuterJoin(QueryUtils.java:839)
-	at org.springframework.data.jpa.repository.query.QueryUtils.toExpressionRecursively(QueryUtils.java:794)
-	at org.springframework.data.jpa.repository.query.QueryUtils.toExpressionRecursively(QueryUtils.java:773)
-	at org.springframework.data.jpa.repository.query.QueryUtils.toExpressionRecursively(QueryUtils.java:769)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator$PredicateBuilder.getTypedPath(JpaQueryCreator.java:387)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator$PredicateBuilder.build(JpaQueryCreator.java:303)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.toPredicate(JpaQueryCreator.java:210)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:121)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:1)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createCriteria(AbstractQueryCreator.java:119)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:95)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:81)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.<init>(PartTreeJpaQuery.java:224)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$CountQueryPreparer.<init>(PartTreeJpaQuery.java:370)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:103)
-	... 48 common frames omitted
-2025-04-26 12:45:41 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 6136 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 12:45:41 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 12:45:41 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 12:45:41 - Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
-2025-04-26 12:45:41 - Tomcat initialized with port 8081 (http)
-2025-04-26 12:45:41 - Starting service [Tomcat]
-2025-04-26 12:45:41 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 12:45:41 - Initializing Spring embedded WebApplicationContext
-2025-04-26 12:45:41 - Root WebApplicationContext: initialization completed in 782 ms
-2025-04-26 12:45:42 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 12:45:42 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 12:45:42 - HHH000026: Second-level cache disabled
-2025-04-26 12:45:42 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 12:45:42 - HikariPool-1 - Starting...
-2025-04-26 12:45:43 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6cee903a
-2025-04-26 12:45:43 - HikariPool-1 - Start completed.
-2025-04-26 12:45:43 - HHH10001005: Database info:
+2025-04-30 17:28:37 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 17:28:38 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 17:28:38 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 17:28:39 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 17:28:39 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 17:28:39 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 17:28:39 - Started ProyectoFinalApiApplication in 6.303 seconds (process running for 6.71)
+2025-04-30 17:29:00 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 17:29:00 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 17:29:00 - Completed initialization in 1 ms
+2025-04-30 17:29:00 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:29:00 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:29:07 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:29:07 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:29:28 - Inicio del registro de usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@553e8e48
+2025-04-30 17:30:02 - Usuario creado exitosamente: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@5bdc7822
+2025-04-30 17:30:02 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:30:02 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:30:42 - Recogida de todos los comentarios.
+2025-04-30 17:30:50 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:30:50 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:31:47 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:31:47 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:31:56 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@5e6ba6de
+2025-04-30 17:31:56 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6cd5ab04
+2025-04-30 17:31:56 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:31:56 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:32:13 - Recogida de todos los comentarios.
+2025-04-30 17:32:14 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:32:14 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:35:18 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:35:18 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:35:31 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@40dff5
+2025-04-30 17:35:32 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@3700f019
+2025-04-30 17:35:32 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:35:32 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:35:33 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:35:34 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:36:13 - Recogida de todos los comentarios.
+2025-04-30 17:36:14 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:36:14 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:36:46 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:36:47 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:36:50 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:36:50 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:36:53 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@28bc470
+2025-04-30 17:36:53 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@28bc470 no tiene grupos asociados.
+2025-04-30 17:36:53 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@779887e5
+2025-04-30 17:36:54 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@779887e5
+2025-04-30 17:36:55 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:36:56 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:36:57 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@58ee27e6
+2025-04-30 17:36:57 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@58ee27e6 no tiene grupos asociados.
+2025-04-30 17:36:57 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@266a63d6
+2025-04-30 17:36:57 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@266a63d6
+2025-04-30 17:37:01 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:37:01 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:37:02 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:37:02 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:37:27 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:37:27 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:37:29 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:37:29 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:37:42 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@294fad3
+2025-04-30 17:37:42 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6b8e44e9
+2025-04-30 17:37:42 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:37:42 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:39:59 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:40:00 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:40:02 - Application shutdown requested.
+2025-04-30 17:40:02 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 17:40:02 - Graceful shutdown complete
+2025-04-30 17:40:02 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 17:40:02 - HikariPool-1 - Shutdown initiated...
+2025-04-30 17:40:03 - HikariPool-1 - Shutdown completed.
+2025-04-30 17:40:11 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 4532 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 17:40:11 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 17:40:11 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 17:40:11 - Finished Spring Data repository scanning in 41 ms. Found 6 JPA repository interfaces.
+2025-04-30 17:40:12 - Tomcat initialized with port 8081 (http)
+2025-04-30 17:40:12 - Starting service [Tomcat]
+2025-04-30 17:40:12 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 17:40:12 - Initializing Spring embedded WebApplicationContext
+2025-04-30 17:40:12 - Root WebApplicationContext: initialization completed in 764 ms
+2025-04-30 17:40:12 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 17:40:12 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 17:40:12 - HHH000026: Second-level cache disabled
+2025-04-30 17:40:12 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 17:40:12 - HikariPool-1 - Starting...
+2025-04-30 17:40:13 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73da7f08
+2025-04-30 17:40:13 - HikariPool-1 - Start completed.
+2025-04-30 17:40:13 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -138,42 +121,80 @@ Caused by: org.hibernate.query.sqm.PathElementException: Could not resolve attri
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 12:45:43 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 12:45:45 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 12:45:45 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 12:45:46 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 12:45:46 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 12:45:46 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 12:45:46 - Started ProyectoFinalApiApplication in 5.717 seconds (process running for 6.137)
-2025-04-26 12:46:24 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 12:46:24 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 12:46:24 - Completed initialization in 0 ms
-2025-04-26 12:46:24 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 12:46:24 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 12:46:39 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 12:46:39 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 13:58:43 - Application shutdown requested.
-2025-04-26 13:58:43 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 13:58:43 - Graceful shutdown complete
-2025-04-26 13:58:43 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 13:58:43 - HikariPool-1 - Shutdown initiated...
-2025-04-26 14:17:09 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 10396 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 14:17:10 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 14:17:10 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 14:17:10 - Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
-2025-04-26 14:17:10 - Tomcat initialized with port 8081 (http)
-2025-04-26 14:17:10 - Starting service [Tomcat]
-2025-04-26 14:17:10 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 14:17:10 - Initializing Spring embedded WebApplicationContext
-2025-04-26 14:17:10 - Root WebApplicationContext: initialization completed in 787 ms
-2025-04-26 14:17:10 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 14:17:10 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 14:17:10 - HHH000026: Second-level cache disabled
-2025-04-26 14:17:11 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 14:17:11 - HikariPool-1 - Starting...
-2025-04-26 14:17:12 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6cee903a
-2025-04-26 14:17:12 - HikariPool-1 - Start completed.
-2025-04-26 14:17:12 - HHH10001005: Database info:
+2025-04-30 17:40:14 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 17:40:15 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 17:40:15 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 17:40:16 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 17:40:16 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 17:40:16 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 17:40:16 - Started ProyectoFinalApiApplication in 5.689 seconds (process running for 6.105)
+2025-04-30 17:40:32 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 17:40:32 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 17:40:32 - Completed initialization in 0 ms
+2025-04-30 17:40:32 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:40:33 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:40:54 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@3d6dae20
+2025-04-30 17:40:55 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@4de6c00e
+2025-04-30 17:40:55 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:40:55 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:40:56 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:40:56 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:41:03 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:41:03 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:43:14 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:43:14 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:45:38 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:45:39 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:45:46 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@39c10407
+2025-04-30 17:45:46 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7512371f
+2025-04-30 17:45:46 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:45:47 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:45:49 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:45:49 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:46:48 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:46:49 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:47:00 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@3b6d7a2d
+2025-04-30 17:47:00 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@48e2e44c
+2025-04-30 17:47:00 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:47:01 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:47:02 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:47:02 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:50:49 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:50:49 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:51:10 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@24b9f3f2
+2025-04-30 17:51:10 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@55960d21
+2025-04-30 17:51:10 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:51:11 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:51:12 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:51:12 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:51:20 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7e5c48f9
+2025-04-30 17:51:21 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7e5c48f9 no tiene grupos asociados.
+2025-04-30 17:51:21 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@667bb996
+2025-04-30 17:51:21 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@667bb996
+2025-04-30 17:51:22 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 17:51:22 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 17:51:29 - Application shutdown requested.
+2025-04-30 17:51:29 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 17:51:29 - Graceful shutdown complete
+2025-04-30 17:51:29 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 17:51:29 - HikariPool-1 - Shutdown initiated...
+2025-04-30 18:02:41 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 1328 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 18:02:41 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 18:02:42 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 18:02:42 - Finished Spring Data repository scanning in 41 ms. Found 6 JPA repository interfaces.
+2025-04-30 18:02:42 - Tomcat initialized with port 8081 (http)
+2025-04-30 18:02:42 - Starting service [Tomcat]
+2025-04-30 18:02:42 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 18:02:42 - Initializing Spring embedded WebApplicationContext
+2025-04-30 18:02:42 - Root WebApplicationContext: initialization completed in 776 ms
+2025-04-30 18:02:42 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 18:02:42 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 18:02:42 - HHH000026: Second-level cache disabled
+2025-04-30 18:02:43 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 18:02:43 - HikariPool-1 - Starting...
+2025-04-30 18:02:43 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@29aa4bc9
+2025-04-30 18:02:43 - HikariPool-1 - Start completed.
+2025-04-30 18:02:44 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -181,149 +202,54 @@ Caused by: org.hibernate.query.sqm.PathElementException: Could not resolve attri
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 14:17:12 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 14:17:14 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 14:17:14 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 14:17:14 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'limpiezaTokens': Unsatisfied dependency expressed through field 'repositorioUsuario': Error creating bean with name 'usuarioRepositorio' defined in edu.proyectoFinalAPI.Daos.UsuarioRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias(); Reason: Validation failed for query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias()
-2025-04-26 14:17:14 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 14:17:14 - HikariPool-1 - Shutdown initiated...
-2025-04-26 14:17:15 - HikariPool-1 - Shutdown completed.
-2025-04-26 14:17:15 - Stopping service [Tomcat]
-2025-04-26 14:17:15 - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-04-26 14:17:15 - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'limpiezaTokens': Unsatisfied dependency expressed through field 'repositorioUsuario': Error creating bean with name 'usuarioRepositorio' defined in edu.proyectoFinalAPI.Daos.UsuarioRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias(); Reason: Validation failed for query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias()
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1445)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at edu.proyectoFinalAPI.ProyectoFinalApiApplication.main(ProyectoFinalApiApplication.java:12)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'usuarioRepositorio' defined in edu.proyectoFinalAPI.Daos.UsuarioRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias(); Reason: Validation failed for query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias()
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1812)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1664)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1552)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
-	... 22 common frames omitted
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias(); Reason: Validation failed for query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias()
-	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:120)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:104)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:92)
-	at java.base/java.util.Optional.map(Optional.java:260)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:92)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:440)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$4(RepositoryFactoryBeanSupport.java:350)
-	at org.springframework.data.util.Lazy.getNullable(Lazy.java:135)
-	at org.springframework.data.util.Lazy.get(Lazy.java:113)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:356)
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808)
-	... 32 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List edu.proyectoFinalAPI.Daos.UsuarioRepositorio.obtenerTodosAlias()
-	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:97)
-	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.<init>(SimpleJpaQuery.java:67)
-	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromMethodWithQueryString(JpaQueryFactory.java:49)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$DeclaredQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:174)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:256)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:99)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:116)
-	... 44 common frames omitted
-Caused by: java.lang.IllegalArgumentException: org.hibernate.query.sqm.UnknownPathException: Could not resolve attribute 'aliasUsu' of 'edu.proyectoFinalAPI.Daos.UsuarioEntidad' [SELECT u.aliasUsu FROM UsuarioEntidad u]
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:143)
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167)
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173)
-	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:886)
-	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:796)
-	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:143)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:364)
-	at jdk.proxy2/jdk.proxy2.$Proxy116.createQuery(Unknown Source)
-	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:91)
-	... 50 common frames omitted
-Caused by: org.hibernate.query.sqm.UnknownPathException: Could not resolve attribute 'aliasUsu' of 'edu.proyectoFinalAPI.Daos.UsuarioEntidad' [SELECT u.aliasUsu FROM UsuarioEntidad u]
-	at org.hibernate.query.hql.internal.StandardHqlTranslator.translate(StandardHqlTranslator.java:88)
-	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.createHqlInterpretation(QueryInterpretationCacheStandardImpl.java:145)
-	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.resolveHqlInterpretation(QueryInterpretationCacheStandardImpl.java:132)
-	at org.hibernate.query.spi.QueryEngine.interpretHql(QueryEngine.java:54)
-	at org.hibernate.internal.AbstractSharedSessionContract.interpretHql(AbstractSharedSessionContract.java:832)
-	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:878)
-	... 57 common frames omitted
-Caused by: org.hibernate.query.sqm.PathElementException: Could not resolve attribute 'aliasUsu' of 'edu.proyectoFinalAPI.Daos.UsuarioEntidad'
-	at org.hibernate.query.sqm.SqmPathSource.getSubPathSource(SqmPathSource.java:95)
-	at org.hibernate.query.sqm.tree.domain.AbstractSqmPath.get(AbstractSqmPath.java:198)
-	at org.hibernate.query.sqm.tree.domain.AbstractSqmFrom.resolvePathPart(AbstractSqmFrom.java:198)
-	at org.hibernate.query.hql.internal.DomainPathPart.resolvePathPart(DomainPathPart.java:42)
-	at org.hibernate.query.hql.internal.BasicDotIdentifierConsumer.consumeIdentifier(BasicDotIdentifierConsumer.java:92)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSimplePath(SemanticQueryBuilder.java:5465)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitGeneralPathFragment(SemanticQueryBuilder.java:5298)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitGeneralPathExpression(SemanticQueryBuilder.java:1891)
-	at org.hibernate.grammars.hql.HqlParser$GeneralPathExpressionContext.accept(HqlParser.java:8268)
-	at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)
-	at org.hibernate.grammars.hql.HqlParserBaseVisitor.visitBarePrimaryExpression(HqlParserBaseVisitor.java:812)
-	at org.hibernate.grammars.hql.HqlParser$BarePrimaryExpressionContext.accept(HqlParser.java:7726)
-	at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)
-	at org.hibernate.grammars.hql.HqlParserBaseVisitor.visitExpressionOrPredicate(HqlParserBaseVisitor.java:945)
-	at org.hibernate.grammars.hql.HqlParser$ExpressionOrPredicateContext.accept(HqlParser.java:8468)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelectableNode(SemanticQueryBuilder.java:1435)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelection(SemanticQueryBuilder.java:1412)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelectClause(SemanticQueryBuilder.java:1405)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitQuery(SemanticQueryBuilder.java:1254)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitQuerySpecExpression(SemanticQueryBuilder.java:1040)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitQuerySpecExpression(SemanticQueryBuilder.java:277)
-	at org.hibernate.grammars.hql.HqlParser$QuerySpecExpressionContext.accept(HqlParser.java:2134)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSimpleQueryGroup(SemanticQueryBuilder.java:1025)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSimpleQueryGroup(SemanticQueryBuilder.java:277)
-	at org.hibernate.grammars.hql.HqlParser$SimpleQueryGroupContext.accept(HqlParser.java:2005)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelectStatement(SemanticQueryBuilder.java:492)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitStatement(SemanticQueryBuilder.java:451)
-	at org.hibernate.query.hql.internal.SemanticQueryBuilder.buildSemanticModel(SemanticQueryBuilder.java:324)
-	at org.hibernate.query.hql.internal.StandardHqlTranslator.translate(StandardHqlTranslator.java:71)
-	... 62 common frames omitted
-2025-04-26 14:19:01 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 16348 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 14:19:01 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 14:19:01 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 14:19:01 - Finished Spring Data repository scanning in 43 ms. Found 6 JPA repository interfaces.
-2025-04-26 14:19:01 - Tomcat initialized with port 8081 (http)
-2025-04-26 14:19:01 - Starting service [Tomcat]
-2025-04-26 14:19:01 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 14:19:01 - Initializing Spring embedded WebApplicationContext
-2025-04-26 14:19:01 - Root WebApplicationContext: initialization completed in 791 ms
-2025-04-26 14:19:01 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 14:19:02 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 14:19:02 - HHH000026: Second-level cache disabled
-2025-04-26 14:19:02 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 14:19:02 - HikariPool-1 - Starting...
-2025-04-26 14:19:03 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c2aab92
-2025-04-26 14:19:03 - HikariPool-1 - Start completed.
-2025-04-26 14:19:03 - HHH10001005: Database info:
+2025-04-30 18:02:44 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 18:02:46 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 18:02:46 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 18:02:47 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 18:02:47 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 18:02:47 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 18:02:47 - Started ProyectoFinalApiApplication in 5.777 seconds (process running for 6.186)
+2025-04-30 18:03:01 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 18:03:01 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 18:03:01 - Completed initialization in 1 ms
+2025-04-30 18:03:01 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:03:01 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:03:08 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@985a039
+2025-04-30 18:03:08 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@1bac8efd
+2025-04-30 18:03:08 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:03:08 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:03:51 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:03:51 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:04:29 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:04:29 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:04:34 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@2ba646d0
+2025-04-30 18:04:34 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@10ab1b8b
+2025-04-30 18:04:34 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:04:34 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:04:35 - Recogida de todos los grupos.
+2025-04-30 18:04:53 - Application shutdown requested.
+2025-04-30 18:04:53 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 18:04:53 - Graceful shutdown complete
+2025-04-30 18:04:53 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 18:04:53 - HikariPool-1 - Shutdown initiated...
+2025-04-30 18:04:54 - HikariPool-1 - Shutdown completed.
+2025-04-30 18:06:34 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 1736 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 18:06:34 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 18:06:34 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 18:06:34 - Finished Spring Data repository scanning in 41 ms. Found 6 JPA repository interfaces.
+2025-04-30 18:06:35 - Tomcat initialized with port 8081 (http)
+2025-04-30 18:06:35 - Starting service [Tomcat]
+2025-04-30 18:06:35 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 18:06:35 - Initializing Spring embedded WebApplicationContext
+2025-04-30 18:06:35 - Root WebApplicationContext: initialization completed in 763 ms
+2025-04-30 18:06:35 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 18:06:35 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 18:06:35 - HHH000026: Second-level cache disabled
+2025-04-30 18:06:35 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 18:06:35 - HikariPool-1 - Starting...
+2025-04-30 18:06:36 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7573c7b5
+2025-04-30 18:06:36 - HikariPool-1 - Start completed.
+2025-04-30 18:06:36 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -331,364 +257,73 @@ Caused by: org.hibernate.query.sqm.PathElementException: Could not resolve attri
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 14:19:03 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 14:19:05 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 14:19:05 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 14:19:06 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 14:19:06 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 14:19:06 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 14:19:06 - Started ProyectoFinalApiApplication in 5.769 seconds (process running for 6.203)
-2025-04-26 14:19:20 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 14:19:20 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 14:19:20 - Completed initialization in 0 ms
-2025-04-26 14:19:20 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:19:20 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:19:31 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@6155cd09
-2025-04-26 14:19:31 - Error inesperado durante el inicio de sesión: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-org.springframework.orm.jpa.JpaSystemException: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560)
-	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
-	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
-	at jdk.proxy2/jdk.proxy2.$Proxy125.findByCorreoElectronicoUsuEntidad(Unknown Source)
-	at edu.proyectoFinalAPI.Servicios.UsuariosServicios.inicioSesionUsu(UsuariosServicios.java:105)
-	at edu.proyectoFinalAPI.controlador.controladorApi.inicioSesionUsuario(controladorApi.java:128)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1570)
-Caused by: org.hibernate.PropertyAccessException: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-	at org.hibernate.property.access.spi.SetterFieldImpl.set(SetterFieldImpl.java:63)
-	at org.hibernate.persister.entity.AbstractEntityPersister.setPropertyValues(AbstractEntityPersister.java:4635)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeEntityInstance(EntityInitializerImpl.java:1349)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeInstance(EntityInitializerImpl.java:1312)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeInstance(EntityInitializerImpl.java:97)
-	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:244)
-	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:141)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.read(ListResultsConsumer.java:249)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:201)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:35)
-	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:224)
-	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102)
-	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91)
-	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:152)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:442)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:362)
-	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380)
-	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143)
-	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:275)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:224)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:93)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:170)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
-	... 55 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Can not set boolean field edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle to null value
-	at java.base/jdk.internal.reflect.FieldAccessorImpl.throwSetIllegalArgumentException(FieldAccessorImpl.java:228)
-	at java.base/jdk.internal.reflect.FieldAccessorImpl.throwSetIllegalArgumentException(FieldAccessorImpl.java:232)
-	at java.base/jdk.internal.reflect.MethodHandleBooleanFieldAccessorImpl.set(MethodHandleBooleanFieldAccessorImpl.java:111)
-	at java.base/java.lang.reflect.Field.set(Field.java:836)
-	at org.hibernate.property.access.spi.SetterFieldImpl.set(SetterFieldImpl.java:57)
-	... 89 common frames omitted
-2025-04-26 14:19:40 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@78855a78
-2025-04-26 14:19:40 - Error inesperado durante el inicio de sesión: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-org.springframework.orm.jpa.JpaSystemException: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560)
-	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
-	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
-	at jdk.proxy2/jdk.proxy2.$Proxy125.findByCorreoElectronicoUsuEntidad(Unknown Source)
-	at edu.proyectoFinalAPI.Servicios.UsuariosServicios.inicioSesionUsu(UsuariosServicios.java:105)
-	at edu.proyectoFinalAPI.controlador.controladorApi.inicioSesionUsuario(controladorApi.java:128)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1570)
-Caused by: org.hibernate.PropertyAccessException: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-	at org.hibernate.property.access.spi.SetterFieldImpl.set(SetterFieldImpl.java:63)
-	at org.hibernate.persister.entity.AbstractEntityPersister.setPropertyValues(AbstractEntityPersister.java:4635)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeEntityInstance(EntityInitializerImpl.java:1349)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeInstance(EntityInitializerImpl.java:1312)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeInstance(EntityInitializerImpl.java:97)
-	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:244)
-	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:141)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.read(ListResultsConsumer.java:249)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:201)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:35)
-	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:224)
-	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102)
-	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91)
-	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:152)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:442)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:362)
-	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380)
-	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143)
-	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:275)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:224)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:93)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:170)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
-	... 55 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Can not set boolean field edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle to null value
-	at java.base/jdk.internal.reflect.FieldAccessorImpl.throwSetIllegalArgumentException(FieldAccessorImpl.java:228)
-	at java.base/jdk.internal.reflect.FieldAccessorImpl.throwSetIllegalArgumentException(FieldAccessorImpl.java:232)
-	at java.base/jdk.internal.reflect.MethodHandleBooleanFieldAccessorImpl.set(MethodHandleBooleanFieldAccessorImpl.java:111)
-	at java.base/java.lang.reflect.Field.set(Field.java:836)
-	at org.hibernate.property.access.spi.SetterFieldImpl.set(SetterFieldImpl.java:57)
-	... 89 common frames omitted
-2025-04-26 14:19:47 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@3efe109a
-2025-04-26 14:19:47 - Error inesperado durante el inicio de sesión: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-org.springframework.orm.jpa.JpaSystemException: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560)
-	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
-	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
-	at jdk.proxy2/jdk.proxy2.$Proxy125.findByCorreoElectronicoUsuEntidad(Unknown Source)
-	at edu.proyectoFinalAPI.Servicios.UsuariosServicios.inicioSesionUsu(UsuariosServicios.java:105)
-	at edu.proyectoFinalAPI.controlador.controladorApi.inicioSesionUsuario(controladorApi.java:128)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1570)
-Caused by: org.hibernate.PropertyAccessException: Null value was assigned to a property [class edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle] of primitive type: 'edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle' (setter)
-	at org.hibernate.property.access.spi.SetterFieldImpl.set(SetterFieldImpl.java:63)
-	at org.hibernate.persister.entity.AbstractEntityPersister.setPropertyValues(AbstractEntityPersister.java:4635)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeEntityInstance(EntityInitializerImpl.java:1349)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeInstance(EntityInitializerImpl.java:1312)
-	at org.hibernate.sql.results.graph.entity.internal.EntityInitializerImpl.initializeInstance(EntityInitializerImpl.java:97)
-	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:244)
-	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:141)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.read(ListResultsConsumer.java:249)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:201)
-	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:35)
-	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:224)
-	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102)
-	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91)
-	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:152)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:442)
-	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:362)
-	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380)
-	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143)
-	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:275)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:224)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:93)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:170)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
-	... 55 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Can not set boolean field edu.proyectoFinalAPI.Daos.UsuarioEntidad.esLoginDeGoogle to null value
-	at java.base/jdk.internal.reflect.FieldAccessorImpl.throwSetIllegalArgumentException(FieldAccessorImpl.java:228)
-	at java.base/jdk.internal.reflect.FieldAccessorImpl.throwSetIllegalArgumentException(FieldAccessorImpl.java:232)
-	at java.base/jdk.internal.reflect.MethodHandleBooleanFieldAccessorImpl.set(MethodHandleBooleanFieldAccessorImpl.java:111)
-	at java.base/java.lang.reflect.Field.set(Field.java:836)
-	at org.hibernate.property.access.spi.SetterFieldImpl.set(SetterFieldImpl.java:57)
-	... 89 common frames omitted
-2025-04-26 14:20:06 - Application shutdown requested.
-2025-04-26 14:20:06 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 14:20:06 - Graceful shutdown complete
-2025-04-26 14:20:06 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 14:20:06 - HikariPool-1 - Shutdown initiated...
-2025-04-26 14:25:27 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 13232 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 14:25:27 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 14:25:27 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 14:25:27 - Finished Spring Data repository scanning in 43 ms. Found 6 JPA repository interfaces.
-2025-04-26 14:25:28 - Tomcat initialized with port 8081 (http)
-2025-04-26 14:25:28 - Starting service [Tomcat]
-2025-04-26 14:25:28 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 14:25:28 - Initializing Spring embedded WebApplicationContext
-2025-04-26 14:25:28 - Root WebApplicationContext: initialization completed in 772 ms
-2025-04-26 14:25:28 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 14:25:28 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 14:25:28 - HHH000026: Second-level cache disabled
-2025-04-26 14:25:28 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 14:25:28 - HikariPool-1 - Starting...
-2025-04-26 14:25:29 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51e94b7d
-2025-04-26 14:25:29 - HikariPool-1 - Start completed.
-2025-04-26 14:25:29 - HHH10001005: Database info:
+2025-04-30 18:06:37 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 18:06:38 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 18:06:39 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 18:06:39 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 18:06:39 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 18:06:40 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 18:06:40 - Started ProyectoFinalApiApplication in 5.707 seconds (process running for 6.123)
+2025-04-30 18:06:56 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 18:06:56 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 18:06:56 - Completed initialization in 1 ms
+2025-04-30 18:06:56 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:06:57 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:07:04 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@44f06ab
+2025-04-30 18:07:04 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6a91fc5e
+2025-04-30 18:07:04 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:07:04 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:07:05 - Recogida de todos los grupos.
+2025-04-30 18:13:24 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:13:24 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:13:31 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@39a5c64a
+2025-04-30 18:13:31 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@5243a78b
+2025-04-30 18:13:31 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:13:31 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:13:33 - Recogida de todos los grupos.
+2025-04-30 18:15:27 - Recogida de todos los grupos.
+2025-04-30 18:16:30 - Recogida de todos los grupos.
+2025-04-30 18:18:57 - Recogida de todos los grupos.
+2025-04-30 18:20:13 - Recogida de todos los grupos.
+2025-04-30 18:21:23 - Recogida de todos los grupos.
+2025-04-30 18:26:40 - Recogida de todos los grupos.
+2025-04-30 18:27:28 - Recogida de todos los grupos.
+2025-04-30 18:28:05 - Recogida de todos los grupos.
+2025-04-30 18:28:37 - Recogida de todos los grupos.
+2025-04-30 18:28:48 - Recogida de todos los grupos.
+2025-04-30 18:29:02 - Recogida de todos los grupos.
+2025-04-30 18:29:12 - Recogida de todos los grupos.
+2025-04-30 18:29:30 - Recogida de todos los grupos.
+2025-04-30 18:30:07 - Recogida de todos los grupos.
+2025-04-30 18:30:50 - Recogida de todos los grupos.
+2025-04-30 18:31:09 - Recogida de todos los grupos.
+2025-04-30 18:34:50 - Recogida de todos los grupos.
+2025-04-30 18:36:58 - Recogida de todos los grupos.
+2025-04-30 18:38:12 - Recogida de todos los grupos.
+2025-04-30 18:38:42 - Recogida de todos los grupos.
+2025-04-30 18:39:36 - Recogida de todos los grupos.
+2025-04-30 18:39:58 - Application shutdown requested.
+2025-04-30 18:39:58 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 18:39:58 - Graceful shutdown complete
+2025-04-30 18:39:58 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 18:39:58 - HikariPool-1 - Shutdown initiated...
+2025-04-30 18:40:13 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 11688 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 18:40:13 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 18:40:14 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 18:40:14 - Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-04-30 18:40:14 - Tomcat initialized with port 8081 (http)
+2025-04-30 18:40:14 - Starting service [Tomcat]
+2025-04-30 18:40:14 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 18:40:14 - Initializing Spring embedded WebApplicationContext
+2025-04-30 18:40:14 - Root WebApplicationContext: initialization completed in 810 ms
+2025-04-30 18:40:14 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 18:40:14 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 18:40:14 - HHH000026: Second-level cache disabled
+2025-04-30 18:40:15 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 18:40:15 - HikariPool-1 - Starting...
+2025-04-30 18:40:15 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4468fda8
+2025-04-30 18:40:15 - HikariPool-1 - Start completed.
+2025-04-30 18:40:16 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -696,77 +331,90 @@ Caused by: java.lang.IllegalArgumentException: Can not set boolean field edu.pro
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 14:25:30 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 14:25:31 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 14:25:31 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 14:25:32 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 14:25:32 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 14:25:32 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 14:25:32 - Started ProyectoFinalApiApplication in 5.732 seconds (process running for 6.144)
-2025-04-26 14:25:47 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 14:25:47 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 14:25:47 - Completed initialization in 1 ms
-2025-04-26 14:25:47 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:25:48 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:25:54 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@6155cd09
-2025-04-26 14:25:55 - Inicio de sesión fallido: Usuario no encontrado para edu.proyectoFinalAPI.Dtos.UsuarioDto@6155cd09
-2025-04-26 14:26:03 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@78855a78
-2025-04-26 14:26:03 - Inicio de sesión fallido: Usuario no encontrado para edu.proyectoFinalAPI.Dtos.UsuarioDto@78855a78
-2025-04-26 14:27:35 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@5bc5639
-2025-04-26 14:27:35 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@2b0acf74
-2025-04-26 14:27:35 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:27:35 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:27:39 - Solicitud para obtener todos los grupos.
-2025-04-26 14:27:39 - No se encontraron grupos en la base de datos.
-2025-04-26 14:27:39 - Solicitud para obtener todos los usuarios.
-2025-04-26 14:27:40 - Se encontraron 1 usuarios en la base de datos.
-2025-04-26 14:27:57 - Solicitud para eliminar el elemento: edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto@3846ce01
-2025-04-26 14:27:58 - Elemento eliminado correctamente: edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto@3846ce01
-2025-04-26 14:27:59 - Solicitud para obtener todos los grupos.
-2025-04-26 14:28:00 - No se encontraron grupos en la base de datos.
-2025-04-26 14:28:00 - Solicitud para obtener todos los usuarios.
-2025-04-26 14:28:00 - No se encontraron usuarios en la base de datos.
-2025-04-26 14:28:01 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:28:02 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:28:03 - Solicitud para obtener todos los grupos.
-2025-04-26 14:28:03 - No se encontraron grupos en la base de datos.
-2025-04-26 14:28:03 - Solicitud para obtener todos los usuarios.
-2025-04-26 14:28:03 - No se encontraron usuarios en la base de datos.
-2025-04-26 14:28:08 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:28:08 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:28:25 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:28:25 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:28:38 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:28:38 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:29:40 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:29:41 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:30:45 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:30:45 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:35:54 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 14:35:54 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 14:35:59 - Application shutdown requested.
-2025-04-26 14:35:59 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 14:35:59 - Graceful shutdown complete
-2025-04-26 14:35:59 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 14:35:59 - HikariPool-1 - Shutdown initiated...
-2025-04-26 14:36:00 - HikariPool-1 - Shutdown completed.
-2025-04-26 17:49:07 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 11472 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 17:49:07 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 17:49:07 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 17:49:07 - Finished Spring Data repository scanning in 40 ms. Found 6 JPA repository interfaces.
-2025-04-26 17:49:08 - Tomcat initialized with port 8081 (http)
-2025-04-26 17:49:08 - Starting service [Tomcat]
-2025-04-26 17:49:08 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 17:49:08 - Initializing Spring embedded WebApplicationContext
-2025-04-26 17:49:08 - Root WebApplicationContext: initialization completed in 777 ms
-2025-04-26 17:49:08 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 17:49:08 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 17:49:08 - HHH000026: Second-level cache disabled
-2025-04-26 17:49:08 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 17:49:08 - HikariPool-1 - Starting...
-2025-04-26 17:49:09 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@780ee3ad
-2025-04-26 17:49:09 - HikariPool-1 - Start completed.
-2025-04-26 17:49:09 - HHH10001005: Database info:
+2025-04-30 18:40:16 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 18:40:18 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 18:40:18 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 18:40:19 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 18:40:19 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 18:40:19 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 18:40:19 - Started ProyectoFinalApiApplication in 5.695 seconds (process running for 6.113)
+2025-04-30 18:40:30 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 18:40:30 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 18:40:30 - Completed initialization in 1 ms
+2025-04-30 18:40:30 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:40:30 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:40:37 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@72633281
+2025-04-30 18:40:37 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@63a579f5
+2025-04-30 18:40:37 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:40:37 - Grupos obtenidos exitosamente. Cantidad: 1
+2025-04-30 18:40:38 - Solicitud para obtener todos los grupos.
+2025-04-30 18:40:39 - Se encontraron 1 grupos en la base de datos.
+2025-04-30 18:40:39 - Solicitud para obtener todos los usuarios.
+2025-04-30 18:40:39 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 18:41:35 - Solicitud para crear un grupo como administrador: edu.proyectoFinalAPI.Dtos.GruposDto@7c7f8ee2
+2025-04-30 18:41:36 - Grupo creado correctamente: edu.proyectoFinalAPI.Dtos.GruposDto@76d67ec1
+2025-04-30 18:41:37 - Solicitud para obtener todos los grupos.
+2025-04-30 18:41:38 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 18:41:38 - Solicitud para obtener todos los usuarios.
+2025-04-30 18:41:38 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 18:41:39 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 18:41:39 - Grupos obtenidos exitosamente. Cantidad: 2
+2025-04-30 18:41:40 - Recogida de todos los grupos.
+2025-04-30 18:42:14 - Recogida de todos los grupos.
+2025-04-30 18:45:27 - Recogida de todos los grupos.
+2025-04-30 18:48:44 - Recogida de todos los grupos.
+2025-04-30 18:49:17 - Recogida de todos los grupos.
+2025-04-30 18:51:28 - Recogida de todos los grupos.
+2025-04-30 18:52:38 - Recogida de todos los grupos.
+2025-04-30 18:53:48 - Recogida de todos los grupos.
+2025-04-30 18:54:25 - Recogida de todos los grupos.
+2025-04-30 18:54:52 - Recogida de todos los grupos.
+2025-04-30 18:55:36 - Recogida de todos los grupos.
+2025-04-30 18:57:14 - Recogida de todos los grupos.
+2025-04-30 19:01:30 - Recogida de todos los grupos.
+2025-04-30 19:02:15 - Recogida de todos los grupos.
+2025-04-30 19:04:59 - Recogida de todos los grupos.
+2025-04-30 19:07:12 - Recogida de todos los grupos.
+2025-04-30 19:13:51 - Recogida de todos los grupos.
+2025-04-30 19:14:15 - Recogida de todos los grupos.
+2025-04-30 19:14:29 - Recogida de todos los grupos.
+2025-04-30 19:14:56 - Recogida de todos los grupos.
+2025-04-30 19:15:38 - Solicitud para obtener todos los grupos.
+2025-04-30 19:15:39 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 19:15:39 - Solicitud para obtener todos los usuarios.
+2025-04-30 19:15:39 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 19:16:24 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 19:16:24 - Grupos obtenidos exitosamente. Cantidad: 2
+2025-04-30 19:16:26 - Recogida de todos los grupos.
+2025-04-30 19:17:59 - Recogida de todos los grupos.
+2025-04-30 19:23:03 - Recogida de todos los grupos.
+2025-04-30 19:23:33 - Recogida de todos los grupos.
+2025-04-30 19:24:00 - Solicitud para obtener todos los grupos.
+2025-04-30 19:24:00 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 19:24:00 - Solicitud para obtener todos los usuarios.
+2025-04-30 19:24:01 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 19:28:36 - Application shutdown requested.
+2025-04-30 19:28:36 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 19:28:36 - Graceful shutdown complete
+2025-04-30 19:28:36 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 19:28:36 - HikariPool-1 - Shutdown initiated...
+2025-04-30 20:19:39 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 10756 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 20:19:39 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 20:19:39 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 20:19:39 - Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-04-30 20:19:39 - Tomcat initialized with port 8081 (http)
+2025-04-30 20:19:39 - Starting service [Tomcat]
+2025-04-30 20:19:39 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 20:19:39 - Initializing Spring embedded WebApplicationContext
+2025-04-30 20:19:39 - Root WebApplicationContext: initialization completed in 778 ms
+2025-04-30 20:19:40 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 20:19:40 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 20:19:40 - HHH000026: Second-level cache disabled
+2025-04-30 20:19:40 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 20:19:40 - HikariPool-1 - Starting...
+2025-04-30 20:19:41 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47162173
+2025-04-30 20:19:41 - HikariPool-1 - Start completed.
+2025-04-30 20:19:41 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -774,36 +422,61 @@ Caused by: java.lang.IllegalArgumentException: Can not set boolean field edu.pro
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 17:49:10 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 17:49:11 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 17:49:12 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 17:49:12 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 17:49:12 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 17:49:12 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 17:49:12 - Started ProyectoFinalApiApplication in 5.695 seconds (process running for 6.12)
-2025-04-26 17:50:10 - Application shutdown requested.
-2025-04-26 17:50:10 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 17:50:10 - Graceful shutdown complete
-2025-04-26 17:50:10 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 17:50:10 - HikariPool-1 - Shutdown initiated...
-2025-04-26 17:50:10 - HikariPool-1 - Shutdown completed.
-2025-04-26 18:00:15 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 15912 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 18:00:15 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 18:00:15 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 18:00:15 - Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
-2025-04-26 18:00:16 - Tomcat initialized with port 8081 (http)
-2025-04-26 18:00:16 - Starting service [Tomcat]
-2025-04-26 18:00:16 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 18:00:16 - Initializing Spring embedded WebApplicationContext
-2025-04-26 18:00:16 - Root WebApplicationContext: initialization completed in 777 ms
-2025-04-26 18:00:16 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 18:00:16 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 18:00:16 - HHH000026: Second-level cache disabled
-2025-04-26 18:00:16 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 18:00:16 - HikariPool-1 - Starting...
-2025-04-26 18:00:17 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73da7f08
-2025-04-26 18:00:17 - HikariPool-1 - Start completed.
-2025-04-26 18:00:17 - HHH10001005: Database info:
+2025-04-30 20:19:41 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 20:19:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 20:19:43 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 20:19:44 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 20:19:44 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 20:19:44 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 20:19:44 - Started ProyectoFinalApiApplication in 5.687 seconds (process running for 6.099)
+2025-04-30 20:20:04 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 20:20:04 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 20:20:04 - Completed initialization in 1 ms
+2025-04-30 20:20:04 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 20:20:05 - Grupos obtenidos exitosamente. Cantidad: 2
+2025-04-30 20:20:12 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@5ea7f8b7
+2025-04-30 20:20:12 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@28803394
+2025-04-30 20:20:12 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 20:20:12 - Grupos obtenidos exitosamente. Cantidad: 2
+2025-04-30 20:20:13 - Solicitud para obtener todos los grupos.
+2025-04-30 20:20:14 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 20:20:14 - Solicitud para obtener todos los usuarios.
+2025-04-30 20:20:14 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 20:21:30 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-04-30 20:22:45 - Solicitud para obtener todos los grupos.
+2025-04-30 20:22:45 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 20:23:37 - Solicitud para obtener todos los grupos.
+2025-04-30 20:23:38 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 20:23:38 - Solicitud para obtener todos los usuarios.
+2025-04-30 20:23:38 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 20:23:51 - Solicitud para modificar grupo como administrador: edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto@4094f191
+2025-04-30 20:23:52 - Grupo modificado correctamente: edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto@4094f191
+2025-04-30 20:23:55 - Solicitud para obtener todos los grupos.
+2025-04-30 20:23:55 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 20:23:55 - Solicitud para obtener todos los usuarios.
+2025-04-30 20:23:56 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 20:27:51 - Application shutdown requested.
+2025-04-30 20:27:51 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 20:27:51 - Graceful shutdown complete
+2025-04-30 20:27:51 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 20:27:51 - HikariPool-1 - Shutdown initiated...
+2025-04-30 20:27:59 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 11676 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
+2025-04-30 20:27:59 - No active profile set, falling back to 1 default profile: "default"
+2025-04-30 20:28:00 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-30 20:28:00 - Finished Spring Data repository scanning in 41 ms. Found 6 JPA repository interfaces.
+2025-04-30 20:28:00 - Tomcat initialized with port 8081 (http)
+2025-04-30 20:28:00 - Starting service [Tomcat]
+2025-04-30 20:28:00 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-30 20:28:00 - Initializing Spring embedded WebApplicationContext
+2025-04-30 20:28:00 - Root WebApplicationContext: initialization completed in 772 ms
+2025-04-30 20:28:00 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-30 20:28:00 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-30 20:28:00 - HHH000026: Second-level cache disabled
+2025-04-30 20:28:01 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-30 20:28:01 - HikariPool-1 - Starting...
+2025-04-30 20:28:02 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66b31d46
+2025-04-30 20:28:02 - HikariPool-1 - Start completed.
+2025-04-30 20:28:02 - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.4.3
@@ -811,206 +484,34 @@ Caused by: java.lang.IllegalArgumentException: Can not set boolean field edu.pro
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-26 18:00:18 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 18:00:19 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:00:19 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 18:00:20 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 18:00:20 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 18:00:20 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 18:00:20 - Started ProyectoFinalApiApplication in 5.695 seconds (process running for 6.115)
-2025-04-26 18:00:34 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 18:00:34 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 18:00:34 - Completed initialization in 1 ms
-2025-04-26 18:00:35 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:00:35 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:00:47 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:00:47 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:01:15 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:01:15 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:01:22 - Application shutdown requested.
-2025-04-26 18:01:22 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 18:01:22 - Graceful shutdown complete
-2025-04-26 18:01:22 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:01:22 - HikariPool-1 - Shutdown initiated...
-2025-04-26 18:01:22 - HikariPool-1 - Shutdown completed.
-2025-04-26 18:02:03 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 7940 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 18:02:03 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 18:02:03 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 18:02:03 - Finished Spring Data repository scanning in 40 ms. Found 6 JPA repository interfaces.
-2025-04-26 18:02:04 - Tomcat initialized with port 8081 (http)
-2025-04-26 18:02:04 - Starting service [Tomcat]
-2025-04-26 18:02:04 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 18:02:04 - Initializing Spring embedded WebApplicationContext
-2025-04-26 18:02:04 - Root WebApplicationContext: initialization completed in 763 ms
-2025-04-26 18:02:04 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 18:02:04 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 18:02:04 - HHH000026: Second-level cache disabled
-2025-04-26 18:02:04 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 18:02:04 - HikariPool-1 - Starting...
-2025-04-26 18:02:05 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6fd7aba8
-2025-04-26 18:02:05 - HikariPool-1 - Start completed.
-2025-04-26 18:02:05 - HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.4.3
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-04-26 18:02:06 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 18:02:07 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:02:07 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 18:02:08 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 18:02:08 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 18:02:08 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 18:02:08 - Started ProyectoFinalApiApplication in 5.658 seconds (process running for 6.073)
-2025-04-26 18:02:22 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 18:02:22 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 18:02:22 - Completed initialization in 1 ms
-2025-04-26 18:02:22 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:02:22 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:02:28 - Login/Registro mediante Google para usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@1a6deeb3
-2025-04-26 18:02:28 - Usuario no encontrado. Procediendo a registrar nuevo usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@1a6deeb3
-2025-04-26 18:02:30 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@5ef5400c
-2025-04-26 18:02:30 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@5ef5400c no tiene grupos asociados.
-2025-04-26 18:02:30 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@752e5958
-2025-04-26 18:02:30 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@752e5958
-2025-04-26 18:02:59 - Solicitud para modificar usuario con ID: 80
-2025-04-26 18:02:59 - Usuario con ID: 80 modificado exitosamente.
-2025-04-26 18:03:01 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@2ea1acdb
-2025-04-26 18:03:02 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@2ea1acdb no tiene grupos asociados.
-2025-04-26 18:03:02 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@145475e8
-2025-04-26 18:03:02 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@145475e8
-2025-04-26 18:13:30 - Application shutdown requested.
-2025-04-26 18:13:30 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 18:13:30 - Graceful shutdown complete
-2025-04-26 18:13:30 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:13:30 - HikariPool-1 - Shutdown initiated...
-2025-04-26 18:16:18 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 15976 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 18:16:18 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 18:16:19 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 18:16:19 - Finished Spring Data repository scanning in 40 ms. Found 6 JPA repository interfaces.
-2025-04-26 18:16:19 - Tomcat initialized with port 8081 (http)
-2025-04-26 18:16:19 - Starting service [Tomcat]
-2025-04-26 18:16:19 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 18:16:19 - Initializing Spring embedded WebApplicationContext
-2025-04-26 18:16:19 - Root WebApplicationContext: initialization completed in 781 ms
-2025-04-26 18:16:19 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 18:16:19 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 18:16:19 - HHH000026: Second-level cache disabled
-2025-04-26 18:16:19 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 18:16:19 - HikariPool-1 - Starting...
-2025-04-26 18:16:20 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73da7f08
-2025-04-26 18:16:20 - HikariPool-1 - Start completed.
-2025-04-26 18:16:20 - HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.4.3
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-04-26 18:16:21 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 18:16:22 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:16:23 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 18:16:23 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 18:16:23 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 18:16:24 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 18:16:24 - Started ProyectoFinalApiApplication in 5.662 seconds (process running for 6.085)
-2025-04-26 18:16:42 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 18:16:42 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 18:16:42 - Completed initialization in 0 ms
-2025-04-26 18:16:42 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:16:42 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:16:48 - Login/Registro mediante Google para usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@5dade769
-2025-04-26 18:16:48 - Usuario ya existe. Procediendo a iniciar sesión: edu.proyectoFinalAPI.Daos.UsuarioEntidad@a87a8af
-2025-04-26 18:16:50 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@60541f16
-2025-04-26 18:16:51 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@60541f16 no tiene grupos asociados.
-2025-04-26 18:16:51 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7df7677c
-2025-04-26 18:16:51 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@7df7677c
-2025-04-26 18:20:37 - Application shutdown requested.
-2025-04-26 18:20:37 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 18:20:37 - Graceful shutdown complete
-2025-04-26 18:20:37 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:20:37 - HikariPool-1 - Shutdown initiated...
-2025-04-26 18:26:26 - Starting ProyectoFinalApiApplication using Java 22.0.2 with PID 16688 (D:\TFGProyectos\APIProyectoFinalDWS\target\classes started by vspc in D:\TFGProyectos\APIProyectoFinalDWS)
-2025-04-26 18:26:26 - No active profile set, falling back to 1 default profile: "default"
-2025-04-26 18:26:26 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-26 18:26:26 - Finished Spring Data repository scanning in 41 ms. Found 6 JPA repository interfaces.
-2025-04-26 18:26:26 - Tomcat initialized with port 8081 (http)
-2025-04-26 18:26:26 - Starting service [Tomcat]
-2025-04-26 18:26:26 - Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-26 18:26:26 - Initializing Spring embedded WebApplicationContext
-2025-04-26 18:26:26 - Root WebApplicationContext: initialization completed in 776 ms
-2025-04-26 18:26:27 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-26 18:26:27 - HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-26 18:26:27 - HHH000026: Second-level cache disabled
-2025-04-26 18:26:27 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-26 18:26:27 - HikariPool-1 - Starting...
-2025-04-26 18:26:28 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51e94b7d
-2025-04-26 18:26:28 - HikariPool-1 - Start completed.
-2025-04-26 18:26:28 - HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.4.3
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-04-26 18:26:29 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-26 18:26:30 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:26:30 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-26 18:26:31 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-26 18:26:31 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-04-26 18:26:31 - Tomcat started on port 8081 (http) with context path '/'
-2025-04-26 18:26:31 - Started ProyectoFinalApiApplication in 5.783 seconds (process running for 6.205)
-2025-04-26 18:26:46 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-26 18:26:46 - Initializing Servlet 'dispatcherServlet'
-2025-04-26 18:26:46 - Completed initialization in 1 ms
-2025-04-26 18:26:46 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:26:46 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:26:54 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@73d9a0d1
-2025-04-26 18:26:55 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6ef7af89
-2025-04-26 18:26:55 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:26:55 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:26:56 - Solicitud para obtener todos los grupos.
-2025-04-26 18:26:57 - No se encontraron grupos en la base de datos.
-2025-04-26 18:26:57 - Solicitud para obtener todos los usuarios.
-2025-04-26 18:26:57 - Se encontraron 1 usuarios en la base de datos.
-2025-04-26 18:27:15 - Solicitud para eliminar el elemento: edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto@422ec35
-2025-04-26 18:27:17 - Elemento eliminado correctamente: edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto@422ec35
-2025-04-26 18:27:19 - Solicitud para obtener todos los grupos.
-2025-04-26 18:27:19 - No se encontraron grupos en la base de datos.
-2025-04-26 18:27:19 - Solicitud para obtener todos los usuarios.
-2025-04-26 18:27:20 - No se encontraron usuarios en la base de datos.
-2025-04-26 18:27:21 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:27:21 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:27:22 - Solicitud para obtener todos los grupos.
-2025-04-26 18:27:23 - No se encontraron grupos en la base de datos.
-2025-04-26 18:27:23 - Solicitud para obtener todos los usuarios.
-2025-04-26 18:27:23 - No se encontraron usuarios en la base de datos.
-2025-04-26 18:27:24 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:27:24 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:27:35 - Login/Registro mediante Google para usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@1f11a4fa
-2025-04-26 18:27:35 - Usuario no encontrado. Procediendo a registrar nuevo usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@1f11a4fa
-2025-04-26 18:28:01 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@31c9c9e2
-2025-04-26 18:28:01 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@31c9c9e2 no tiene grupos asociados.
-2025-04-26 18:28:01 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@3928aed9
-2025-04-26 18:28:01 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@3928aed9
-2025-04-26 18:28:04 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:28:05 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:33:21 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:33:21 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:33:26 - Login/Registro mediante Google para usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@673552a9
-2025-04-26 18:33:27 - Usuario ya existe. Procediendo a iniciar sesión: edu.proyectoFinalAPI.Daos.UsuarioEntidad@607fa48e
-2025-04-26 18:33:44 - Solicitud para obtener los grupos del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6d3b7e91
-2025-04-26 18:33:45 - El usuario edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6d3b7e91 no tiene grupos asociados.
-2025-04-26 18:33:45 - Solicitud para obtener comentario del perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6ad035b7
-2025-04-26 18:33:45 - No se encontró ningún comentario para el perfil del usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@6ad035b7
-2025-04-26 18:33:47 - Solicitud para obtener los grupos más numerosos recibida.
-2025-04-26 18:33:47 - No se encontraron grupos al consultar los más numerosos.
-2025-04-26 18:33:59 - Application shutdown requested.
-2025-04-26 18:33:59 - Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-26 18:33:59 - Graceful shutdown complete
-2025-04-26 18:33:59 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-26 18:33:59 - HikariPool-1 - Shutdown initiated...
+2025-04-30 20:28:02 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-30 20:28:04 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 20:28:04 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-30 20:28:05 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-30 20:28:05 - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-30 20:28:05 - Tomcat started on port 8081 (http) with context path '/'
+2025-04-30 20:28:05 - Started ProyectoFinalApiApplication in 5.668 seconds (process running for 6.081)
+2025-04-30 20:28:15 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-30 20:28:15 - Initializing Servlet 'dispatcherServlet'
+2025-04-30 20:28:15 - Completed initialization in 1 ms
+2025-04-30 20:28:15 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 20:28:15 - Grupos obtenidos exitosamente. Cantidad: 2
+2025-04-30 20:28:26 - Inicio de sesión solicitado para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioDto@573bc4c
+2025-04-30 20:28:26 - Inicio de sesión exitoso para el usuario: edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto@69c15f92
+2025-04-30 20:28:26 - Solicitud para obtener los grupos más numerosos recibida.
+2025-04-30 20:28:26 - Grupos obtenidos exitosamente. Cantidad: 2
+2025-04-30 20:28:28 - Solicitud para obtener todos los grupos.
+2025-04-30 20:28:28 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 20:28:28 - Solicitud para obtener todos los usuarios.
+2025-04-30 20:28:29 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 20:28:58 - Solicitud para modificar grupo como administrador: edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto@63d10f79
+2025-04-30 20:29:00 - Grupo modificado correctamente: edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto@63d10f79
+2025-04-30 20:29:02 - Solicitud para obtener todos los grupos.
+2025-04-30 20:29:03 - Se encontraron 2 grupos en la base de datos.
+2025-04-30 20:29:03 - Solicitud para obtener todos los usuarios.
+2025-04-30 20:29:03 - Se encontraron 2 usuarios en la base de datos.
+2025-04-30 20:29:10 - Application shutdown requested.
+2025-04-30 20:29:10 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-30 20:29:10 - Graceful shutdown complete
+2025-04-30 20:29:10 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-30 20:29:10 - HikariPool-1 - Shutdown initiated...
