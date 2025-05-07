@@ -10,9 +10,16 @@ import org.springframework.stereotype.Service;
 
 import edu.proyectoFinalAPI.Daos.GrupoEntidad;
 import edu.proyectoFinalAPI.Daos.GruposRepositorio;
+import edu.proyectoFinalAPI.Daos.SuscripcionEntidad;
+import edu.proyectoFinalAPI.Daos.SuscripcionRepositorio;
+import edu.proyectoFinalAPI.Daos.UsuarioEntidad;
+import edu.proyectoFinalAPI.Daos.UsuarioRepositorio;
+import edu.proyectoFinalAPI.Dtos.GrupoEspecificadoDto;
 import edu.proyectoFinalAPI.Dtos.GruposDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
+import edu.proyectoFinalAPI.Dtos.SuscripcionDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
+import edu.proyectoFinalAPI.Dtos.UsuariodeGruposDto;
 
 /**
  * Clase donde se encuentra los metodos en relacion a los grupos
@@ -30,6 +37,12 @@ public class GrupoServicios {
 	 */
 	@Autowired
 	private GruposRepositorio repositorioGrupos;
+
+	@Autowired
+	private SuscripcionRepositorio repositorioSuscripcion;
+
+	@Autowired
+	private UsuarioRepositorio repositorioUSuario;
 
 	public GrupoServicios(GruposRepositorio repositorioGrupos) {
 		this.repositorioGrupos = repositorioGrupos;
@@ -161,6 +174,81 @@ public class GrupoServicios {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Metodo que me devuelve toda la informacion encesaria del grupo especificado
+	 * 
+	 * @author jpribio - 7/05/25
+	 * @param grupo
+	 * @return
+	 */
+	public GrupoEspecificadoDto grupoEspecificado(GrupoEspecificadoDto grupo) {
+		GrupoEntidad grupoEntidad = repositorioGrupos.findByNombreGrupo(grupo.getNombreGrupo());
+
+		List<UsuarioEntidad> listadoDeUsuariosEnElGrupo = repositorioSuscripcion
+				.findUsuariosByNombreGrupo(grupo.getNombreGrupo());
+
+		List<UsuariodeGruposDto> usuariosDto = listadoDeUsuariosEnElGrupo.stream().map(usuario -> {
+			UsuariodeGruposDto dto = new UsuariodeGruposDto();
+			dto.setNombreUsuario(usuario.getNombreCompletoUsuEntidad().split(" ")[0]);
+			dto.setAliasUsuario(usuario.getAliasUsuEntidad());
+			dto.setEsPremium(usuario.getEsPremiumEntidad());
+			return dto;
+		}).collect(Collectors.toList());
+
+		// Construir el DTO de salida
+		GrupoEspecificadoDto grupoEspecificado = new GrupoEspecificadoDto();
+		grupoEspecificado.setGrupoId(grupoEntidad.getIdGrupo());
+		grupoEspecificado.setUsuarioId(grupoEntidad.getCreadorUsuId().getIdUsuEntidad());
+		grupoEspecificado.setNombreGrupo(grupoEntidad.getNombreGrupo());
+		grupoEspecificado.setAliasCreadorGrupo(grupoEntidad.getCreadorUsuId().getAliasUsuEntidad());
+		grupoEspecificado.setFechaCreacion(grupoEntidad.getFechaGrupo());
+		grupoEspecificado.setDescripcionGrupoString(grupoEntidad.getDescripcionGrupo());
+		grupoEspecificado.setCategoriaGrupo(grupoEntidad.getCategoriaId().getNombreCategoria());
+		grupoEspecificado.setSubcategoriaGrupo(grupoEntidad.getSubCategoriaId().getNombreSubcategoria());
+		grupoEspecificado.setNumeroUsuarios((long) usuariosDto.size());
+		grupoEspecificado.setListadoDeUsuariosSuscritos(usuariosDto);
+		return grupoEspecificado;
+	}
+
+	/**
+	 * MEtodo para suscribirse al grupo deseado
+	 * 
+	 * @author jpribio - 7/05/25
+	 * @param elementosNecesariosParaUnirme
+	 * @return
+	 */
+	public String suscribirmeAlGrupo(SuscripcionDto elementosNecesariosParaUnirme) {
+		try {
+			GrupoEntidad grupoEntidad = repositorioGrupos
+					.findByNombreGrupo(elementosNecesariosParaUnirme.getNombreGrupo());
+			if (grupoEntidad == null) {
+				return "Error: El grupo especificado no existe.";
+			}
+
+			UsuarioEntidad usuarioEnt = repositorioUSuario
+					.findByAliasUsuEntidad(elementosNecesariosParaUnirme.getAliasUsuario());
+			if (usuarioEnt == null) {
+				return "Error: El usuario especificado no existe.";
+			}
+
+			boolean yaSuscrito = repositorioSuscripcion.existsByGrupoIdAndUsuarioId(grupoEntidad, usuarioEnt);
+			if (yaSuscrito) {
+				return "El usuario ya está suscrito a este grupo.";
+			}
+
+			SuscripcionEntidad susEntidad = new SuscripcionEntidad();
+			susEntidad.setGrupoId(grupoEntidad);
+			susEntidad.setUsuarioId(usuarioEnt);
+
+			repositorioSuscripcion.save(susEntidad);
+
+			return "Se ha realizado todo correctamente.";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error inesperado al procesar la suscripción: " + e.getMessage();
+		}
 	}
 
 }

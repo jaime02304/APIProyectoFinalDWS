@@ -67,4 +67,6 @@ public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 
 	List<GrupoEntidad> findAllByOrderByNumeroUsuariosDesc();
 
+	GrupoEntidad findByNombreGrupo(String nombreGrupo);
+
 }

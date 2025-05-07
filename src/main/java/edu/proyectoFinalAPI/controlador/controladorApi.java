@@ -28,8 +28,10 @@ import edu.proyectoFinalAPI.Dtos.ComentariosDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosIndexDto;
 import edu.proyectoFinalAPI.Dtos.ComentariosPerfilDto;
 import edu.proyectoFinalAPI.Dtos.EliminarElementoPerfilDto;
+import edu.proyectoFinalAPI.Dtos.GrupoEspecificadoDto;
 import edu.proyectoFinalAPI.Dtos.GruposDto;
 import edu.proyectoFinalAPI.Dtos.GruposParaLasListasDto;
+import edu.proyectoFinalAPI.Dtos.SuscripcionDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioDto;
 import edu.proyectoFinalAPI.Dtos.UsuarioPerfilDto;
 import edu.proyectoFinalAPI.Servicios.ComentarioServicio;
@@ -757,6 +759,60 @@ public class controladorApi {
 			response.put("error", "Argumento inválido: " + e.getMessage());
 		} catch (Exception e) {
 			logger.error("Error inesperado al recoger los comentarios: {}", e.getMessage(), e);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	/**
+	 * Metodo para buscar el contenido del grupo a ver
+	 * 
+	 * @author jpribio - 7/05/25
+	 * @param grupoEspecifico
+	 * @return
+	 */
+	@PostMapping("/VerGrupoEspecificado")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> verGrupoEspecificado(@RequestBody GrupoEspecificadoDto grupoEspecifico) {
+		Map<String, Object> response = new HashMap<>();
+		logger.info("Recogida del grupo especificado.");
+		try {
+			GrupoEspecificadoDto grupo = servicioGrupo.grupoEspecificado(grupoEspecifico);
+			response.put("grupoEspecifico", grupo);
+		} catch (IllegalArgumentException e) {
+			logger.error("Error de argumento inválido al recoger el grupo: {}", e.getMessage());
+			response.put("error", "Argumento inválido: " + e.getMessage());
+		} catch (Exception e) {
+			logger.error("Error inesperado al recoger el grupo: {}", e.getMessage(), e);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	/**
+	 * MEtodo para unirme al grupo deseado
+	 * 
+	 * @author jpribio - 7/05/25
+	 * @param elementosNecesariosParaUnirme
+	 * @return
+	 */
+	@PostMapping("/UnirmeAlGrupo")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> unirmeAlGrupoEspecificado(@RequestBody SuscripcionDto elementosNecesariosParaUnirme) {
+		Map<String, Object> response = new HashMap<>();
+		logger.info("Suscripcion al grupo.");
+		try {
+			String mensaje = servicioGrupo.suscribirmeAlGrupo(elementosNecesariosParaUnirme);
+			response.put("mensaje", mensaje);
+		} catch (IllegalArgumentException e) {
+			logger.error("Error de argumento inválido al suscribirse al grupo: {}", e.getMessage());
+			response.put("error", "Argumento inválido: " + e.getMessage());
+		} catch (Exception e) {
+			logger.error("Error inesperado al al suscribirse grupo: {}", e.getMessage(), e);
 			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
 		}
 
