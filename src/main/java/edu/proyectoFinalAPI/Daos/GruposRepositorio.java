@@ -20,7 +20,7 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface GruposRepositorio extends JpaRepository<GrupoEntidad, Long> {
 
-	@Query(value = "SELECT * FROM grupos ORDER BY numero_usuarios DESC LIMIT 5", nativeQuery = true)
+	@Query(value = "SELECT * FROM grupos ORDER BY numero_usuarios LIMIT 5", nativeQuery = true)
 	List<GrupoEntidad> findTop5GroupsByNumeroUsuariosDesc();
 
 	@Query(value = "SELECT g.* FROM grupos g " + "INNER JOIN usuarios u ON g.creador_usu_id = u.id_usu "

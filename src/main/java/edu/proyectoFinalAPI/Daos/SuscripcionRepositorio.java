@@ -1,6 +1,7 @@
 package edu.proyectoFinalAPI.Daos;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +20,7 @@ public interface SuscripcionRepositorio extends JpaRepository<SuscripcionEntidad
 	List<UsuarioEntidad> findUsuariosByNombreGrupo(@Param("nombreGrupo") String nombreGrupo);
 
 	boolean existsByGrupoIdAndUsuarioId(GrupoEntidad grupo, UsuarioEntidad usuario);
+
+	Optional<SuscripcionEntidad> findByGrupoIdAndUsuarioId(GrupoEntidad grupo, UsuarioEntidad usuario);
 
 }

@@ -3,6 +3,7 @@ package edu.proyectoFinalAPI.Servicios;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class GrupoServicios {
 		}
 
 		// Mapear los grupos a la lista de DTOs
-		return gruposE.stream().map(grupoEntidad -> {
+		return gruposE.reversed().stream().map(grupoEntidad -> {
 			GruposParaLasListasDto grupo = new GruposParaLasListasDto();
 			grupo.setIdGrupo(grupoEntidad.getIdGrupo());
 			grupo.setNombreGrupo(grupoEntidad.getNombreGrupo());
@@ -241,13 +242,55 @@ public class GrupoServicios {
 			SuscripcionEntidad susEntidad = new SuscripcionEntidad();
 			susEntidad.setGrupoId(grupoEntidad);
 			susEntidad.setUsuarioId(usuarioEnt);
-
 			repositorioSuscripcion.save(susEntidad);
+
+			Long actual = grupoEntidad.getNumeroUsuarios();
+			grupoEntidad.setNumeroUsuarios(actual != null ? actual + 1 : 1);
+			repositorioGrupos.save(grupoEntidad);
 
 			return "Se ha realizado todo correctamente.";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "Error inesperado al procesar la suscripción: " + e.getMessage();
+		}
+	}
+
+	/**
+	 * MEtodo para abandonar al grupo deseado
+	 * 
+	 * @author jpribio - 7/05/25
+	 * @param elementosNecesariosParaUnirme
+	 * @return
+	 */
+	public String eliminarSuscripcionDelGrupo(SuscripcionDto elementosNecesarios) {
+		try {
+			GrupoEntidad grupo = repositorioGrupos.findByNombreGrupo(elementosNecesarios.getNombreGrupo());
+			if (grupo == null) {
+				return "Error: El grupo especificado no existe.";
+			}
+
+			UsuarioEntidad usuario = repositorioUSuario.findByAliasUsuEntidad(elementosNecesarios.getAliasUsuario());
+			if (usuario == null) {
+				return "Error: El usuario especificado no existe.";
+			}
+
+			Optional<SuscripcionEntidad> suscripcionOpt = repositorioSuscripcion.findByGrupoIdAndUsuarioId(grupo,
+					usuario);
+			if (suscripcionOpt.isEmpty()) {
+				return "El usuario no está suscrito a este grupo.";
+			}
+
+			repositorioSuscripcion.delete(suscripcionOpt.get());
+			Long actual = grupo.getNumeroUsuarios();
+			if (actual != null && actual > 0) {
+				grupo.setNumeroUsuarios(actual - 1);
+				repositorioGrupos.save(grupo); // Guardar cambio
+			}
+
+			return "La suscripción ha sido eliminada correctamente.";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error inesperado al eliminar la suscripción: " + e.getMessage();
 		}
 	}
 

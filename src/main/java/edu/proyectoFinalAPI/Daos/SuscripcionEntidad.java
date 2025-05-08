@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**
  * Clase entidad donde se encuentra los elementos de la base de datos de la
@@ -18,6 +19,7 @@ import jakarta.persistence.ManyToOne;
  * @author jpribio - 07/05/25
  */
 @Entity
+@Table(name = "suscripcion_entidad")
 public class SuscripcionEntidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

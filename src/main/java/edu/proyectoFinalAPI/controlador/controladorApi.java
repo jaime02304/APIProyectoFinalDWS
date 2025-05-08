@@ -820,6 +820,33 @@ public class controladorApi {
 	}
 
 	/**
+	 * MEtodo para abandona al grupo deseado
+	 * 
+	 * @author jpribio - 7/05/25
+	 * @param elementosNecesariosParaUnirme
+	 * @return
+	 */
+	@PostMapping("/AbandonarGrupo")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> eliminarDelGrupo(@RequestBody SuscripcionDto elementosNecesariosParaEliminar) {
+		Map<String, Object> response = new HashMap<>();
+		logger.info("Eliminación de suscripción al grupo.");
+		try {
+			String mensaje = servicioGrupo.eliminarSuscripcionDelGrupo(elementosNecesariosParaEliminar);
+			response.put("mensaje", mensaje);
+		} catch (IllegalArgumentException e) {
+			logger.error("Error de argumento inválido al eliminar suscripción: {}", e.getMessage());
+			response.put("error", "Argumento inválido: " + e.getMessage());
+		} catch (Exception e) {
+			logger.error("Error inesperado al eliminar suscripción del grupo: {}", e.getMessage(), e);
+			response.put("error", "Ocurrió un error inesperado: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	/**
 	 * MEtodo para recoger todos los grupos desde la api
 	 * 
 	 * @author jpribio - 30/04/25
