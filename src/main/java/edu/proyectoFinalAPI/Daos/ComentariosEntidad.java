@@ -17,6 +17,8 @@ import jakarta.persistence.Table;
 
 /**
  * Clase donde se encuentra los Daos de los comentarios
+ * 
+ * @author jpribio - 22/01/25
  */
 @Entity
 @Table(name = "comentarios")

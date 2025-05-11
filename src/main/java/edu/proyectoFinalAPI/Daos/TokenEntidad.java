@@ -13,6 +13,8 @@ import jakarta.persistence.Table;
 
 /**
  * Clase entidad donde se encuentra los atributos de los tokens
+ * 
+ * @author jpribio - 22/01/25
  */
 @Entity
 @Table(name = "token")
@@ -34,7 +36,7 @@ public class TokenEntidad {
 
 	@Column(name = "usado")
 	private boolean usado;
-	
+
 	@Column(name = "is_verificacion")
 	private boolean isVerificacion = false;
 
@@ -97,7 +99,5 @@ public class TokenEntidad {
 	public void setVerificacion(boolean isVerificacion) {
 		this.isVerificacion = isVerificacion;
 	}
-	
-	
 
 }

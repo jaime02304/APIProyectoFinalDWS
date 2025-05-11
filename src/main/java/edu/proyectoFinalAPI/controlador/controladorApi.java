@@ -198,14 +198,20 @@ public class controladorApi {
 	 */
 	@GetMapping("/usuario/verificar")
 	public ResponseEntity<String> verificar(@RequestParam String token) {
+		logger.info("Iniciando verificación para el token: {}", token);
 		TokenEntidad tokenEntidad = repositorioToken.findByToken(token);
-		if (tokenEntidad == null)
+		if (tokenEntidad == null) {
+			logger.warn("Error en la verificación: token no encontrado.");
 			return ResponseEntity.status(404).body("Token inválido.");
-		if (tokenEntidad.isUsado())
+		}
+		if (tokenEntidad.isUsado()) {
+			logger.warn("Error en la verificación: token ya usado.");
 			return ResponseEntity.badRequest().body("Token ya usado.");
-		if (tokenEntidad.getFechaExpiracion().isBefore(LocalDateTime.now()))
+		}
+		if (tokenEntidad.getFechaExpiracion().isBefore(LocalDateTime.now())) {
+			logger.warn("Error en la verificación: token expirado.");
 			return ResponseEntity.badRequest().body("Token expirado.");
-
+		}
 		UsuarioEntidad usuario = tokenEntidad.getUsuario();
 		usuario.setEsVerificadoEntidad(true);
 		tokenEntidad.setUsado(true);
@@ -228,6 +234,7 @@ public class controladorApi {
 		String correo = datos.get("correo");
 
 		if (correo == null || correo.isBlank()) {
+			logger.warn("Error en recuperación de contraseña: correo vacío o nulo.");
 			return ResponseEntity.badRequest().body("El correo es obligatorio.");
 		}
 
@@ -236,6 +243,8 @@ public class controladorApi {
 		if (enviado) {
 			return ResponseEntity.ok("Correo de recuperación enviado.");
 		} else {
+			logger.warn("Error en recuperación de contraseña: usuario no encontrado o fallo en el envío. Correo: {}",
+					correo);
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado o error al procesar.");
 		}
 	}
@@ -258,6 +267,7 @@ public class controladorApi {
 		if (cambiado) {
 			return ResponseEntity.ok("Contraseña cambiada exitosamente.");
 		} else {
+			logger.warn("Error al cambiar contraseña: token inválido, expirado o ya usado. Token: {}", token);
 			return ResponseEntity.badRequest().body("Token inválido, expirado o ya usado.");
 		}
 	}

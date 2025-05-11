@@ -12,6 +12,11 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.transaction.Transactional;
 
+/**
+ * clase repositorio de los tokens
+ * 
+ * @author jpribio - 22/01/25
+ */
 @Repository
 public interface TokenRepositorio extends JpaRepository<TokenEntidad, Long> {
 	TokenEntidad findByToken(String token);
