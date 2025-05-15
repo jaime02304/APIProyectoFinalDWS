@@ -2,6 +2,7 @@
 package edu.proyectoFinalAPI.Servicios;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,10 @@ public class ComentarioServicio {
 				ComentariosIndexDto comentarioDto = new ComentariosIndexDto();
 				comentarioDto.setAliasUsuarioComentario(comentario.getUsuarioId().getAliasUsuEntidad());
 				comentarioDto.setComentarioTexto(comentario.getComentarioTexto());
-				comentarioDto.setMeGustaComentarios(comentario.getMeGusta()); //
-				if (comentario.getUsuarioId().getFotoUsuEntidad() != null) {
-					comentarioDto.setImagenUsuario(comentario.getUsuarioId().getFotoUsuEntidad());
+				byte[] fotoBytes = comentario.getUsuarioId().getFotoUsuEntidad();
+				if (fotoBytes != null && fotoBytes.length > 0) {
+					String imagenUsuarioBase64 = Base64.getEncoder().encodeToString(fotoBytes);
+					comentarioDto.setImagenUsuario(imagenUsuarioBase64);
 				} else {
 					comentarioDto.setImagenUsuario(null);
 				}
@@ -69,7 +71,8 @@ public class ComentarioServicio {
 	 * @throws IllegalArgumentException
 	 */
 	public List<ComentariosDto> recogerTodosLosComentarios() throws NullPointerException, IllegalArgumentException {
-		List<ComentariosEntidad> listaComentariosEnt = repositorioComentariorepositorio.findAllByOrderByFechaComentarioDesc();
+		List<ComentariosEntidad> listaComentariosEnt = repositorioComentariorepositorio
+				.findAllByOrderByFechaComentarioDesc();
 		List<ComentariosDto> listaComentariosIndex = new ArrayList<>();
 		if (listaComentariosEnt != null) {
 			for (ComentariosEntidad comentario : listaComentariosEnt) {
@@ -79,11 +82,11 @@ public class ComentarioServicio {
 				comentarioDto.setIdUsuario(comentario.getUsuarioId().getIdUsuEntidad());
 				comentarioDto.setCategoriaTipo(comentario.getCategoriaId().getNombreCategoria());
 				comentarioDto.setSubCategoriaTipo(comentario.getSubCategoriaId().getNombreSubcategoria());
-				  if (comentario.getGrupoId() != null) {
-		                comentarioDto.setGrupoComentario(comentario.getGrupoId().getNombreGrupo());
-		            } else {
-		                comentarioDto.setGrupoComentario("");
-		            }
+				if (comentario.getGrupoId() != null) {
+					comentarioDto.setGrupoComentario(comentario.getGrupoId().getNombreGrupo());
+				} else {
+					comentarioDto.setGrupoComentario("");
+				}
 				listaComentariosIndex.add(comentarioDto);
 			}
 			return listaComentariosIndex;

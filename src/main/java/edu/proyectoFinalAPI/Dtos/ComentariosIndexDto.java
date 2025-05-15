@@ -9,8 +9,7 @@ public class ComentariosIndexDto {
 
 	private String aliasUsuarioComentario = "aaaaa";
 	private String comentarioTexto = "aaaaa";
-	private byte[] imagenUsuario;
-	private Long meGustaComentarios = (long) 0;
+	private String imagenUsuario;
 
 	public String getAliasUsuarioComentario() {
 		return aliasUsuarioComentario;
@@ -28,20 +27,12 @@ public class ComentariosIndexDto {
 		this.comentarioTexto = comentarioTexto;
 	}
 
-	public byte[] getImagenUsuario() {
+	public String getImagenUsuario() {
 		return imagenUsuario;
 	}
 
-	public void setImagenUsuario(byte[] imagenUsuario) {
+	public void setImagenUsuario(String imagenUsuario) {
 		this.imagenUsuario = imagenUsuario;
-	}
-
-	public Long getMeGustaComentarios() {
-		return meGustaComentarios;
-	}
-
-	public void setMeGustaComentarios(Long meGustaComentarios) {
-		this.meGustaComentarios = meGustaComentarios;
 	}
 
 }
