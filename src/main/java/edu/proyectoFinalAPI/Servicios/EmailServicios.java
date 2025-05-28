@@ -24,7 +24,7 @@ public class EmailServicios {
 	 * @param token
 	 */
 	public void enviarVerificacioEmail(String toEmail, String token) {
-		String ruta = "https://maggot-glad-chipmunk.ngrok-free.app/api/usuario/verificar?token=" + token;
+		String ruta = "http:/localhost:8080/nombreProyectoApi/api/usuario/verificar?token=" + token;
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(toEmail);
 		msg.setSubject("Verifica tu cuenta");
@@ -41,7 +41,7 @@ public class EmailServicios {
 	 * @param token
 	 */
 	public void enviarRecuperacionEmail(String toEmail, String token) {
-		String ruta = "http://localhost:8080/ProyectoFinal/InicioSesion?modal=recuperar&token=" + token;
+		String ruta = "http:/localhost:8080/InicioSesion?modal=recuperar&token=" + token;
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(toEmail);
 		msg.setSubject("Recuperación de contraseña");

@@ -12,6 +12,7 @@
 	<groupId>edu</groupId>
 	<artifactId>proyectoFinalAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>proyectoFinalAPI</name>
 	<description>Demo project for Spring Boot</description>
 	<url />
@@ -48,17 +49,17 @@
 			<artifactId>jakarta.ws.rs-api</artifactId>
 		</dependency>
 
-		<!-- Dependencia para un proveedor de implementación -->
+	<!--	 Dependencia para un proveedor de implementación 
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-server</artifactId>
 		</dependency>
 
-		<!-- Dependencia para un cliente HTTP -->
+		 Dependencia para un cliente HTTP 
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<!-- Starter para Spring Data JPA (facilita la integración con bases de
 		datos relacionales) -->
